@@ -12,23 +12,20 @@ module datapath( 	input logic Clk, Reset,
 
 					
 					
-					//dl35 create the following block
-//=================================================================
+
 logic [15:0] PC_MUX_OUT; //output of PC mux
 
 logic [15:0] PC_MUX_IN;
 logic [15:0] PC_GATE_IN;	//the PC output to the gate	
-assign PC_MUX_IN = PC_GATE_IN + 1; //self increment of PC
 logic [15:0] MEM_MUX_OUT;	//the mux output before the MDR
 logic [15:0] MDR_GATE_IN;	//MDR output before gate
 
 logic [3:0] GATE_S;	
-assign GATE_S = {GatePC, GateMDR, GateALU, GateMARMUX};
 
 logic [15:0] BUS;
 assign PC = PC_GATE_IN;
 
-//========= PART 2 ============================
+//PART 2 added signal
 //for register files outputs
 logic [15:0]SR1_Data;
 logic [15:0]SR2_Data;
@@ -37,17 +34,64 @@ logic [15:0]SR2_Data;
 logic [15:0]addr1mux_out;
 logic [15:0]addr2mux_out;
 logic [15:0]addr_sum;
-//the adder after the addr MUXs
-assign addr_sum = addr1mux_out + addr2mux_out;
+
 
 //SR2 mux output
 logic [15:0]sr2mux_out;
 
 //ALU output
 logic [15:0]ALU_out;
-//==============================================
+
+//Branch enable signal to the ben_reg
+logic BR_data;
+
+//nzp signals
+//have to figure out the value using some logic
+//set cc is related to the last assess destination reg
+logic [2:0]nzp_in;
+logic N, Z, P;
 
 
+always_comb
+	begin
+		PC_MUX_IN = PC_GATE_IN + 1; //self increment of PC
+		addr_sum = addr1mux_out + addr2mux_out; //the adder after the addr MUXs
+		GATE_S = {GatePC, GateMDR, GateALU, GateMARMUX}; //assign the gate signals
+		
+		//please beware that this is verify in BR (opcode: 0000)
+		BR_data = (IR[11]&N) | (IR[10]&Z) | (IR[9]&P);
+		
+		//bus data is only valid and will be load to nzp reg in specific state
+		if(BUS == 16'h0000)
+			begin
+				nzp_in = 3'b010; //zero
+			end
+		else
+		begin
+			case(BUS[15]) 				//check the most significant bit
+				1'b0: nzp_in = 3'b001; //positive
+				1'b1: nzp_in = 3'b100; //negative 
+				default: nzp_in = 3'bxxx;
+			endcase
+		end
+		
+	end
+	
+	
+	reg_1		Ben_reg(	.Clk,
+							.Reset,
+							.Load(LD_BEN),
+							.D(BR_data),
+							.Data_Out(BEN));
+							
+							
+	reg_3		nzp_reg(	.Clk,
+							.Reset,
+							.Load(LD_CC),
+							.D(nzp_in),
+							.Data_Out({N,Z,P}));
+							
+							
 	reg_16	MAR_reg(	.Clk, 
 							.Reset, 
 							.Load(LD_MAR),
@@ -91,12 +135,9 @@ logic [15:0]ALU_out;
 						.GATE_2(ALU_out), 	//gateALU
 						.GATE_3(addr_sum), 	//gateMarMUX
 						.select(GATE_S),		//change from 0s to don't care
-						.out(BUS));
-//====================================================================	
-
+						.out(BUS));	
 	
-//=================PART 2 START HERE==================================
-
+//Part 2
 	reg_file	register_file(
 					.Clk, .LD_REG, .Reset,
 					.DR(DRMUX),	//DRMUX is signal for selecting the destination reg
@@ -126,12 +167,11 @@ logic [15:0]ALU_out;
 	
 	//SR2 mux on the datapath
 	//the one above the alu on the datapath
-	mux2to1	sr2mux(.A(SR2_Data), .B({ {11{IR[5]}},IR[4:0]}), .select(IR[5]) , .out(sr2mux_out));
+	mux2to1	sr2mux(.A(SR2_Data), .B({ {11{IR[5]}},IR[4:0]}), .select(SR2MUX) , .out(sr2mux_out));
 	
 	//ALU of the slc3 
 	ALU	alu_unit(.A(SR1_Data), .B(sr2mux_out), .ALUK, .out(ALU_out));
 
 
-//====================================================================	
 
 endmodule 
