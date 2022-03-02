@@ -48,49 +48,42 @@ logic BR_data;
 //nzp signals
 //have to figure out the value using some logic
 //set cc is related to the last assess destination reg
-logic [2:0]nzp_in;
-logic N, Z, P;
+logic [2:0]nzp_in, nzp_out;
 
 
-always_comb
-	begin
-		PC_MUX_IN = PC_GATE_IN + 1; //self increment of PC
-		addr_sum = addr1mux_out + addr2mux_out; //the adder after the addr MUXs
-		GATE_S = {GatePC, GateMDR, GateALU, GateMARMUX}; //assign the gate signals
-		
-		//please beware that this is verify in BR (opcode: 0000)
-		BR_data = (IR[11]&N) | (IR[10]&Z) | (IR[9]&P);
-		
-		//bus data is only valid and will be load to nzp reg in specific state
-		if(BUS == 16'h0000)
-			begin
-				nzp_in = 3'b010; //zero
-			end
-		else
-		begin
-			case(BUS[15]) 				//check the most significant bit
-				1'b0: nzp_in = 3'b001; //positive
-				1'b1: nzp_in = 3'b100; //negative 
-				default: nzp_in = 3'bxxx;
-			endcase
-		end
-		
-	end
+assign PC_MUX_IN = PC_GATE_IN + 16'h0001; //self increment of PC
+assign GATE_S = {GatePC, GateMDR, GateALU, GateMARMUX}; //assign the gate signals
+assign addr_sum = addr1mux_out + addr2mux_out;		
+//please beware that this is verify in BR (opcode: 0000)
+//assign BR_data = (IR[11:9] & nzp_out != 3'b000);
+//		
+//	always_comb
+//		begin//bus data is only valid and will be load to nzp reg in specific state
+//		if(BUS == 16'h0000)
+//				nzp_in = 3'b010; //zero
+//		else if (BUS[15])
+//				nzp_in = 3'b100; //negative
+//		else 
+//				nzp_in = 3'b001; //positive 
+//		
+//	end
 	
+//	//Branch required reg
+//	reg_1		Ben_reg(	.Clk,
+//							.Reset,
+//							.Load(LD_BEN),
+//							.D(BR_data),
+//							.Data_Out(BEN));
+//							
+//							
+//	reg_3		nzp_reg(	.Clk,
+//							.Reset,
+//							.Load(LD_CC),
+//							.D(nzp_in),
+//							.Data_Out(nzp_out));
+//	//Branch required materil end here			
 	
-	reg_1		Ben_reg(	.Clk,
-							.Reset,
-							.Load(LD_BEN),
-							.D(BR_data),
-							.Data_Out(BEN));
-							
-							
-	reg_3		nzp_reg(	.Clk,
-							.Reset,
-							.Load(LD_CC),
-							.D(nzp_in),
-							.Data_Out({N,Z,P}));
-							
+	branch	BR_branch(.Clk, .LD_BEN, .LD_CC, .BUS, .IR_11to9(IR[11:9]), .BEN(BEN));
 							
 	reg_16	MAR_reg(	.Clk, 
 							.Reset, 
@@ -121,11 +114,13 @@ always_comb
 							.select(MIO_EN),
 							.out(MEM_MUX_OUT));
 	
+	
+	
 	//the mux before the PC_reg
 	mux4to1	PC_mux(.IN_0(PC_MUX_IN),
 						 .IN_1(BUS), //change from 0s to don't care
 						 .IN_2(addr_sum),
-						 .IN_3(16'hxxxx),
+						 .IN_3(),
 						 .select(PCMUX),
 						 .out(PC_MUX_OUT));
 						 
@@ -137,9 +132,9 @@ always_comb
 						.select(GATE_S),		//change from 0s to don't care
 						.out(BUS));	
 	
-//Part 2
+//Part 2==========================================================
 	reg_file	register_file(
-					.Clk, .LD_REG, .Reset,
+					.Clk, .LD_REG(LD_REG), .Reset(Reset),
 					.DR(DRMUX),	//DRMUX is signal for selecting the destination reg
 					.IR_11to9(IR[11:9]),
 					.IR_8to6(IR[8:6]),
@@ -154,24 +149,31 @@ always_comb
 	//{n{IR[x]}} n-bit extend using IR[x]
 	mux4to1	addr2mux(
 					.IN_0(16'h0000), 
-					.IN_1( { {10{IR[5]}},IR[5:0]} ), 
-					.IN_2( { {7{IR[8]}},IR[8:0]} ), 
-					.IN_3( { {5{IR[10]}},IR[10:0]} ),
+					.IN_1( { {10{IR[5]}}, IR[5:0]} ), 
+					.IN_2( { {7{IR[8]}}, IR[8:0]} ), 
+					.IN_3( { {5{IR[10]}}, IR[10:0]} ),
 					.select(ADDR2MUX),
 					.out(addr2mux_out)
 				);
 	
 	//this is the ADDR1MUX on lc3 datapath
 	//select = 0, out = A = PC, select = 1, out = B = SR1_data
-	mux2to1	addr1mux( .A(PC), .B(SR1_Data), .select(ADDR1MUX), .out(addr1mux_out));
+	mux2to1	addr1mux( .A(PC_GATE_IN), .B(SR1_Data), .select(ADDR1MUX), .out(addr1mux_out));
 	
 	//SR2 mux on the datapath
 	//the one above the alu on the datapath
-	mux2to1	sr2mux(.A(SR2_Data), .B({ {11{IR[5]}},IR[4:0]}), .select(SR2MUX) , .out(sr2mux_out));
+	mux2to1	sr2mux(.A(SR2_Data), .B({ {11{IR[4]}},IR[4:0]}), .select(SR2MUX) , .out(sr2mux_out));
 	
 	//ALU of the slc3 
-	ALU	alu_unit(.A(SR1_Data), .B(sr2mux_out), .ALUK, .out(ALU_out));
-
-
+	ALU	alu_unit(.A(SR1_Data), .B(sr2mux_out), .ALUK(ALUK), .out(ALU_out));
+	
+	
+	always_ff @(posedge Clk) 
+	begin
+		if(LD_LED)
+			LED <= IR[9:0];
+		else
+			LED <= 10'b0;
+	end
 
 endmodule 

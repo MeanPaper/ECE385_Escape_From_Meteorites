@@ -14,9 +14,13 @@ logic Run, Continue;
 //logic [6:0] HEX0, HEX1, HEX2, HEX3;
 //logic [9:0] SW;
 //logic [19:0] MAR_Out;
+
+logic [9:0] SW;
 logic [15:0] MA;
 logic [15:0] MD;
 logic [15:0] PC;
+
+logic [6:0] HEX0, HEX1, HEX2, HEX3;
 
 
 // A counter to count the instances where simulation results
@@ -25,8 +29,9 @@ integer ErrorCnt = 0;
 		
 // Instantiating the DUT
 // Make sure the module and signal names match with those in your design
+//slc3_testtop test(.*);
 
-slc3_testtop test( .Clk, .Run, .Continue);
+slc3_testtop test( .Clk, .Run, .Continue, .SW(SW), .HEX0(HEX0), .HEX1(HEX1), .HEX2(HEX2), .HEX3(HEX3));
 assign MA = test.slc.d0.MAR_reg.Data_Out; //get MAR data
 assign MD = test.slc.d0.MDR_reg.Data_Out; //get MDR data
 assign PC = test.slc.d0.PC_reg.Data_Out;	//get PC data
@@ -60,18 +65,41 @@ Continue = 0;
 #2
 Run = 1;
 Continue = 1;
+SW = 10'h31;
 
-#4
+#3
 Run = 0;
 
-#2
+#3
 Run = 1;
 
-#20
+#55
+SW = 10'd3;
+
+
+#100
 Continue = 0;
 
-#2
+#4
 Continue = 1;
+
+#4
+SW = 10'd3;
+
+#40
+Continue = 0;
+
+#4
+Continue = 1;
+
+
+
+
+//#20
+//Continue = 0;
+//
+//#2
+//Continue = 1;
 
 
 
