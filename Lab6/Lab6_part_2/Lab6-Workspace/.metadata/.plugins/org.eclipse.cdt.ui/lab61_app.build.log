@@ -1,0 +1,16 @@
+20:48:08 **** Incremental Build of configuration Nios II for project lab61_app ****
+make all 
+Info: Building ../lab61_app_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../lab61_app_bsp/
+[BSP build complete]
+Info: Linking lab61_app.elf
+nios2-elf-g++  -T'../lab61_app_bsp//linker.x' -msys-crt0='../lab61_app_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../lab61_app_bsp/   -Wl,-Map=lab61_app.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o lab61_app.elf obj/default/main.o -lm -msys-lib=m
+nios2-elf-insert lab61_app.elf --thread_model hal --cpu_name nios2_gen2_0 --qsys true --simulation_enabled false --id 0 --sidp 0xb8 --timestamp 1646761738 --stderr_dev none --stdin_dev none --stdout_dev none --sopc_system_name lab61soc --quartus_project_dir "C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6" --jdi ../..//output_files/nio2.jdi --sopcinfo C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/software/lab61_app_bsp/../../lab61soc.sopcinfo
+Info: (lab61_app.elf) 3792 Bytes program size (code + initialized data).
+Info:                 65530 KBytes free for stack + heap.
+Info: Creating lab61_app.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source lab61_app.elf >lab61_app.objdump
+[lab61_app build complete]
+
+20:48:10 Build Finished (took 1s.849ms)
+
