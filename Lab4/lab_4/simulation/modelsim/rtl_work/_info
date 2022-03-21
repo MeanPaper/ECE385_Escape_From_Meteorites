@@ -1,0 +1,312 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/ldm18/Desktop/385_FPGA_project/lab_4/simulation/modelsim
+vcontrol
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1645397401
+!i10b 1
+!s100 LAQY8eF7T_8JhdXY87kSh0
+IO?Lz2HJ14]><a9MYaGLa33
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 Control_sv_unit
+S1
+R0
+w1645065945
+8C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Control.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Control.sv
+L0 3
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1645397401.000000
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Control.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code|C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Control.sv|
+!i113 1
+Z6 o-sv -work work
+Z7 !s92 -sv -work work +incdir+C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code
+Z8 tCvgOpt 0
+vfour_bit_add_sub
+R1
+R2
+!i10b 1
+!s100 7iZHlm;9V6=EiP>UN;D@W1
+IS;f3V<hzUS]T`WWMIIK@A0
+R3
+Z9 !s105 ripple_adder_sv_unit
+S1
+R0
+Z10 w1645066071
+Z11 8C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/ripple_adder.sv
+Z12 FC:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/ripple_adder.sv
+L0 74
+R4
+r1
+!s85 0
+31
+R5
+Z13 !s107 C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/ripple_adder.sv|
+Z14 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code|C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/ripple_adder.sv|
+!i113 1
+R6
+R7
+R8
+vHexDriver
+R1
+R2
+!i10b 1
+!s100 F7dDJLKONLDlAhT4ll@HA3
+IO31Bj40O7LfO:=G<N_:KW3
+R3
+!s105 HexDriver_sv_unit
+S1
+R0
+w1644336836
+8C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/HexDriver.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/HexDriver.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/HexDriver.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code|C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/HexDriver.sv|
+!i113 1
+R6
+R7
+R8
+n@hex@driver
+vMultiplier
+R1
+R2
+!i10b 1
+!s100 [<lHQ^FL<>lND;A1DBZ142
+I?@<2zd1@`Z4@56T9=CV1m3
+R3
+!s105 Multiplier_sv_unit
+S1
+R0
+w1645397319
+8C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Multiplier.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Multiplier.sv
+L0 4
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Multiplier.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code|C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Multiplier.sv|
+!i113 1
+R6
+R7
+R8
+n@multiplier
+vreg_1
+R1
+R2
+!i10b 1
+!s100 n8A>mohkH0`kC08`FAHDN2
+I<8gZQ@i1>b_<j:APBBEXm0
+R3
+Z15 !s105 Reg_8_sv_unit
+S1
+R0
+Z16 w1644952779
+Z17 8C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Reg_8.sv
+Z18 FC:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Reg_8.sv
+L0 30
+R4
+r1
+!s85 0
+31
+R5
+Z19 !s107 C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Reg_8.sv|
+Z20 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code|C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Reg_8.sv|
+!i113 1
+R6
+R7
+R8
+vreg_8
+R1
+R2
+!i10b 1
+!s100 Q6Tcg^<?b?F?LOUHZ2Ol72
+I<j<P@3GAFQ[Q[8oZTML9_3
+R3
+R15
+S1
+R0
+R16
+R17
+R18
+L0 4
+R4
+r1
+!s85 0
+31
+R5
+R19
+R20
+!i113 1
+R6
+R7
+R8
+vripple_adder
+R1
+R2
+!i10b 1
+!s100 Ih<_EWF6a2=TRmd?h5XgN1
+IRiT66BT=BagiaGmYH`2gT2
+R3
+R9
+S1
+R0
+R10
+R11
+R12
+L0 5
+R4
+r1
+!s85 0
+31
+R5
+R13
+R14
+!i113 1
+R6
+R7
+R8
+vsync
+R1
+R2
+!i10b 1
+!s100 2W5Vz0:F6ckE2`eJOTK5l1
+I:_AO]MB0@9DgBU:ZK9:>I3
+R3
+Z21 !s105 Synchronizers_sv_unit
+S1
+R0
+Z22 w1643730917
+Z23 8C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Synchronizers.sv
+Z24 FC:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Synchronizers.sv
+L0 4
+R4
+r1
+!s85 0
+31
+R5
+Z25 !s107 C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Synchronizers.sv|
+Z26 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code|C:/Users/ldm18/Desktop/385_FPGA_project/multiplier_code/Synchronizers.sv|
+!i113 1
+R6
+R7
+R8
+vsync_r0
+R1
+R2
+!i10b 1
+!s100 IGd9f_F;JNjVBLQ@DAnD10
+I>2?T@O:b679F7kZaRegln3
+R3
+R21
+S1
+R0
+R22
+R23
+R24
+L0 18
+R4
+r1
+!s85 0
+31
+R5
+R25
+R26
+!i113 1
+R6
+R7
+R8
+vsync_r1
+R1
+R2
+!i10b 1
+!s100 1CXiH1DYDbAUS69Ee2j060
+I^;VG`5YWaZEI4XmWkQ_Gm3
+R3
+R21
+S1
+R0
+R22
+R23
+R24
+L0 39
+R4
+r1
+!s85 0
+31
+R5
+R25
+R26
+!i113 1
+R6
+R7
+R8
+vtestbench
+R1
+R2
+!i10b 1
+!s100 `iJC5?E]NiGAMIb4XePZ:1
+I]9OSa;7h10]<kmAhDVTSW1
+R3
+!s105 testbench_sv_unit
+S1
+R0
+w1645397376
+8C:/Users/ldm18/Desktop/385_FPGA_project/lab_4/../multiplier_code/testbench.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/lab_4/../multiplier_code/testbench.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/lab_4/../multiplier_code/testbench.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/lab_4/../multiplier_code|C:/Users/ldm18/Desktop/385_FPGA_project/lab_4/../multiplier_code/testbench.sv|
+!i113 1
+R6
+!s92 -sv -work work +incdir+C:/Users/ldm18/Desktop/385_FPGA_project/lab_4/../multiplier_code
+R8
+vunit_full_adder
+R1
+R2
+!i10b 1
+!s100 m8e>83P=g4VaIK5HB@o<31
+IBY4mfc`Fl=^^]<zR:@dQ_3
+R3
+R9
+S1
+R0
+R10
+R11
+R12
+L0 49
+R4
+r1
+!s85 0
+31
+R5
+R13
+R14
+!i113 1
+R6
+R7
+R8

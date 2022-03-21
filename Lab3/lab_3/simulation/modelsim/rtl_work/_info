@@ -1,0 +1,311 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/ldm18/Desktop/385_FPGA_project/lab_3/simulation/modelsim
+vadder2
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1645165993
+!i10b 1
+!s100 UW<1FGHXDcAgGAeN]XWMf1
+IPj0B[AUcbgd^HZ[KH66?`3
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 adder2_sv_unit
+S1
+R0
+w1645165839
+8C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/adder2.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/adder2.sv
+L0 1
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1645165993.000000
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/adder2.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code|C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/adder2.sv|
+!i113 1
+Z6 o-sv -work work
+Z7 !s92 -sv -work work +incdir+C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code
+Z8 tCvgOpt 0
+vcontrol
+R1
+R2
+!i10b 1
+!s100 4^T<MW:^Hhf;SGQ2_b=Kk3
+IUzVOXPGYQdUXPhd>:oT_M0
+R3
+!s105 control_sv_unit
+S1
+R0
+Z9 w1644336836
+8C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/control.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/control.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/control.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code|C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/control.sv|
+!i113 1
+R6
+R7
+R8
+vfour_bit_adder
+R1
+R2
+!i10b 1
+!s100 NXd;RAIL;ok?Xo61DlP?<0
+IhZ]ON:]8LADJ`XQef5_`91
+R3
+Z10 !s105 ripple_adder_sv_unit
+S1
+R0
+Z11 w1644525665
+Z12 8C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/ripple_adder.sv
+Z13 FC:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/ripple_adder.sv
+L0 51
+R4
+r1
+!s85 0
+31
+R5
+Z14 !s107 C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/ripple_adder.sv|
+Z15 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code|C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/ripple_adder.sv|
+!i113 1
+R6
+R7
+R8
+vfour_carry_select
+R1
+R2
+!i10b 1
+!s100 bVWYAn;dLHG5Q1ba=Sg@<0
+I0OK3=m=6THg7Ve@?7YdlM3
+R3
+Z16 !s105 select_adder_sv_unit
+S1
+R0
+Z17 w1644525633
+Z18 8C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/select_adder.sv
+Z19 FC:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/select_adder.sv
+L0 27
+R4
+r1
+!s85 0
+31
+R5
+Z20 !s107 C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/select_adder.sv|
+Z21 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code|C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/select_adder.sv|
+!i113 1
+R6
+R7
+R8
+vfull_adder
+R1
+R2
+!i10b 1
+!s100 <nb=0E3Y39?nYR1EBAQ[a1
+Ic]0ETm]VEVnR=0onOQVRY3
+R3
+R10
+S1
+R0
+R11
+R12
+R13
+L0 29
+R4
+r1
+!s85 0
+31
+R5
+R14
+R15
+!i113 1
+R6
+R7
+R8
+vHexDriver
+R1
+R2
+!i10b 1
+!s100 F7dDJLKONLDlAhT4ll@HA3
+I3J4Ezfe27LS=3Hn_W3mR40
+R3
+!s105 HexDriver_sv_unit
+S1
+R0
+R9
+8C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/HexDriver.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/HexDriver.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/HexDriver.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code|C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/HexDriver.sv|
+!i113 1
+R6
+R7
+R8
+n@hex@driver
+vmux2to1
+R1
+R2
+!i10b 1
+!s100 W@?>@PRBBnj0OGHRNa9ih3
+IKKHiW7]ed_[_BkzKn7f751
+R3
+R16
+S1
+R0
+R17
+R18
+R19
+L0 57
+R4
+r1
+!s85 0
+31
+R5
+R20
+R21
+!i113 1
+R6
+R7
+R8
+vreg_17
+R1
+R2
+!i10b 1
+!s100 TzXnY51aIaIZFVKcdA[Wn1
+ISDcb:92<FNlCXVRlJ>N?a3
+R3
+!s105 reg_17_sv_unit
+S1
+R0
+R9
+8C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/reg_17.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/reg_17.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/reg_17.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code|C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/reg_17.sv|
+!i113 1
+R6
+R7
+R8
+vripple_adder
+R1
+R2
+!i10b 1
+!s100 iZK@KTd[`Ri_2h=3W6NgX2
+IGOQafYe`fig@mA0_936QD0
+R3
+R10
+S1
+R0
+R11
+R12
+R13
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R14
+R15
+!i113 1
+R6
+R7
+R8
+vrouter
+R1
+R2
+!i10b 1
+!s100 0oS5^3aI5<4lR1GZZPnaj2
+IBmO0ej=HK:m0`mCoecdj@3
+R3
+!s105 router_sv_unit
+S1
+R0
+R9
+8C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/router.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/router.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/router.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code|C:/Users/ldm18/Desktop/385_FPGA_project/385_lab3_adder_code/router.sv|
+!i113 1
+R6
+R7
+R8
+vselect_adder
+R1
+R2
+!i10b 1
+!s100 @=N_cm1HLlhN43l>PdEi51
+IndR1HL2ZJT]d6P79XB3VJ1
+R3
+R16
+S1
+R0
+R17
+R18
+R19
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R20
+R21
+!i113 1
+R6
+R7
+R8
+vtestbench_adders
+R1
+R2
+!i10b 1
+!s100 il1>d7eK>zW?BjQ`D[O>Y3
+I:FnFa0KNf?@QGk6Q1e<kc1
+R3
+!s105 testbench_adders_sv_unit
+S1
+R0
+w1645165956
+8C:/Users/ldm18/Desktop/385_FPGA_project/lab_3/../385_lab3_adder_code/testbench_adders.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/lab_3/../385_lab3_adder_code/testbench_adders.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/lab_3/../385_lab3_adder_code/testbench_adders.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/lab_3/../385_lab3_adder_code|C:/Users/ldm18/Desktop/385_FPGA_project/lab_3/../385_lab3_adder_code/testbench_adders.sv|
+!i113 1
+R6
+!s92 -sv -work work +incdir+C:/Users/ldm18/Desktop/385_FPGA_project/lab_3/../385_lab3_adder_code
+R8

@@ -1,0 +1,465 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/ldm18/Desktop/385_FPGA_project/lab_5/simulation/modelsim
+vdatapath
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1645723535
+!i10b 1
+!s100 ngdI9A2g0HUz6Hkc3VPDS0
+IdTn=;c>k7M63`b]JPjfCG3
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 datapath_sv_unit
+S1
+R0
+w1645666277
+8C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/datapath.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/datapath.sv
+L0 1
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1645723535.000000
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/datapath.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided|C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/datapath.sv|
+!i113 1
+Z6 o-sv -work work
+Z7 !s92 -sv -work work +incdir+C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided
+Z8 tCvgOpt 0
+vgateMux
+R1
+R2
+!i10b 1
+!s100 DH4fG<9h:8nPCGi5?Wb@33
+Ij_cB@O1gN_:fcdm_K]K3e1
+R3
+Z9 !s105 mux_sv_unit
+S1
+R0
+Z10 w1645666410
+Z11 8C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/mux.sv
+Z12 FC:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/mux.sv
+L0 51
+R4
+r1
+!s85 0
+31
+R5
+Z13 !s107 C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/mux.sv|
+Z14 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided|C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/mux.sv|
+!i113 1
+R6
+R7
+R8
+ngate@mux
+vHexDriver
+R1
+Z15 !s110 1645723534
+!i10b 1
+!s100 F7dDJLKONLDlAhT4ll@HA3
+IkXzb[4MVjnkd?^fg4gXmh3
+R3
+!s105 HexDriver_sv_unit
+S1
+R0
+w1644336836
+8C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/HexDriver.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/HexDriver.sv
+L0 1
+R4
+r1
+!s85 0
+31
+Z16 !s108 1645723534.000000
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/HexDriver.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided|C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/HexDriver.sv|
+!i113 1
+R6
+R7
+R8
+n@hex@driver
+vISDU
+R1
+R2
+!i10b 1
+!s100 0E]9klB=Sn2mT<ZJM>KDb1
+IZI0HCcSDFMoeXQ]boF54Y3
+R3
+!s105 ISDU_sv_unit
+S1
+R0
+w1645567820
+8C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/ISDU.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/ISDU.sv
+L0 19
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/ISDU.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided|C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/ISDU.sv|
+!i113 1
+R6
+R7
+R8
+n@i@s@d@u
+vMem2IO
+R1
+R2
+!i10b 1
+!s100 ]Q:NN9GIUgNPLn_MG6U5k1
+IHYm3?efL6E]SbkHWIQl;P1
+R3
+!s105 Mem2IO_sv_unit
+S1
+R0
+Z17 w1645545863
+8C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/Mem2IO.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/Mem2IO.sv
+Z18 L0 16
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/Mem2IO.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided|C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/Mem2IO.sv|
+!i113 1
+R6
+R7
+R8
+n@mem2@i@o
+Xmemory_contents_sv_unit
+R1
+Z19 DXx4 work 6 SLC3_2 0 22 UYM?zZ8Sl33;QU:<Jj^192
+VHkfh<PYCBTdlC]^_14DD_1
+r1
+!s85 0
+31
+!i10b 1
+!s100 3HBe^oHDgeVH<TZocfCK[0
+IHkfh<PYCBTdlC]^_14DD_1
+!i103 1
+S1
+R0
+R17
+Z20 8C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/memory_contents.sv
+Z21 FC:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/memory_contents.sv
+R18
+R4
+R5
+Z22 !s107 C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/memory_contents.sv|
+Z23 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided|C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/memory_contents.sv|
+!i113 1
+R6
+R7
+R8
+vmemory_parser
+R1
+R19
+DXx4 work 23 memory_contents_sv_unit 0 22 Hkfh<PYCBTdlC]^_14DD_1
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 o:B0TTcXZa[?Oo3HFa9T;0
+ICgbQbKCbia[1O=TLELSML3
+!s105 memory_contents_sv_unit
+S1
+R0
+R17
+R20
+R21
+L0 18
+R4
+R5
+R22
+R23
+!i113 1
+R6
+R7
+R8
+vmux2to1
+R1
+R2
+!i10b 1
+!s100 CAR5AV9Qb>9;nmTBCA`:@2
+I]>nCj;]FTF]8j`VeRWgJ>2
+R3
+R9
+S1
+R0
+R10
+R11
+R12
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+R13
+R14
+!i113 1
+R6
+R7
+R8
+vmux4to1
+R1
+R2
+!i10b 1
+!s100 jfKl:j>MB0il[T3QV]NP>0
+IVleBLfm1FCfM[bRVSd?;A0
+R3
+R9
+S1
+R0
+R10
+R11
+R12
+Z24 L0 26
+R4
+r1
+!s85 0
+31
+R5
+R13
+R14
+!i113 1
+R6
+R7
+R8
+vreg_16
+R1
+R15
+!i10b 1
+!s100 DAgLVW3SGc>JQl3KiPSV30
+I6Lzld^7NAgJ<MA?d_T^Y^1
+R3
+!s105 reg_16_sv_unit
+S1
+R0
+w1645550720
+8C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/reg_16.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/reg_16.sv
+L0 4
+R4
+r1
+!s85 0
+31
+R16
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/reg_16.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided|C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/reg_16.sv|
+!i113 1
+R6
+R7
+R8
+vslc3
+R1
+R2
+!i10b 1
+!s100 hS7?jd9QV61P[]oE]h;6F0
+I>e@3gX?9LTU[bjAlY6b2R2
+R3
+!s105 slc3_sv_unit
+S1
+R0
+w1645566835
+8C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/slc3.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/slc3.sv
+L0 20
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/slc3.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided|C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/slc3.sv|
+!i113 1
+R6
+R7
+R8
+XSLC3_2
+R1
+R2
+!i10b 1
+!s100 Cz8_^@QRefP31?j=Zf>lj0
+IUYM?zZ8Sl33;QU:<Jj^192
+VUYM?zZ8Sl33;QU:<Jj^192
+S1
+R0
+R17
+8C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/SLC3_2.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/SLC3_2.sv
+L0 24
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/SLC3_2.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided|C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/SLC3_2.sv|
+!i113 1
+R6
+R7
+R8
+n@s@l@c3_2
+vslc3_testtop
+R1
+R2
+!i10b 1
+!s100 :J]077]e79>MZOk3g03kV3
+Ij1WSY@jz8aVS?i>hS@moi1
+R3
+!s105 slc3_testtop_sv_unit
+S1
+R0
+w1645563912
+8C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/slc3_testtop.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/slc3_testtop.sv
+L0 4
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/slc3_testtop.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided|C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/slc3_testtop.sv|
+!i113 1
+R6
+R7
+R8
+vsync
+R1
+R2
+!i10b 1
+!s100 OHNUFN]797>kYzRL;ikZR2
+IGJ;M`V4glYGB@FWoz3QVB3
+R3
+Z25 !s105 synchronizers_sv_unit
+S1
+R0
+R17
+Z26 8C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/synchronizers.sv
+Z27 FC:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/synchronizers.sv
+L0 7
+R4
+r1
+!s85 0
+31
+R5
+Z28 !s107 C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/synchronizers.sv|
+Z29 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided|C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/synchronizers.sv|
+!i113 1
+R6
+R7
+R8
+vsync_r0
+R1
+R2
+!i10b 1
+!s100 _Sn:CfHFjznVZen=7jc>C2
+ID6h@2P`ZGek7>:GKUgY4?0
+R3
+R25
+S1
+R0
+R17
+R26
+R27
+L0 21
+R4
+r1
+!s85 0
+31
+R5
+R28
+R29
+!i113 1
+R6
+R7
+R8
+vsync_r1
+R1
+R2
+!i10b 1
+!s100 4jfZd?z`MK2Y<NLFC0<QH2
+IW23TUILHTonHOgA;^8z7B1
+R3
+R25
+S1
+R0
+R17
+R26
+R27
+L0 42
+R4
+r1
+!s85 0
+31
+R5
+R28
+R29
+!i113 1
+R6
+R7
+R8
+vtest_memory
+R1
+R15
+!i10b 1
+!s100 JAXhO?6GV:H>``me>_X5<1
+IX:n6PO_z3ehCz8E[<kODJ2
+R3
+!s105 test_memory_sv_unit
+S1
+R0
+R17
+8C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/test_memory.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/test_memory.sv
+R24
+R4
+r1
+!s85 0
+31
+R16
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/test_memory.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided|C:/Users/ldm18/Desktop/385_FPGA_project/Lab5provided/test_memory.sv|
+!i113 1
+R6
+R7
+R8
+vtestbench
+R1
+R2
+!i10b 1
+!s100 TJoUN:efYlE?TOLT`[A2d2
+I`?Jg_@5:B^GU;lK^`Z0C^1
+R3
+!s105 testbench_sv_unit
+S1
+R0
+w1645723525
+8C:/Users/ldm18/Desktop/385_FPGA_project/lab_5/../Lab5provided/testbench.sv
+FC:/Users/ldm18/Desktop/385_FPGA_project/lab_5/../Lab5provided/testbench.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/ldm18/Desktop/385_FPGA_project/lab_5/../Lab5provided/testbench.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/385_FPGA_project/lab_5/../Lab5provided|C:/Users/ldm18/Desktop/385_FPGA_project/lab_5/../Lab5provided/testbench.sv|
+!i113 1
+R6
+!s92 -sv -work work +incdir+C:/Users/ldm18/Desktop/385_FPGA_project/lab_5/../Lab5provided
+R8

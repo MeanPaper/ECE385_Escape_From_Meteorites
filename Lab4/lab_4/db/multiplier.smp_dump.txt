@@ -1,0 +1,23 @@
+
+State Machine - |Multiplier|control:control_unit|curr_state
+Name curr_state.minus curr_state.cont curr_state.pause curr_state.s7 curr_state.s6 curr_state.a6 curr_state.s5 curr_state.a5 curr_state.s4 curr_state.a4 curr_state.s3 curr_state.a3 curr_state.s2 curr_state.a2 curr_state.s1 curr_state.a1 curr_state.s0 curr_state.a0 curr_state.hold curr_state.start 
+curr_state.start 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+curr_state.hold 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+curr_state.a0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+curr_state.s0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+curr_state.a1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+curr_state.s1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+curr_state.a2 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+curr_state.s2 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+curr_state.a3 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+curr_state.s3 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+curr_state.a4 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+curr_state.s4 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.a5 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.s5 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.a6 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.s6 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.s7 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.pause 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.cont 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.minus 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 

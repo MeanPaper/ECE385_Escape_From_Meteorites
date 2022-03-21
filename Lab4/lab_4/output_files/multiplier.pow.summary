@@ -1,0 +1,12 @@
+Power Analyzer Status : Successful - Thu Feb 24 21:23:28 2022
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : multiplier
+Top-level Entity Name : Multiplier
+Family : MAX 10
+Device : 10M50DAF484C7G
+Power Models : Final
+Total Thermal Power Dissipation : 104.70 mW
+Core Dynamic Thermal Power Dissipation : 1.54 mW
+Core Static Thermal Power Dissipation : 89.97 mW
+I/O Thermal Power Dissipation : 13.19 mW
+Power Estimation Confidence : Low: user provided insufficient toggle rate data
