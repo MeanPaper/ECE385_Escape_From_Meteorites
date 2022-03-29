@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Mon Mar 28 19:20:54 2022
+Analysis & Synthesis Status : Successful - Tue Mar 29 11:30:03 2022
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : nio2
 Top-level Entity Name : lab7
 Family : MAX 10
-Total logic elements : 52,876
-    Total combinational functions : 32,672
-    Dedicated logic registers : 21,772
-Total registers : 21772
+Total logic elements : 52,801
+    Total combinational functions : 32,597
+    Dedicated logic registers : 21,784
+Total registers : 21784
 Total pins : 141
 Total virtual pins : 0
 Total memory bits : 11,392

@@ -173,11 +173,18 @@ end
 		addr = {character[6:0],char_y}; //go to the corresponding address of the rom
 		//data[7-char_x] is the pixel bit
 		//character[7] is the inverted bit
+//		
+
+		
+	end
+	
+	always_ff @(posedge pixel_clk)
+	begin		
 		if(!blank)
 		begin
-			red = 4'b0;
-			green = 4'b0;
-			blue = 4'b0;
+			red <= 4'b0;
+			green <= 4'b0;
+			blue <= 4'b0;
 		end
 
 		else if(character[7])	//if invert
@@ -186,15 +193,15 @@ end
 			case(data[7-char_x])
 				1'b1: //get background if 1
 					begin
-						red = LOCAL_REG[`CTRL_REG][12:9];
-						green = LOCAL_REG[`CTRL_REG][8:5];
-						blue = LOCAL_REG[`CTRL_REG][4:1];
+						red <= LOCAL_REG[`CTRL_REG][12:9];
+						green <= LOCAL_REG[`CTRL_REG][8:5];
+						blue <= LOCAL_REG[`CTRL_REG][4:1];
 					end
 				1'b0: //get foreground if 0
 					begin
-						red = LOCAL_REG[`CTRL_REG][24:21];
-						green = LOCAL_REG[`CTRL_REG][20:17];
-						blue = LOCAL_REG[`CTRL_REG][16:13];	
+						red <= LOCAL_REG[`CTRL_REG][24:21];
+						green <= LOCAL_REG[`CTRL_REG][20:17];
+						blue <= LOCAL_REG[`CTRL_REG][16:13];	
 					end
 			endcase
 			
@@ -205,18 +212,17 @@ end
 			case(data[7-char_x])
 				1'b1: //get foreground if 1
 					begin
-						red = LOCAL_REG[`CTRL_REG][24:21];
-						green = LOCAL_REG[`CTRL_REG][20:17];
-						blue = LOCAL_REG[`CTRL_REG][16:13];	
+						red <= LOCAL_REG[`CTRL_REG][24:21];
+						green <= LOCAL_REG[`CTRL_REG][20:17];
+						blue <= LOCAL_REG[`CTRL_REG][16:13];	
 					end
 				1'b0: //get background if not 1
 					begin
-						red = LOCAL_REG[`CTRL_REG][12:9];
-						green = LOCAL_REG[`CTRL_REG][8:5];
-						blue = LOCAL_REG[`CTRL_REG][4:1];
+						red <= LOCAL_REG[`CTRL_REG][12:9];
+						green <= LOCAL_REG[`CTRL_REG][8:5];
+						blue <= LOCAL_REG[`CTRL_REG][4:1];
 					end
-			endcase
-			
+			endcase	
 		end
 		
 	end
@@ -237,5 +243,49 @@ end
 			else			 		rgb gets background
 	*/
 	
-
+//		if(!blank)
+//		begin
+//			red = 4'b0;
+//			green = 4'b0;
+//			blue = 4'b0;
+//		end
+//
+//		else if(character[7])	//if invert
+//		begin
+//			
+//			case(data[7-char_x])
+//				1'b1: //get background if 1
+//					begin
+//						red = LOCAL_REG[`CTRL_REG][12:9];
+//						green = LOCAL_REG[`CTRL_REG][8:5];
+//						blue = LOCAL_REG[`CTRL_REG][4:1];
+//					end
+//				1'b0: //get foreground if 0
+//					begin
+//						red = LOCAL_REG[`CTRL_REG][24:21];
+//						green = LOCAL_REG[`CTRL_REG][20:17];
+//						blue = LOCAL_REG[`CTRL_REG][16:13];	
+//					end
+//			endcase
+//			
+//		end
+//		
+//		else
+//		begin
+//			case(data[7-char_x])
+//				1'b1: //get foreground if 1
+//					begin
+//						red = LOCAL_REG[`CTRL_REG][24:21];
+//						green = LOCAL_REG[`CTRL_REG][20:17];
+//						blue = LOCAL_REG[`CTRL_REG][16:13];	
+//					end
+//				1'b0: //get background if not 1
+//					begin
+//						red = LOCAL_REG[`CTRL_REG][12:9];
+//						green = LOCAL_REG[`CTRL_REG][8:5];
+//						blue = LOCAL_REG[`CTRL_REG][4:1];
+//					end
+//			endcase
+//			
+//		end
 endmodule

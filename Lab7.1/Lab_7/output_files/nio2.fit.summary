@@ -1,14 +1,14 @@
-Fitter Status : Successful - Mon Mar 28 19:25:19 2022
+Fitter Status : Successful - Tue Mar 29 11:33:38 2022
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : nio2
 Top-level Entity Name : lab7
 Family : MAX 10
 Device : 10M50DAF484C7G
 Timing Models : Final
-Total logic elements : 36,499 / 49,760 ( 73 % )
-    Total combinational functions : 32,692 / 49,760 ( 66 % )
-    Dedicated logic registers : 21,729 / 49,760 ( 44 % )
-Total registers : 21798
+Total logic elements : 36,476 / 49,760 ( 73 % )
+    Total combinational functions : 32,617 / 49,760 ( 66 % )
+    Dedicated logic registers : 21,741 / 49,760 ( 44 % )
+Total registers : 21810
 Total pins : 141 / 360 ( 39 % )
 Total virtual pins : 0
 Total memory bits : 11,392 / 1,677,312 ( < 1 % )

@@ -1,5 +1,5 @@
 Flow report for nio2
-Mon Mar 28 19:26:16 2022
+Tue Mar 29 11:34:23 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,17 +40,17 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Mon Mar 28 19:26:16 2022       ;
+; Flow Status                        ; Successful - Tue Mar 29 11:34:23 2022       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; nio2                                        ;
 ; Top-level Entity Name              ; lab7                                        ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C7G                              ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 36,499 / 49,760 ( 73 % )                    ;
-;     Total combinational functions  ; 32,692 / 49,760 ( 66 % )                    ;
-;     Dedicated logic registers      ; 21,729 / 49,760 ( 44 % )                    ;
-; Total registers                    ; 21798                                       ;
+; Total logic elements               ; 36,476 / 49,760 ( 73 % )                    ;
+;     Total combinational functions  ; 32,617 / 49,760 ( 66 % )                    ;
+;     Dedicated logic registers      ; 21,741 / 49,760 ( 44 % )                    ;
+; Total registers                    ; 21810                                       ;
 ; Total pins                         ; 141 / 360 ( 39 % )                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 11,392 / 1,677,312 ( < 1 % )                ;
@@ -66,7 +66,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/28/2022 19:16:02 ;
+; Start date & time ; 03/29/2022 11:25:28 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; nio2                ;
 +-------------------+---------------------+
@@ -77,7 +77,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+------------------------------------------------------------+---------------+-------------------+----------------+
 ; Assignment Name                     ; Value                                                      ; Default Value ; Entity Name       ; Section Id     ;
 +-------------------------------------+------------------------------------------------------------+---------------+-------------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 91757287803.164851296248644                                ; --            ; --                ; --             ;
+; COMPILER_SIGNATURE_ID               ; 185263058363979.164857112716292                            ; --            ; --                ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Systemverilog Hdl                                          ; --            ; --                ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (SystemVerilog)                            ; <None>        ; --                ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                                                       ; --            ; --                ; eda_simulation ;
@@ -100,7 +100,7 @@ refer to the applicable agreement for further details.
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                               ; --            ; --                ; --             ;
 ; SLD_FILE                            ; lab7_soc/synthesis/lab7_soc.regmap                         ; --            ; --                ; --             ;
 ; SLD_FILE                            ; lab7_soc/synthesis/lab7_soc.debuginfo                      ; --            ; --                ; --             ;
-; SLD_INFO                            ; QSYS_NAME lab7_soc HAS_SOPCINFO 1 GENERATION_ID 1648512879 ; --            ; lab7_soc          ; --             ;
+; SLD_INFO                            ; QSYS_NAME lab7_soc HAS_SOPCINFO 1 GENERATION_ID 1648571046 ; --            ; lab7_soc          ; --             ;
 ; SOPCINFO_FILE                       ; lab7_soc/synthesis/../../lab7_soc.sopcinfo                 ; --            ; --                ; --             ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                         ; --            ; --                ; --             ;
 ; TOP_LEVEL_ENTITY                    ; lab7                                                       ; nio2          ; --                ; --             ;
@@ -112,12 +112,12 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:04:45     ; 1.0                     ; 5359 MB             ; 00:05:07                           ;
-; Fitter               ; 00:04:23     ; 2.1                     ; 7124 MB             ; 00:15:49                           ;
-; Assembler            ; 00:00:06     ; 1.0                     ; 4809 MB             ; 00:00:06                           ;
-; Timing Analyzer      ; 00:00:31     ; 6.0                     ; 5297 MB             ; 00:02:34                           ;
-; EDA Netlist Writer   ; 00:00:10     ; 1.0                     ; 4991 MB             ; 00:00:10                           ;
-; Total                ; 00:09:55     ; --                      ; --                  ; 00:23:46                           ;
+; Analysis & Synthesis ; 00:04:29     ; 1.0                     ; 5372 MB             ; 00:04:50                           ;
+; Fitter               ; 00:03:33     ; 2.0                     ; 7108 MB             ; 00:13:41                           ;
+; Assembler            ; 00:00:05     ; 1.0                     ; 4810 MB             ; 00:00:05                           ;
+; Timing Analyzer      ; 00:00:19     ; 7.5                     ; 5293 MB             ; 00:02:05                           ;
+; EDA Netlist Writer   ; 00:00:09     ; 1.0                     ; 4983 MB             ; 00:00:10                           ;
+; Total                ; 00:08:35     ; --                      ; --                  ; 00:20:51                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
