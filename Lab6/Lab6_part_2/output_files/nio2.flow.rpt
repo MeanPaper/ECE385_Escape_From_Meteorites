@@ -1,5 +1,5 @@
 Flow report for nio2
-Sat Mar 19 20:39:51 2022
+Sat Apr 02 14:46:16 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Sat Mar 19 20:39:51 2022       ;
+; Flow Status                        ; Successful - Sat Apr 02 14:46:16 2022       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; nio2                                        ;
 ; Top-level Entity Name              ; lab62                                       ;
@@ -66,7 +66,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/19/2022 20:38:05 ;
+; Start date & time ; 04/02/2022 14:44:18 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; nio2                ;
 +-------------------+---------------------+
@@ -77,10 +77,11 @@ refer to the applicable agreement for further details.
 +-------------------------------------+-------------------------------------------------------------+---------------+-------------------+----------------+
 ; Assignment Name                     ; Value                                                       ; Default Value ; Entity Name       ; Section Id     ;
 +-------------------------------------+-------------------------------------------------------------+---------------+-------------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 91765711556.164774028445612                                 ; --            ; --                ; --             ;
+; COMPILER_SIGNATURE_ID               ; 91765677171.164892865738436                                 ; --            ; --                ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Systemverilog Hdl                                           ; --            ; --                ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (SystemVerilog)                             ; <None>        ; --                ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                                                        ; --            ; --                ; eda_simulation ;
+; FLOW_ENABLE_POWER_ANALYZER          ; On                                                          ; Off           ; --                ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                          ; --            ; --                ; --             ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                           ; --            ; --                ; --             ;
 ; MISC_FILE                           ; lab62_soc/synthesis/../lab62_soc.cmp                        ; --            ; --                ; --             ;
@@ -96,6 +97,7 @@ refer to the applicable agreement for further details.
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                      ; --            ; DE10_LITE_Default ; Top            ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                      ; --            ; lab62             ; Top            ;
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                         ; --            ; --                ; --             ;
+; POWER_DEFAULT_INPUT_IO_TOGGLE_RATE  ; 12.5 %                                                      ; 12.5%         ; --                ; --             ;
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                       ; --            ; --                ; --             ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                ; --            ; --                ; --             ;
 ; SLD_FILE                            ; lab62_soc/synthesis/lab62_soc.regmap                        ; --            ; --                ; --             ;
@@ -112,12 +114,13 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:52     ; 1.0                     ; 5031 MB             ; 00:01:20                           ;
-; Fitter               ; 00:00:32     ; 1.8                     ; 6703 MB             ; 00:01:28                           ;
-; Assembler            ; 00:00:04     ; 1.0                     ; 4700 MB             ; 00:00:04                           ;
-; Timing Analyzer      ; 00:00:06     ; 3.1                     ; 5031 MB             ; 00:00:15                           ;
+; Analysis & Synthesis ; 00:00:47     ; 1.0                     ; 5044 MB             ; 00:01:12                           ;
+; Fitter               ; 00:00:38     ; 1.8                     ; 6696 MB             ; 00:01:29                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 4700 MB             ; 00:00:04                           ;
+; Power Analyzer       ; 00:00:11     ; 1.8                     ; 5084 MB             ; 00:00:17                           ;
+; Timing Analyzer      ; 00:00:06     ; 2.7                     ; 5029 MB             ; 00:00:13                           ;
 ; EDA Netlist Writer   ; 00:00:03     ; 1.0                     ; 4726 MB             ; 00:00:03                           ;
-; Total                ; 00:01:37     ; --                      ; --                  ; 00:03:10                           ;
+; Total                ; 00:01:48     ; --                      ; --                  ; 00:03:18                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -129,6 +132,7 @@ refer to the applicable agreement for further details.
 ; Analysis & Synthesis ; Dongming-S-Alchemist ; Windows 10 ; 10.0       ; x86_64         ;
 ; Fitter               ; Dongming-S-Alchemist ; Windows 10 ; 10.0       ; x86_64         ;
 ; Assembler            ; Dongming-S-Alchemist ; Windows 10 ; 10.0       ; x86_64         ;
+; Power Analyzer       ; Dongming-S-Alchemist ; Windows 10 ; 10.0       ; x86_64         ;
 ; Timing Analyzer      ; Dongming-S-Alchemist ; Windows 10 ; 10.0       ; x86_64         ;
 ; EDA Netlist Writer   ; Dongming-S-Alchemist ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+----------------------+------------+------------+----------------+
@@ -140,6 +144,7 @@ refer to the applicable agreement for further details.
 quartus_map --read_settings_files=on --write_settings_files=off nio2 -c nio2
 quartus_fit --read_settings_files=off --write_settings_files=off nio2 -c nio2
 quartus_asm --read_settings_files=off --write_settings_files=off nio2 -c nio2
+quartus_pow --read_settings_files=off --write_settings_files=off nio2 -c nio2
 quartus_sta nio2 -c nio2
 quartus_eda --read_settings_files=off --write_settings_files=off nio2 -c nio2
 

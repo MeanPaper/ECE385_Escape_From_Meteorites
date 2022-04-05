@@ -1,1 +1,3 @@
-This is sp2022 Lab 6 
+This is sp2022 Lab 6.
+
+New Eclipse is needed to run the code. The Eclipse configuration in the folder will not work.  

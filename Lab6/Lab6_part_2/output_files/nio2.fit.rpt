@@ -1,5 +1,5 @@
 Fitter report for nio2
-Sat Mar 19 20:39:33 2022
+Sat Apr 02 14:45:47 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -76,7 +76,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Sat Mar 19 20:39:33 2022       ;
+; Fitter Status                      ; Successful - Sat Apr 02 14:45:47 2022       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; nio2                                        ;
 ; Top-level Entity Name              ; lab62                                       ;
@@ -162,19 +162,19 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 16          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 1.78        ;
+; Average used               ; 1.75        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   6.3%      ;
-;     Processor 3            ;   5.6%      ;
-;     Processor 4            ;   5.5%      ;
-;     Processor 5            ;   5.4%      ;
-;     Processor 6            ;   5.3%      ;
-;     Processor 7            ;   5.3%      ;
-;     Processor 8            ;   5.2%      ;
-;     Processors 9-16        ;   4.9%      ;
+;     Processor 2            ;   8.1%      ;
+;     Processor 3            ;   5.3%      ;
+;     Processor 4            ;   5.2%      ;
+;     Processor 5            ;   5.1%      ;
+;     Processor 6            ;   5.0%      ;
+;     Processor 7            ;   4.9%      ;
+;     Processor 8            ;   4.9%      ;
+;     Processors 9-16        ;   4.6%      ;
 +----------------------------+-------------+
 
 
@@ -441,7 +441,7 @@ refer to the applicable agreement for further details.
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/output_files/nio2.pin.
+The pin-out file can be found in D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/output_files/nio2.pin.
 
 
 +----------------------------------------------------------------------------+
@@ -2792,9 +2792,9 @@ Info (20030): Parallel compilation is enabled and will use 16 of the 16 processo
 Info (119006): Selected device 10M50DAF484C7G for design "nio2"
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
-Info (15535): Implemented PLL "lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|lab62_soc_sdram_pll_altpll_vg92:sd1|pll7" as MAX 10 PLL type File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 150
-    Info (15099): Implementing clock multiplication of 1, clock division of 1, and phase shift of 0 degrees (0 ps) for lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|lab62_soc_sdram_pll_altpll_vg92:sd1|wire_pll7_clk[0] port File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 150
-    Info (15099): Implementing clock multiplication of 1, clock division of 1, and phase shift of -18 degrees (-1000 ps) for lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|lab62_soc_sdram_pll_altpll_vg92:sd1|wire_pll7_clk[1] port File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 150
+Info (15535): Implemented PLL "lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|lab62_soc_sdram_pll_altpll_vg92:sd1|pll7" as MAX 10 PLL type File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 150
+    Info (15099): Implementing clock multiplication of 1, clock division of 1, and phase shift of 0 degrees (0 ps) for lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|lab62_soc_sdram_pll_altpll_vg92:sd1|wire_pll7_clk[0] port File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 150
+    Info (15099): Implementing clock multiplication of 1, clock division of 1, and phase shift of -18 degrees (-1000 ps) for lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|lab62_soc_sdram_pll_altpll_vg92:sd1|wire_pll7_clk[1] port File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 150
 Info (171003): Fitter is performing an Auto Fit compilation, which may decrease Fitter effort to reduce compilation time
 Warning (292013): Feature LogicLock is only available with a valid subscription license. You can purchase a software subscription to gain full access to this feature.
 Info (176444): Device migration not selected. If you intend to use device migration later, you may need to change the pin assignments as they may be incompatible with other devices
@@ -2857,37 +2857,37 @@ Info (332104): Reading SDC File: 'lab62_soc/synthesis/submodules/altera_reset_co
 Info (332104): Reading SDC File: 'lab62_soc/synthesis/submodules/altera_avalon_st_handshake_clock_crosser.sdc'
 Info (332104): Reading SDC File: 'lab62_soc/synthesis/submodules/lab62_soc_nios2_gen2_0_cpu.sdc'
 Info (332104): Reading SDC File: 'lab6_1_code/lab6.sdc'
-Warning (332174): Ignored filter at lab6.sdc(17): m_lab61_soc|sdram_pll|sd1|pll7|clk[1] could not be matched with a pin File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 17
-Warning (332049): Ignored create_generated_clock at lab6.sdc(17): Argument -source is an empty collection File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 17
+Warning (332174): Ignored filter at lab6.sdc(17): m_lab61_soc|sdram_pll|sd1|pll7|clk[1] could not be matched with a pin File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 17
+Warning (332049): Ignored create_generated_clock at lab6.sdc(17): Argument -source is an empty collection File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 17
     Info (332050): create_generated_clock -source [get_pins { m_lab61_soc|sdram_pll|sd1|pll7|clk[1] }] \
-                      -name clk_dram_ext [get_ports {DRAM_CLK}]  File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 17
+                      -name clk_dram_ext [get_ports {DRAM_CLK}]  File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 17
 Info (332110): Deriving PLL clocks
     Info (332110): create_generated_clock -source {u0|sdram_pll|sd1|pll7|inclk[0]} -duty_cycle 50.00 -name {u0|sdram_pll|sd1|pll7|clk[0]} {u0|sdram_pll|sd1|pll7|clk[0]}
     Info (332110): create_generated_clock -source {u0|sdram_pll|sd1|pll7|inclk[0]} -phase -18.00 -duty_cycle 50.00 -name {u0|sdram_pll|sd1|pll7|clk[1]} {u0|sdram_pll|sd1|pll7|clk[1]}
 Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
-Warning (332174): Ignored filter at lab6.sdc(48): clk_dram_ext could not be matched with a clock File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 48
-Warning (332049): Ignored set_input_delay at lab6.sdc(48): Argument -clock is not an object ID File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 48
-    Info (332050): set_input_delay -clock clk_dram_ext -max 5.9 [get_ports {DRAM_DQ*}] File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 48
-Warning (332049): Ignored set_input_delay at lab6.sdc(49): Argument -clock is not an object ID File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 49
-    Info (332050): set_input_delay -clock clk_dram_ext -min 3.0 [get_ports {DRAM_DQ*}] File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 49
-Warning (332174): Ignored filter at lab6.sdc(55): m_lab61_soc|sdram_pll|sd1|pll7|clk[0] could not be matched with a clock File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 55
-Warning (332049): Ignored set_multicycle_path at lab6.sdc(54): Argument <from> is an empty collection File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 54
+Warning (332174): Ignored filter at lab6.sdc(48): clk_dram_ext could not be matched with a clock File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 48
+Warning (332049): Ignored set_input_delay at lab6.sdc(48): Argument -clock is not an object ID File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 48
+    Info (332050): set_input_delay -clock clk_dram_ext -max 5.9 [get_ports {DRAM_DQ*}] File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 48
+Warning (332049): Ignored set_input_delay at lab6.sdc(49): Argument -clock is not an object ID File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 49
+    Info (332050): set_input_delay -clock clk_dram_ext -min 3.0 [get_ports {DRAM_DQ*}] File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 49
+Warning (332174): Ignored filter at lab6.sdc(55): m_lab61_soc|sdram_pll|sd1|pll7|clk[0] could not be matched with a clock File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 55
+Warning (332049): Ignored set_multicycle_path at lab6.sdc(54): Argument <from> is an empty collection File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 54
     Info (332050): set_multicycle_path -from [get_clocks {clk_dram_ext}] \
                     -to [get_clocks { m_lab61_soc|sdram_pll|sd1|pll7|clk[0] }] \
-                          -setup 2 File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 54
-Warning (332049): Ignored set_multicycle_path at lab6.sdc(54): Argument <to> is an empty collection File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 54
-Warning (332049): Ignored set_output_delay at lab6.sdc(66): Argument -clock is not an object ID File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 66
-    Info (332050): set_output_delay -max -clock clk_dram_ext 1.6  [get_ports {DRAM_DQ* DRAM_LDQM}] File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 66
-Warning (332049): Ignored set_output_delay at lab6.sdc(67): Argument -clock is not an object ID File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 67
-    Info (332050): set_output_delay -min -clock clk_dram_ext -0.9 [get_ports {DRAM_DQ* DRAM_LDQM}] File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 67
-Warning (332049): Ignored set_output_delay at lab6.sdc(68): Argument -clock is not an object ID File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 68
-    Info (332050): set_output_delay -max -clock clk_dram_ext 1.6  [get_ports {DRAM_UDQM}] File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 68
-Warning (332049): Ignored set_output_delay at lab6.sdc(69): Argument -clock is not an object ID File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 69
-    Info (332050): set_output_delay -min -clock clk_dram_ext -0.9 [get_ports {DRAM_UDQM}] File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 69
-Warning (332049): Ignored set_output_delay at lab6.sdc(72): Argument -clock is not an object ID File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 72
-    Info (332050): set_output_delay -max -clock clk_dram_ext 1.6  [get_ports {DRAM_ADDR* DRAM_BA* DRAM_RAS_N DRAM_CAS_N DRAM_WE_N DRAM_CKE DRAM_CS_N}] File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 72
-Warning (332049): Ignored set_output_delay at lab6.sdc(73): Argument -clock is not an object ID File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 73
-    Info (332050): set_output_delay -min -clock clk_dram_ext -0.9 [get_ports {DRAM_ADDR* DRAM_BA* DRAM_RAS_N DRAM_CAS_N DRAM_WE_N DRAM_CKE DRAM_CS_N}] File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab6.sdc Line: 73
+                          -setup 2 File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 54
+Warning (332049): Ignored set_multicycle_path at lab6.sdc(54): Argument <to> is an empty collection File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 54
+Warning (332049): Ignored set_output_delay at lab6.sdc(66): Argument -clock is not an object ID File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 66
+    Info (332050): set_output_delay -max -clock clk_dram_ext 1.6  [get_ports {DRAM_DQ* DRAM_LDQM}] File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 66
+Warning (332049): Ignored set_output_delay at lab6.sdc(67): Argument -clock is not an object ID File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 67
+    Info (332050): set_output_delay -min -clock clk_dram_ext -0.9 [get_ports {DRAM_DQ* DRAM_LDQM}] File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 67
+Warning (332049): Ignored set_output_delay at lab6.sdc(68): Argument -clock is not an object ID File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 68
+    Info (332050): set_output_delay -max -clock clk_dram_ext 1.6  [get_ports {DRAM_UDQM}] File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 68
+Warning (332049): Ignored set_output_delay at lab6.sdc(69): Argument -clock is not an object ID File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 69
+    Info (332050): set_output_delay -min -clock clk_dram_ext -0.9 [get_ports {DRAM_UDQM}] File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 69
+Warning (332049): Ignored set_output_delay at lab6.sdc(72): Argument -clock is not an object ID File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 72
+    Info (332050): set_output_delay -max -clock clk_dram_ext 1.6  [get_ports {DRAM_ADDR* DRAM_BA* DRAM_RAS_N DRAM_CAS_N DRAM_WE_N DRAM_CKE DRAM_CS_N}] File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 72
+Warning (332049): Ignored set_output_delay at lab6.sdc(73): Argument -clock is not an object ID File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 73
+    Info (332050): set_output_delay -min -clock clk_dram_ext -0.9 [get_ports {DRAM_ADDR* DRAM_BA* DRAM_RAS_N DRAM_CAS_N DRAM_WE_N DRAM_CKE DRAM_CS_N}] File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab6.sdc Line: 73
 Warning (332060): Node: vga_controller:vga|clkdiv was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register vga_controller:vga|hc[0] is being clocked by vga_controller:vga|clkdiv
 Warning (332060): Node: vga_controller:vga|vs was determined to be a clock but was found without an associated clock assignment.
@@ -2903,46 +2903,46 @@ Info (332111): Found 4 clocks
     Info (332111):   20.000       clk_50
     Info (332111):   20.000 u0|sdram_pll|sd1|pll7|clk[0]
     Info (332111):   20.000 u0|sdram_pll|sd1|pll7|clk[1]
-Info (176353): Automatically promoted node lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|lab62_soc_sdram_pll_altpll_vg92:sd1|wire_pll7_clk[0] (placed in counter C0 of PLL_1) File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 192
+Info (176353): Automatically promoted node lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|lab62_soc_sdram_pll_altpll_vg92:sd1|wire_pll7_clk[0] (placed in counter C0 of PLL_1) File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 192
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G18
-Info (176353): Automatically promoted node lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|lab62_soc_sdram_pll_altpll_vg92:sd1|wire_pll7_clk[1] (placed in counter C1 of PLL_1) File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 192
+Info (176353): Automatically promoted node lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|lab62_soc_sdram_pll_altpll_vg92:sd1|wire_pll7_clk[1] (placed in counter C1 of PLL_1) File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 192
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G19
-Info (176353): Automatically promoted node MAX10_CLK1_50~input (placed in PIN P11 (CLK7p, DIFFIO_TX_RX_B20p, DIFFOUT_B20p, High_Speed)) File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 12
+Info (176353): Automatically promoted node MAX10_CLK1_50~input (placed in PIN P11 (CLK7p, DIFFIO_TX_RX_B20p, DIFFOUT_B20p, High_Speed)) File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 12
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G16
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node vga_controller:vga|clkdiv File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/VGA_controller.sv Line: 57
+        Info (176357): Destination node vga_controller:vga|clkdiv File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/VGA_controller.sv Line: 57
 Info (176353): Automatically promoted node altera_internal_jtag~TCKUTAP 
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
-Info (176353): Automatically promoted node vga_controller:vga|vs  File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/VGA_controller.sv Line: 28
+Info (176353): Automatically promoted node vga_controller:vga|vs  File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/VGA_controller.sv Line: 28
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node VGA_VS~output File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 46
-Info (176353): Automatically promoted node vga_controller:vga|clkdiv  File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/VGA_controller.sv Line: 57
+        Info (176357): Destination node VGA_VS~output File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 46
+Info (176353): Automatically promoted node vga_controller:vga|clkdiv  File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/VGA_controller.sv Line: 57
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node vga_controller:vga|vs File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/VGA_controller.sv Line: 28
-        Info (176357): Destination node vga_controller:vga|clkdiv~0 File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/VGA_controller.sv Line: 57
-Info (176353): Automatically promoted node lab62_soc:u0|altera_reset_controller:rst_controller|r_sync_rst  File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/altera_reset_controller.v Line: 288
+        Info (176357): Destination node vga_controller:vga|vs File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/VGA_controller.sv Line: 28
+        Info (176357): Destination node vga_controller:vga|clkdiv~0 File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/VGA_controller.sv Line: 57
+Info (176353): Automatically promoted node lab62_soc:u0|altera_reset_controller:rst_controller|r_sync_rst  File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/altera_reset_controller.v Line: 288
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node lab62_soc:u0|altera_reset_controller:rst_controller|WideOr0~0 File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/altera_reset_controller.v Line: 290
-        Info (176357): Destination node lab62_soc:u0|lab62_soc_nios2_gen2_0:nios2_gen2_0|lab62_soc_nios2_gen2_0_cpu:cpu|W_rf_wren File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_nios2_gen2_0_cpu.v Line: 3451
+        Info (176357): Destination node lab62_soc:u0|altera_reset_controller:rst_controller|WideOr0~0 File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/altera_reset_controller.v Line: 290
+        Info (176357): Destination node lab62_soc:u0|lab62_soc_nios2_gen2_0:nios2_gen2_0|lab62_soc_nios2_gen2_0_cpu:cpu|W_rf_wren File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_nios2_gen2_0_cpu.v Line: 3451
         Info (176357): Destination node lab62_soc:u0|lab62_soc_nios2_gen2_0:nios2_gen2_0|lab62_soc_nios2_gen2_0_cpu:cpu|lab62_soc_nios2_gen2_0_cpu_nios2_oci:the_lab62_soc_nios2_gen2_0_cpu_nios2_oci|lab62_soc_nios2_gen2_0_cpu_nios2_oci_debug:the_lab62_soc_nios2_gen2_0_cpu_nios2_oci_debug|altera_std_synchronizer:the_altera_std_synchronizer|din_s1 File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altera_std_synchronizer.v Line: 45
-Info (176353): Automatically promoted node lab62_soc:u0|altera_reset_controller:rst_controller_001|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain_out  File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/altera_reset_synchronizer.v Line: 62
+Info (176353): Automatically promoted node lab62_soc:u0|altera_reset_controller:rst_controller_001|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain_out  File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/altera_reset_synchronizer.v Line: 62
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node lab62_soc:u0|lab62_soc_sdram:sdram|active_rnw~3 File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_sdram.v Line: 215
-        Info (176357): Destination node lab62_soc:u0|lab62_soc_sdram:sdram|active_cs_n~0 File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_sdram.v Line: 212
-        Info (176357): Destination node lab62_soc:u0|lab62_soc_sdram:sdram|active_cs_n~1 File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_sdram.v Line: 212
-        Info (176357): Destination node lab62_soc:u0|lab62_soc_sdram:sdram|i_refs[0] File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_sdram.v Line: 356
-        Info (176357): Destination node lab62_soc:u0|lab62_soc_sdram:sdram|i_refs[2] File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_sdram.v Line: 356
-        Info (176357): Destination node lab62_soc:u0|lab62_soc_sdram:sdram|i_refs[1] File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_sdram.v Line: 356
-Info (176353): Automatically promoted node lab62_soc:u0|lab62_soc_nios2_gen2_0:nios2_gen2_0|lab62_soc_nios2_gen2_0_cpu:cpu|lab62_soc_nios2_gen2_0_cpu_nios2_oci:the_lab62_soc_nios2_gen2_0_cpu_nios2_oci|lab62_soc_nios2_gen2_0_cpu_nios2_oci_debug:the_lab62_soc_nios2_gen2_0_cpu_nios2_oci_debug|resetrequest  File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_nios2_gen2_0_cpu.v Line: 186
+        Info (176357): Destination node lab62_soc:u0|lab62_soc_sdram:sdram|active_rnw~3 File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_sdram.v Line: 215
+        Info (176357): Destination node lab62_soc:u0|lab62_soc_sdram:sdram|active_cs_n~0 File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_sdram.v Line: 212
+        Info (176357): Destination node lab62_soc:u0|lab62_soc_sdram:sdram|active_cs_n~1 File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_sdram.v Line: 212
+        Info (176357): Destination node lab62_soc:u0|lab62_soc_sdram:sdram|i_refs[0] File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_sdram.v Line: 356
+        Info (176357): Destination node lab62_soc:u0|lab62_soc_sdram:sdram|i_refs[2] File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_sdram.v Line: 356
+        Info (176357): Destination node lab62_soc:u0|lab62_soc_sdram:sdram|i_refs[1] File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_sdram.v Line: 356
+Info (176353): Automatically promoted node lab62_soc:u0|lab62_soc_nios2_gen2_0:nios2_gen2_0|lab62_soc_nios2_gen2_0_cpu:cpu|lab62_soc_nios2_gen2_0_cpu_nios2_oci:the_lab62_soc_nios2_gen2_0_cpu_nios2_oci|lab62_soc_nios2_gen2_0_cpu_nios2_oci_debug:the_lab62_soc_nios2_gen2_0_cpu_nios2_oci_debug|resetrequest  File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_nios2_gen2_0_cpu.v Line: 186
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
-Info (176353): Automatically promoted node lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|prev_reset  File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 274
+Info (176353): Automatically promoted node lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|prev_reset  File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 274
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|readdata[0]~1 File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 258
+        Info (176357): Destination node lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|readdata[0]~1 File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 258
 Info (176233): Starting register packing
 Warning (176250): Ignoring invalid fast I/O register assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Warning (176251): Ignoring some wildcard destinations of fast I/O register assignments
@@ -2971,7 +2971,7 @@ Info (176235): Finished register packing
     Extra Info (176218): Packed 16 registers into blocks of type I/O Input Buffer
     Extra Info (176218): Packed 53 registers into blocks of type I/O Output Buffer
     Extra Info (176220): Created 34 register duplicates
-Warning (15064): PLL "lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|lab62_soc_sdram_pll_altpll_vg92:sd1|pll7" output port clk[1] feeds output pin "DRAM_CLK~output" via non-dedicated routing -- jitter performance depends on switching rate of other design elements. Use PLL dedicated clock outputs to ensure jitter performance File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 150
+Warning (15064): PLL "lab62_soc:u0|lab62_soc_sdram_pll:sdram_pll|lab62_soc_sdram_pll_altpll_vg92:sd1|pll7" output port clk[1] feeds output pin "DRAM_CLK~output" via non-dedicated routing -- jitter performance depends on switching rate of other design elements. Use PLL dedicated clock outputs to ensure jitter performance File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab62_soc/synthesis/submodules/lab62_soc_sdram_pll.v Line: 150
 Warning (15705): Ignored locations or region assignments to the following nodes
     Warning (15706): Node "ADC_CLK_10" is assigned to location or region, but does not exist in design
     Warning (15706): Node "GPIO[0]" is assigned to location or region, but does not exist in design
@@ -3017,7 +3017,7 @@ Warning (15705): Ignored locations or region assignments to the following nodes
     Warning (15706): Node "GSENSOR_SDI" is assigned to location or region, but does not exist in design
     Warning (15706): Node "GSENSOR_SDO" is assigned to location or region, but does not exist in design
     Warning (15706): Node "MAX10_CLK2_50" is assigned to location or region, but does not exist in design
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:05
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:06
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:01
@@ -3029,43 +3029,43 @@ Info (170195): Router estimated average interconnect usage is 2% of the availabl
     Info (170196): Router estimated peak interconnect usage is 24% of the available device resources in the region that extends from location X45_Y22 to location X55_Y32
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (170194): Fitter routing operations ending: elapsed time is 00:00:05
-Info (11888): Total time spent on timing analysis during the Fitter is 4.18 seconds.
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:08
+Info (11888): Total time spent on timing analysis during the Fitter is 6.50 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:04
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:06
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Warning (169064): Following 17 pins have no output enable or a GND or VCC output enable - later changes to this connectivity may change fitting results
-    Info (169065): Pin ARDUINO_IO[0] has a permanently disabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_IO[1] has a permanently disabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_IO[2] has a permanently disabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_IO[3] has a permanently disabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_IO[4] has a permanently disabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_IO[5] has a permanently disabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_IO[14] has a permanently disabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_IO[15] has a permanently disabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_IO[6] has a permanently enabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_IO[7] has a permanently enabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_IO[8] has a permanently disabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_IO[9] has a permanently disabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_IO[10] has a permanently enabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_IO[11] has a permanently enabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_IO[12] has a permanently disabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_IO[13] has a permanently enabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 53
-    Info (169065): Pin ARDUINO_RESET_N has a permanently enabled output enable File: C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/lab6_1_code/lab62.sv Line: 56
-Info (144001): Generated suppressed messages file C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/output_files/nio2.fit.smsg
+    Info (169065): Pin ARDUINO_IO[0] has a permanently disabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_IO[1] has a permanently disabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_IO[2] has a permanently disabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_IO[3] has a permanently disabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_IO[4] has a permanently disabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_IO[5] has a permanently disabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_IO[14] has a permanently disabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_IO[15] has a permanently disabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_IO[6] has a permanently enabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_IO[7] has a permanently enabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_IO[8] has a permanently disabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_IO[9] has a permanently disabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_IO[10] has a permanently enabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_IO[11] has a permanently enabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_IO[12] has a permanently disabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_IO[13] has a permanently enabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 53
+    Info (169065): Pin ARDUINO_RESET_N has a permanently enabled output enable File: D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/lab6_1_code/lab62.sv Line: 56
+Info (144001): Generated suppressed messages file D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/output_files/nio2.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 69 warnings
-    Info: Peak virtual memory: 6703 megabytes
-    Info: Processing ended: Sat Mar 19 20:39:35 2022
-    Info: Elapsed time: 00:00:34
-    Info: Total CPU time (on all processors): 00:01:29
+    Info: Peak virtual memory: 6696 megabytes
+    Info: Processing ended: Sat Apr 02 14:45:49 2022
+    Info: Elapsed time: 00:00:40
+    Info: Total CPU time (on all processors): 00:01:30
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in C:/Users/ldm18/Desktop/385_FPGA_project/Lab_6/output_files/nio2.fit.smsg.
+The suppressed messages can be found in D:/repo/ECE385_Share_Repo/Lab6/Lab6_part_2/output_files/nio2.fit.smsg.
 
 
