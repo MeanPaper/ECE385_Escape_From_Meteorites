@@ -2,7 +2,7 @@ set_global_assignment -entity "final_project_platform" -library "final_project_p
 set_global_assignment -entity "final_project_platform" -library "final_project_platform" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "final_project_platform" -library "final_project_platform" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "final_project_platform" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../final_project_platform.sopcinfo"]
-set_global_assignment -entity "final_project_platform" -library "final_project_platform" -name SLD_INFO "QSYS_NAME final_project_platform HAS_SOPCINFO 1 GENERATION_ID 1649869431"
+set_global_assignment -entity "final_project_platform" -library "final_project_platform" -name SLD_INFO "QSYS_NAME final_project_platform HAS_SOPCINFO 1 GENERATION_ID 1649980856"
 set_global_assignment -library "final_project_platform" -name MISC_FILE [file join $::quartus(qip_path) "../final_project_platform.cmp"]
 set_global_assignment -library "final_project_platform" -name SLD_FILE [file join $::quartus(qip_path) "final_project_platform.regmap"]
 set_global_assignment -library "final_project_platform" -name SLD_FILE [file join $::quartus(qip_path) "final_project_platform.debuginfo"]
@@ -16,7 +16,7 @@ set_global_assignment -entity "final_project_platform" -library "final_project_p
 set_global_assignment -entity "final_project_platform" -library "final_project_platform" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "final_project_platform" -library "final_project_platform" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "final_project_platform" -library "final_project_platform" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "final_project_platform" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY0OTg2OTQzMQ==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "final_project_platform" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY0OTk4MDg1Ng==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "final_project_platform" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "final_project_platform" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBNNTBEQUY0ODRDN0c=::QXV0byBERVZJQ0U="
 set_global_assignment -entity "final_project_platform" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Nw==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
@@ -1259,6 +1259,25 @@ set_global_assignment -entity "final_project_platform_leds_pio" -library "final_
 set_global_assignment -entity "final_project_platform_leds_pio" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9lZGdlX3R5cGU=::Tk9ORQ==::ZGVyaXZlZF9lZGdlX3R5cGU="
 set_global_assignment -entity "final_project_platform_leds_pio" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9pcnFfdHlwZQ==::Tk9ORQ==::ZGVyaXZlZF9pcnFfdHlwZQ=="
 set_global_assignment -entity "final_project_platform_leds_pio" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9oYXNfaXJx::ZmFsc2U=::ZGVyaXZlZF9oYXNfaXJx"
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_NAME "ZmluYWxfcHJvamVjdF9wbGF0Zm9ybV9rZXljb2Rl"
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_DISPLAY_NAME "UElPIChQYXJhbGxlbCBJL08pIEludGVsIEZQR0EgSVA="
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_VERSION "MTguMQ=="
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "Yml0TW9kaWZ5aW5nT3V0UmVn::ZmFsc2U=::RW5hYmxlIGluZGl2aWR1YWwgYml0IHNldHRpbmcvY2xlYXJpbmc="
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "ZGlyZWN0aW9u::T3V0cHV0::RGlyZWN0aW9u"
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "cmVzZXRWYWx1ZQ==::MA==::T3V0cHV0IFBvcnQgUmVzZXQgVmFsdWU="
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "d2lkdGg=::MjQ=::V2lkdGggKDEtMzIgYml0cyk="
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "Y2xvY2tSYXRl::NTAwMDAwMDA=::Y2xvY2tSYXRl"
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9oYXNfdHJp::ZmFsc2U=::ZGVyaXZlZF9oYXNfdHJp"
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9oYXNfb3V0::dHJ1ZQ==::ZGVyaXZlZF9oYXNfb3V0"
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9oYXNfaW4=::ZmFsc2U=::ZGVyaXZlZF9oYXNfaW4="
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9kb190ZXN0X2JlbmNoX3dpcmluZw==::ZmFsc2U=::ZGVyaXZlZF9kb190ZXN0X2JlbmNoX3dpcmluZw=="
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9jYXB0dXJl::ZmFsc2U=::ZGVyaXZlZF9jYXB0dXJl"
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9lZGdlX3R5cGU=::Tk9ORQ==::ZGVyaXZlZF9lZGdlX3R5cGU="
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9pcnFfdHlwZQ==::Tk9ORQ==::ZGVyaXZlZF9pcnFfdHlwZQ=="
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9oYXNfaXJx::ZmFsc2U=::ZGVyaXZlZF9oYXNfaXJx"
 set_global_assignment -entity "final_project_platform_key" -library "final_project_platform" -name IP_COMPONENT_NAME "ZmluYWxfcHJvamVjdF9wbGF0Zm9ybV9rZXk="
 set_global_assignment -entity "final_project_platform_key" -library "final_project_platform" -name IP_COMPONENT_DISPLAY_NAME "UElPIChQYXJhbGxlbCBJL08pIEludGVsIEZQR0EgSVA="
 set_global_assignment -entity "final_project_platform_key" -library "final_project_platform" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -1399,6 +1418,7 @@ set_global_assignment -library "final_project_platform" -name SOURCE_FILE [file 
 set_global_assignment -library "final_project_platform" -name SOURCE_FILE [file join $::quartus(qip_path) "submodules/final_project_platform_nios2_gen2_0_cpu_rf_ram_b.mif"]
 set_global_assignment -library "final_project_platform" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/final_project_platform_nios2_gen2_0_cpu_test_bench.v"]
 set_global_assignment -library "final_project_platform" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/final_project_platform_leds_pio.v"]
+set_global_assignment -library "final_project_platform" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/final_project_platform_keycode.v"]
 set_global_assignment -library "final_project_platform" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/final_project_platform_key.v"]
 set_global_assignment -library "final_project_platform" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/final_project_platform_jtag_uart_0.v"]
 set_global_assignment -library "final_project_platform" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/final_project_platform_hex_digits_pio.v"]
@@ -1503,6 +1523,9 @@ set_global_assignment -entity "final_project_platform_nios2_gen2_0_cpu" -library
 set_global_assignment -entity "final_project_platform_leds_pio" -library "final_project_platform" -name IP_TOOL_NAME "altera_avalon_pio"
 set_global_assignment -entity "final_project_platform_leds_pio" -library "final_project_platform" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "final_project_platform_leds_pio" -library "final_project_platform" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_TOOL_NAME "altera_avalon_pio"
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_TOOL_VERSION "18.1"
+set_global_assignment -entity "final_project_platform_keycode" -library "final_project_platform" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -entity "final_project_platform_key" -library "final_project_platform" -name IP_TOOL_NAME "altera_avalon_pio"
 set_global_assignment -entity "final_project_platform_key" -library "final_project_platform" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "final_project_platform_key" -library "final_project_platform" -name IP_TOOL_ENV "Qsys"

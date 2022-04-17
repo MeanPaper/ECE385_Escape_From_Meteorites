@@ -137,7 +137,7 @@ module final385_top(
 	logic [3:0] hex_num_4, hex_num_3, hex_num_1, hex_num_0; //4 bit input hex digits
 	logic [1:0] signs;
 	logic [1:0] hundreds;
-   logic [15:0] keycode;
+   logic [23:0] keycode_temp; //24 bit keycode, can deal with 3 keycode
 
 	
 	
@@ -212,21 +212,23 @@ assign {Reset_h}=~ (KEY[0]);
 	assign ARDUINO_IO[6] = 1'b1;
 	
 	//HEX drivers to convert numbers to HEX output
-	HexDriver hex_driver4 (hex_num_4, HEX4[6:0]);
-	assign HEX4[7] = 1'b1;
+//	HexDriver hex_driver4 (hex_num_4, HEX4[6:0]);
+//	assign HEX4[7] = 1'b1;
+//	
+//	HexDriver hex_driver3 (hex_num_3, HEX3[6:0]);
+//	assign HEX3[7] = 1'b1;
+//	
+//	HexDriver hex_driver1 (hex_num_1, HEX1[6:0]);
+//	assign HEX1[7] = 1'b1;
+//	
+//	HexDriver hex_driver0 (hex_num_0, HEX0[6:0]);
+//	assign HEX0[7] = 1'b1;
+//	
+//	//fill in the hundreds digit as well as the negative sign
+//	assign HEX5 = {1'b1, ~signs[1], 3'b111, ~hundreds[1], ~hundreds[1], 1'b1};
+//	assign HEX2 = {1'b1, ~signs[0], 3'b111, ~hundreds[0], ~hundreds[0], 1'b1};
 	
-	HexDriver hex_driver3 (hex_num_3, HEX3[6:0]);
-	assign HEX3[7] = 1'b1;
-	
-	HexDriver hex_driver1 (hex_num_1, HEX1[6:0]);
-	assign HEX1[7] = 1'b1;
-	
-	HexDriver hex_driver0 (hex_num_0, HEX0[6:0]);
-	assign HEX0[7] = 1'b1;
-	
-	//fill in the hundreds digit as well as the negative sign
-	assign HEX5 = {1'b1, ~signs[1], 3'b111, ~hundreds[1], ~hundreds[1], 1'b1};
-	assign HEX2 = {1'b1, ~signs[0], 3'b111, ~hundreds[0], ~hundreds[0], 1'b1};
+	HexDriver hexs [5:0](.In0(keycode_temp), .Out0({HEX5[6:0], HEX4[6:0], HEX3[6:0], HEX2[6:0], HEX1[6:0], HEX0[6:0]}));
 	
 	//=======================================
 
@@ -264,13 +266,14 @@ assign {Reset_h}=~ (KEY[0]);
 		
 		//LEDs and HEX and SW
 		.hex_digits_export({hex_num_4, hex_num_3, hex_num_1, hex_num_0}),
-		.leds_export({hundreds, signs, LEDR}),
-		.keycode_export(keycode),
+		//.leds_export({hundreds, signs, LEDR}),
+		.keycode_export(keycode_temp),
 		.switch_export(SW)
 		);
 
 
-
+		assign LEDR = {bullet_hit,obstacle_activate[0], obstacle_activate[1],
+							obstacle_activate[2], obstacle_activate[3]};
 
 
 // 7-segment displays HEX0-3 show data_x in hexadecimal
@@ -311,51 +314,91 @@ assign {Reset_h}=~ (KEY[0]);
 	
 	
 	//ball module 
-	ball_two b( 	.Reset(Reset_h), 
+	ball_two b( 	//input
+					.Reset(Reset_h), 
 					.frame_clk(VGA_VS),
 					//.data_x,
 					//.data_y,
-					.keycode,
-					//.mode_sw(SW[0]),
-					.BallX(ballxsig),
-					.BallY(ballysig), 
-					.BallS(ballsizesig),
 					.enemy_x(object_X), 
 					.enemy_y(object_Y), 
-					.enemy_size(object_Size)
+					.enemy_size(object_Size),
+					.keycode(keycode_temp),
+					.enermy_alive(obstacle_activate),
+					//.mode_sw(SW[0]),
+					
+					//output
+					.BallX(ballxsig),
+					.BallY(ballysig), 
+					.BallS(ballsizesig)
 					//,Ball_die
 	);
 	
 	
-	logic [9:0] object_Size, object_X, object_Y;
+	logic [9:0] object_Size[4], object_X[4], object_Y[4];
+	logic obstacle_activate[4];
 	
 	obstacle	obj(   
+					//input
 					.Reset(Reset_h), 
 					.frame_clk(VGA_VS),
+					.ball_ammo_x(bullet_X_out),
+					.ball_ammo_y(bullet_Y_out),
+					.ball_ammo_size(bullet_size),
+					
+					//output
+					.bullet_hit,   // bullet hit the object
 					.object_Size, //object size
 					.object_X, 
-					.object_Y   //, //object location
-					 //obstacle_activate		  //the object is on
+					.object_Y,   //, //object location
+					.obstacle_activate		  //the object is on
 				);
-				
-	
+
+	logic [9:0] bullet_X_out, bullet_Y_out, bullet_size;
+	logic bullet_active, bullet_hit;
+	bullet	ammo(  	
+					//input
+               .bullet_X(ballxsig), //the bullet appears at the tip of the plane 
+					.bullet_Y(ballysig - (ballsizesig >> 2)), //this is for the ball location - the ball_size
+                	
+               .Reset(Reset_h),                    //reset the bullets
+               .frame_clk(VGA_VS),                //clk to control the bullet
+               .space_key(keycode_temp),          //space key is hit
+
+					//output
+					
+					.bullet_hit,               //if bullet hit something then it disappear
+               .bullet_active,           //the bullet is still active
+               .bullet_X_out, 
+					.bullet_Y_out, 
+					.bullet_size
+            	);
+					
 	//color mapper module
 	color_mapper	color0(
-					.BallX(ballxsig), 
-					.BallY(ballysig), 
-					
+
 					//x position drawing and y position drawing
 					.DrawX(drawxsig), 
 					.DrawY(drawysig), 
-					
 					.blank,
 					.pixel_clk(VGA_Clk),
+
+					//player
+					.BallX(ballxsig), 
+					.BallY(ballysig), 
 					.Ball_size(ballsizesig),
 					
 					//obstacle
 					.Obj_X(object_X), 
 					.Obj_Y(object_Y), 
 					.Obj_Size(object_Size),
+					.Obj_act(obstacle_activate),
+					
+					//bullet data
+					.bullet_x(bullet_X_out),
+					.bullet_y(bullet_Y_out),
+					.bullet_size,
+					.bullet_activate(bullet_active),
+					
 					//color display
 					.Red, 
 					.Green, 

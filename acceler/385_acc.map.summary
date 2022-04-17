@@ -1,16 +1,16 @@
-Analysis & Synthesis Status : Successful - Wed Apr 13 22:58:06 2022
+Analysis & Synthesis Status : Successful - Sat Apr 16 20:06:04 2022
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : 385_acc
 Top-level Entity Name : final385_top
 Family : MAX 10
-Total logic elements : 4,634
-    Total combinational functions : 3,640
-    Dedicated logic registers : 2,558
-Total registers : 2558
+Total logic elements : 4,915
+    Total combinational functions : 3,902
+    Dedicated logic registers : 2,611
+Total registers : 2611
 Total pins : 149
 Total virtual pins : 0
 Total memory bits : 11,392
-Embedded Multiplier 9-bit elements : 4
+Embedded Multiplier 9-bit elements : 8
 Total PLLs : 1
 UFM blocks : 0
 ADC blocks : 0

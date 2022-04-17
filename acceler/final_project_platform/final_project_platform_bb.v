@@ -28,7 +28,7 @@ module final_project_platform (
 	input		clk_clk;
 	output	[15:0]	hex_digits_export;
 	input	[1:0]	key_external_connection_export;
-	output	[15:0]	keycode_export;
+	output	[23:0]	keycode_export;
 	output	[13:0]	leds_export;
 	input		reset_reset_n;
 	output		sdram_clk_clk;

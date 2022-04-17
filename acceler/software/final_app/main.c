@@ -125,7 +125,7 @@ void printSignedHex1(signed char value) {
 	IOWR_ALTERA_AVALON_PIO_DATA(HEX_DIGITS_PIO_BASE, pio_val);
 }
 
-void setKeycode(WORD keycode)
+void setKeycode(alt_u32 keycode)
 {
 
 	IOWR_ALTERA_AVALON_PIO_DATA(KEYCODE_BASE, keycode);
@@ -171,7 +171,8 @@ int main() {
 					printf("%x ", kbdbuf.keycode[i]);
 				}
 				//keycode update: accept two keycode at one time
-				setKeycode(kbdbuf.keycode[0] << 8 | kbdbuf.keycode[1]);
+				setKeycode(kbdbuf.keycode[0] << 16 | kbdbuf.keycode[1]<<8 |
+						kbdbuf.keycode[2]);
 
 
 				printSignedHex0(kbdbuf.keycode[0]);

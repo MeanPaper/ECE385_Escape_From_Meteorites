@@ -60,11 +60,27 @@
 					"strict" : false
 				},
 				{
+					"name" : "HEX2[0]",
+					"strict" : false
+				},
+				{
 					"name" : "HEX2[1]",
 					"strict" : false
 				},
 				{
 					"name" : "HEX2[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX2[5]",
 					"strict" : false
 				},
 				{
@@ -128,11 +144,27 @@
 					"strict" : false
 				},
 				{
+					"name" : "HEX5[0]",
+					"strict" : false
+				},
+				{
 					"name" : "HEX5[1]",
 					"strict" : false
 				},
 				{
 					"name" : "HEX5[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX5[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX5[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX5[5]",
 					"strict" : false
 				},
 				{
@@ -224,43 +256,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[0]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[1]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[2]",
-					"strict" : false
-				},
-				{
 					"name" : "LEDR[3]",
 					"strict" : false
 				},
 				{
 					"name" : "LEDR[4]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[5]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[6]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[7]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[8]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[9]",
 					"strict" : false
 				},
 				{
@@ -292,7 +292,15 @@
 					"strict" : false
 				},
 				{
+					"name" : "VGA_G[1]",
+					"strict" : false
+				},
+				{
 					"name" : "VGA_G[2]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_G[3]",
 					"strict" : false
 				},
 				{

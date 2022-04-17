@@ -15,9 +15,10 @@
 //this is fixed the newest version
 //updated version
 module  ball_two ( input Reset, frame_clk,
-					input [15:0] keycode,
+					input [24:0] keycode,
 					input [15:0] data_x, data_y,
-					input [9:0] enemy_x, enemy_y, enemy_size,
+					input [9:0] enemy_x[4], enemy_y[4], enemy_size[4],
+					input enermy_alive[4],
 					output Ball_die,
                output [9:0]  BallX, BallY, BallS );
     
@@ -31,29 +32,36 @@ module  ball_two ( input Reset, frame_clk,
     parameter [9:0] Ball_Y_Max=476;     // Bottommost point on the Y axis
     parameter [9:0] Ball_X_Step=1;      // Step size on the X axis
     parameter [9:0] Ball_Y_Step=1;      // Step size on the Y axis
+	parameter [9:0] Ball_Y_bot = 450;
 
     assign Ball_Size = 8;  // assigns the value 4 as a 10-digit binary number, ie "0000000100"
 	
 	logic [9:0] Ball_r; //ball radius
 	assign Ball_r = Ball_Size >> 1;
 	
-	logic hit; //the ball
+	logic hit[4]; //the ball hit the block
 	
 	
 	always_ff @ (posedge frame_clk)
 	begin
-		if(((BallX - Ball_r) <= (enemy_x + enemy_size) )
-			&& ((BallY - Ball_r) <= (enemy_y + enemy_size)) 
-			&& (BallX + Ball_r) > enemy_x 
-			&& (BallY + Ball_r) > enemy_y)
+		for(int i = 0; i<4; i++) //detect whether the ball hit any of the boxes
 		begin
-			hit <= 1'b1;
-			Ball_die <= 1'b1;
-		end
-		else
-		begin
-			hit <= 1'b0;
-			Ball_die <= 1'b0;
+			if(enermy_alive[i])
+			begin
+				if(((BallX - Ball_r) <= (enemy_x[i] + enemy_size[i]) )
+					&& ((BallY - Ball_r) <= (enemy_y[i] + enemy_size[i])) 
+					&& (BallX + Ball_r) > enemy_x[i] 
+					&& (BallY + Ball_r) > enemy_y[i])
+				begin
+					hit[i] <= 1'b1;
+					Ball_die <= 1'b1;
+				end
+				else
+				begin
+					hit[i] <= 1'b0;
+					Ball_die <= 1'b0;
+				end
+			end
 		end
 	end
     
@@ -65,18 +73,9 @@ module  ball_two ( input Reset, frame_clk,
         begin 
             Ball_Y_Motion <= 10'd0; //Ball_Y_Step;
 				Ball_X_Motion <= 10'd0; //Ball_X_Step;
-				Ball_Y_Pos <= Ball_Y_Center;
-				Ball_X_Pos <= Ball_X_Center;
+				Ball_Y_Pos <= Ball_Y_bot; //initial position of the ball
+				Ball_X_Pos <= Ball_X_Center; //initial position of the ball
         end
-		  
-        else if(hit)
-		  begin
-				Ball_Y_Motion <= 10'd0; //Ball_Y_Step;
-				Ball_X_Motion <= 10'd0; //Ball_X_Step;
-				Ball_Y_Pos <= Ball_Y_Center;
-				Ball_X_Pos <= Ball_X_Center;
-		  end
-
 		
         else 
         begin 
@@ -86,14 +85,14 @@ module  ball_two ( input Reset, frame_clk,
 				if ( (Ball_X_Pos + Ball_Size) >= Ball_X_Max || (Ball_X_Pos - Ball_Size) <= Ball_X_Min)  // Ball is at the Right/left edge, BOUNCE!
 					Ball_X_Motion <= 0;  // 2's complement.
 				
-				
-				if(keycode[15:8] == 8'h04 || keycode[7:0] == 8'h04) //A
+				//parallel check for keycode A or D
+				if(keycode[15:8] == 8'h04 || keycode[7:0] == 8'h04 || keycode[23:16] == 8'h04) //A
 				begin
 					if((Ball_X_Pos + Ball_X_Motion) > (Ball_X_Min + Ball_Size))
 						Ball_X_Motion <= -3;
 				end
 				
-				else if(keycode[15:8] == 8'h07 || keycode[7:0] == 8'h07) //D
+				else if(keycode[15:8] == 8'h07 || keycode[7:0] == 8'h07 || keycode[23:16] == 8'h07) //D
 				begin
 					if((Ball_X_Pos + Ball_X_Motion) < (Ball_X_Max - Ball_Size))
 						Ball_X_Motion <= 3;
@@ -103,14 +102,14 @@ module  ball_two ( input Reset, frame_clk,
 					Ball_X_Motion <= 0;
 				end
 				
-				
-				if(keycode[15:8] == 8'h16 || keycode[7:0] == 8'h16) //S
+				//parallel check for keycode s or w
+				if(keycode[15:8] == 8'h16 || keycode[7:0] == 8'h16 || keycode[23:16] == 8'h16) //S
 				begin
 					if((Ball_Y_Pos + Ball_Y_Motion) < (Ball_Y_Max - Ball_Size))
 						Ball_Y_Motion <= 3;
 				end
 				
-				else if(keycode[15:8] == 8'h1A || keycode[7:0] == 8'h1A) //W
+				else if(keycode[15:8] == 8'h1A || keycode[7:0] == 8'h1A || keycode[23:16] == 8'h1A) //W
 				begin
 					if((Ball_Y_Pos + Ball_Y_Motion) > (Ball_Y_Min + Ball_Size))
 						Ball_Y_Motion <= -3;
@@ -129,6 +128,24 @@ module  ball_two ( input Reset, frame_clk,
 				
 				Ball_Y_Pos <= (Ball_Y_Pos + Ball_Y_Motion);  // Update ball position
 				Ball_X_Pos <= (Ball_X_Pos + Ball_X_Motion);
+			
+		
+			
+		  for(int i = 0; i < 4; i++)
+		  begin
+				if(hit[i]) //when the player hit one of the object
+				begin
+					Ball_Y_Motion <= 10'd0; //Ball_Y_Step;
+					Ball_X_Motion <= 10'd0; //Ball_X_Step;
+					
+					//to make the ball stop at fix position
+					//do not need to fix the speed
+					//Ball_Y_Pos <= Ball_Y_Pos;
+					//Ball_X_Pos <= Ball_X_Pos
+					Ball_Y_Pos <= Ball_Y_Center;
+					Ball_X_Pos <= Ball_X_Center;
+				end
+		  end
 			
 		end  
     end
