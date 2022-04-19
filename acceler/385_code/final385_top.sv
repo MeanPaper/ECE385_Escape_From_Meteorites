@@ -103,12 +103,12 @@ module final385_top(
    //////////// SW //////////
    input 		     [9:0]		SW,
 
-   //////////// Accelerometer ports //////////
-   output		          		GSENSOR_CS_N,
-   input 		     [2:1]		GSENSOR_INT,
-   output		          		GSENSOR_SCLK,
-   inout 		          		GSENSOR_SDI,
-   inout 		          		GSENSOR_SDO,
+//   //////////// Accelerometer ports //////////
+//   output		          		GSENSOR_CS_N,
+//   input 		     [2:1]		GSENSOR_INT,
+//   output		          		GSENSOR_SCLK,
+//   inout 		          		GSENSOR_SDI,
+//   inout 		          		GSENSOR_SDO,
 	
 	
 	///////// VGA /////////
@@ -147,45 +147,13 @@ module final385_top(
 	
 	
 	
-	logic [9:0] drawxsig, drawysig, ballxsig, ballysig, ballsizesig;
+	logic [9:0] drawxsig, drawysig, ballxsig, ballysig;
 	logic [7:0] Red, Blue, Green;
 
 	
 	assign VGA_R = Red[7:4];
 	assign VGA_B = Blue[7:4];
 	assign VGA_G = Green[7:4];
-//===== Phase-locked Loop (PLL) instantiation. Code was copied from a module
-//      produced by Quartus' IP Catalog tool.
-//ip ip_inst (
-//   .inclk0 ( MAX10_CLK1_50 ),
-//   .c0 ( clk ),                 // 25 MHz, phase   0 degrees
-//   .c1 ( spi_clk ),             //  2 MHz, phase   0 degrees
-//   .c2 ( spi_clk_out )          //  2 MHz, phase 270 degrees
-//   );
-//
-////===== Instantiation of the spi_control module which provides the logic to 
-////      interface to the accelerometer.
-//spi_control #(     // parameters
-//      .SPI_CLK_FREQ   (SPI_CLK_FREQ),
-//      .UPDATE_FREQ    (UPDATE_FREQ))
-//   spi_ctrl (      // port connections
-//      .reset_n    (1'b1),
-//      .clk        (clk),
-//      .spi_clk    (spi_clk),
-//      .spi_clk_out(spi_clk_out),
-//      .data_update(data_update),
-//      .data_x     (data_x),
-//      .data_y     (data_y),
-//      .SPI_SDI    (GSENSOR_SDI),
-//      .SPI_SDO    (GSENSOR_SDO),
-//      .SPI_CSN    (GSENSOR_CS_N),
-//      .SPI_CLK    (GSENSOR_SCLK),
-//      .interrupt  (GSENSOR_INT)
-//   );
-
-//===== Main block
-//      To make the module do something visible, the 16-bit data_x is 
-//      displayed on four of the HEX displays in hexadecimal format.
 
 // Pressing KEY0 freezes the accelerometer's output
 //assign reset_n = KEY[0];
@@ -312,6 +280,7 @@ assign {Reset_h}=~ (KEY[0]);
 	
 	);
 	
+	logic [9:0] Ball_W, Ball_H;
 	
 	//ball module 
 	ball_two b( 	//input
@@ -329,7 +298,8 @@ assign {Reset_h}=~ (KEY[0]);
 					//output
 					.BallX(ballxsig),
 					.BallY(ballysig), 
-					.BallS(ballsizesig)
+					.Ball_W,
+					.Ball_H
 					//,Ball_die
 	);
 	
@@ -355,18 +325,18 @@ assign {Reset_h}=~ (KEY[0]);
 
 	logic [9:0] bullet_X_out, bullet_Y_out, bullet_size;
 	logic bullet_active, bullet_hit;
+	
 	bullet	ammo(  	
 					//input
                .bullet_X(ballxsig), //the bullet appears at the tip of the plane 
-					.bullet_Y(ballysig - (ballsizesig >> 2)), //this is for the ball location - the ball_size
-                	
+					.bullet_Y(ballysig - Ball_H), //this is for the ball location - the ball_size
+					.bullet_hit,               //if bullet hit something then it disappear
                .Reset(Reset_h),                    //reset the bullets
                .frame_clk(VGA_VS),                //clk to control the bullet
                .space_key(keycode_temp),          //space key is hit
 
 					//output
 					
-					.bullet_hit,               //if bullet hit something then it disappear
                .bullet_active,           //the bullet is still active
                .bullet_X_out, 
 					.bullet_Y_out, 
@@ -375,17 +345,19 @@ assign {Reset_h}=~ (KEY[0]);
 					
 	//color mapper module
 	color_mapper	color0(
+					.ram_clk(MAX10_CLK1_50),
 
 					//x position drawing and y position drawing
 					.DrawX(drawxsig), 
 					.DrawY(drawysig), 
 					.blank,
 					.pixel_clk(VGA_Clk),
-
+					.vs(VGA_VS),
 					//player
 					.BallX(ballxsig), 
 					.BallY(ballysig), 
-					.Ball_size(ballsizesig),
+					.BallWidth(Ball_W),
+					.BallHeight(Ball_H),
 					
 					//obstacle
 					.Obj_X(object_X), 

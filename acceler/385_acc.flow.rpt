@@ -1,5 +1,5 @@
 Flow report for 385_acc
-Sat Apr 16 20:06:55 2022
+Tue Apr 19 16:37:57 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,21 +40,21 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Sat Apr 16 20:06:55 2022       ;
+; Flow Status                        ; Successful - Tue Apr 19 16:37:57 2022       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; 385_acc                                     ;
 ; Top-level Entity Name              ; final385_top                                ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C7G                              ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 4,518 / 49,760 ( 9 % )                      ;
-;     Total combinational functions  ; 3,921 / 49,760 ( 8 % )                      ;
-;     Dedicated logic registers      ; 2,568 / 49,760 ( 5 % )                      ;
-; Total registers                    ; 2637                                        ;
-; Total pins                         ; 149 / 360 ( 41 % )                          ;
+; Total logic elements               ; 5,064 / 49,760 ( 10 % )                     ;
+;     Total combinational functions  ; 4,462 / 49,760 ( 9 % )                      ;
+;     Dedicated logic registers      ; 2,658 / 49,760 ( 5 % )                      ;
+; Total registers                    ; 2727                                        ;
+; Total pins                         ; 143 / 360 ( 40 % )                          ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 11,392 / 1,677,312 ( < 1 % )                ;
-; Embedded Multiplier 9-bit elements ; 8 / 288 ( 3 % )                             ;
+; Total memory bits                  ; 326,812 / 1,677,312 ( 19 % )                ;
+; Embedded Multiplier 9-bit elements ; 4 / 288 ( 1 % )                             ;
 ; Total PLLs                         ; 1 / 4 ( 25 % )                              ;
 ; UFM blocks                         ; 0 / 1 ( 0 % )                               ;
 ; ADC blocks                         ; 0 / 2 ( 0 % )                               ;
@@ -66,7 +66,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/16/2022 20:05:14 ;
+; Start date & time ; 04/19/2022 16:35:42 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; 385_acc             ;
 +-------------------+---------------------+
@@ -77,7 +77,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+--------------------------------------------------------------------------+---------------+------------------------+----------------+
 ; Assignment Name                     ; Value                                                                    ; Default Value ; Entity Name            ; Section Id     ;
 +-------------------------------------+--------------------------------------------------------------------------+---------------+------------------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 185263058363979.165015751404948                                          ; --            ; --                     ; --             ;
+; COMPILER_SIGNATURE_ID               ; 91760235618.165040414131280                                              ; --            ; --                     ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Systemverilog Hdl                                                        ; --            ; --                     ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (SystemVerilog)                                          ; <None>        ; --                     ; --             ;
 ; ENABLE_SIGNALTAP                    ; On                                                                       ; --            ; --                     ; --             ;
@@ -85,8 +85,6 @@ refer to the applicable agreement for further details.
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                                        ; --            ; --                     ; --             ;
 ; MISC_FILE                           ; final_project_platform/synthesis/../final_project_platform.cmp           ; --            ; --                     ; --             ;
 ; MISC_FILE                           ; final_project_platform/synthesis/../../final_project_platform.qsys       ; --            ; --                     ; --             ;
-; MISC_FILE                           ; ip_bb.v                                                                  ; --            ; --                     ; --             ;
-; MISC_FILE                           ; ip.ppf                                                                   ; --            ; --                     ; --             ;
 ; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                                                        ; --            ; --                     ; --             ;
 ; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                                                        ; --            ; --                     ; --             ;
 ; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                                                               ; --            ; --                     ; --             ;
@@ -111,12 +109,12 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:46     ; 1.0                     ; 5045 MB             ; 00:01:11                           ;
-; Fitter               ; 00:00:32     ; 1.9                     ; 6710 MB             ; 00:01:27                           ;
-; Assembler            ; 00:00:04     ; 1.0                     ; 4703 MB             ; 00:00:04                           ;
-; Timing Analyzer      ; 00:00:06     ; 3.2                     ; 5033 MB             ; 00:00:15                           ;
-; EDA Netlist Writer   ; 00:00:03     ; 1.0                     ; 4729 MB             ; 00:00:03                           ;
-; Total                ; 00:01:31     ; --                      ; --                  ; 00:03:00                           ;
+; Analysis & Synthesis ; 00:01:16     ; 1.0                     ; 5062 MB             ; 00:01:38                           ;
+; Fitter               ; 00:00:35     ; 1.9                     ; 6713 MB             ; 00:01:39                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 4711 MB             ; 00:00:04                           ;
+; Timing Analyzer      ; 00:00:06     ; 3.4                     ; 5046 MB             ; 00:00:16                           ;
+; EDA Netlist Writer   ; 00:00:03     ; 1.0                     ; 4747 MB             ; 00:00:03                           ;
+; Total                ; 00:02:03     ; --                      ; --                  ; 00:03:40                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

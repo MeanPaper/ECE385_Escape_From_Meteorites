@@ -447,6 +447,12 @@ set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (SystemVerilog)
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE stp1.stp
+set_global_assignment -name TEXT_FILE "ECE385-HelperTools-master/PNG To Hex/On-Chip Memory/sprite_bytes/asteroid.txt"
+set_global_assignment -name SYSTEMVERILOG_FILE "ECE385-HelperTools-master/PNG To Hex/On-Chip Memory/background.sv"
+set_global_assignment -name TEXT_FILE "ECE385-HelperTools-master/PNG To Hex/On-Chip Memory/sprite_bytes/background.txt"
+set_global_assignment -name SYSTEMVERILOG_FILE 385_code/color_rom.sv
+set_global_assignment -name TEXT_FILE "ECE385-HelperTools-master/PNG To Hex/On-Chip Memory/sprite_bytes/spaceship.txt"
+set_global_assignment -name SYSTEMVERILOG_FILE "ECE385-HelperTools-master/PNG To Hex/On-Chip Memory/ram.sv"
 set_global_assignment -name SYSTEMVERILOG_FILE 385_code/corruptedl_ball.sv
 set_global_assignment -name SYSTEMVERILOG_FILE 385_code/extra/ball.sv
 set_global_assignment -name QIP_FILE final_project_platform/synthesis/final_project_platform.qip
@@ -454,11 +460,8 @@ set_global_assignment -name SYSTEMVERILOG_FILE 385_code/final385_top.sv
 set_global_assignment -name SYSTEMVERILOG_FILE 385_code/VGA_controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE 385_code/Color_Mapper.sv
 set_global_assignment -name SYSTEMVERILOG_FILE HexDriver.sv
-set_global_assignment -name SDC_FILE 385_acc.sdc
-set_global_assignment -name VERILOG_FILE spi_control.v
-set_global_assignment -name VERILOG_FILE spi_serdes.v
-set_global_assignment -name QIP_FILE ip.qip
 set_global_assignment -name SYSTEMVERILOG_FILE 385_code/obstacle.sv
 set_global_assignment -name SYSTEMVERILOG_FILE 385_code/gameFSM.sv
 set_global_assignment -name SYSTEMVERILOG_FILE 385_code/bullet.sv
+set_global_assignment -name SYSTEMVERILOG_FILE 385_code/random_generator.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

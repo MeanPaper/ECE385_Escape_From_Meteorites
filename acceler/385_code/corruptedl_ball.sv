@@ -20,9 +20,9 @@ module  ball_two ( input Reset, frame_clk,
 					input [9:0] enemy_x[4], enemy_y[4], enemy_size[4],
 					input enermy_alive[4],
 					output Ball_die,
-               output [9:0]  BallX, BallY, BallS );
+               output [9:0]  BallX, BallY, Ball_W, Ball_H);
     
-    logic [9:0] Ball_X_Pos, Ball_X_Motion, Ball_Y_Pos, Ball_Y_Motion, Ball_Size;
+    logic [9:0] Ball_X_Pos, Ball_X_Motion, Ball_Y_Pos, Ball_Y_Motion;
 	 
     parameter [9:0] Ball_X_Center=320;  // Center position on the X axis
     parameter [9:0] Ball_Y_Center=240;  // Center position on the Y axis
@@ -32,12 +32,14 @@ module  ball_two ( input Reset, frame_clk,
     parameter [9:0] Ball_Y_Max=476;     // Bottommost point on the Y axis
     parameter [9:0] Ball_X_Step=1;      // Step size on the X axis
     parameter [9:0] Ball_Y_Step=1;      // Step size on the Y axis
-	parameter [9:0] Ball_Y_bot = 450;
-
-    assign Ball_Size = 8;  // assigns the value 4 as a 10-digit binary number, ie "0000000100"
+	 parameter [9:0] Ball_Y_bot = 450;
+	 parameter [9:0] Ball_Width = 17;	//center to left / right
+	 parameter [9:0] Ball_Height = 16;  //center to top / bottom
 	
-	logic [9:0] Ball_r; //ball radius
-	assign Ball_r = Ball_Size >> 1;
+	
+	 assign Ball_W = Ball_Width;
+	 assign Ball_H = Ball_Height;
+	
 	
 	logic hit[4]; //the ball hit the block
 	
@@ -48,10 +50,10 @@ module  ball_two ( input Reset, frame_clk,
 		begin
 			if(enermy_alive[i])
 			begin
-				if(((BallX - Ball_r) <= (enemy_x[i] + enemy_size[i]) )
-					&& ((BallY - Ball_r) <= (enemy_y[i] + enemy_size[i])) 
-					&& (BallX + Ball_r) > enemy_x[i] 
-					&& (BallY + Ball_r) > enemy_y[i])
+				if(((BallX - Ball_Width) <= (enemy_x[i] + enemy_size[i]) )
+					&& ((BallY - Ball_Height) <= (enemy_y[i] + enemy_size[i])) 
+					&& (BallX + Ball_Width) > enemy_x[i] 
+					&& (BallY + Ball_Height) > enemy_y[i])
 				begin
 					hit[i] <= 1'b1;
 					Ball_die <= 1'b1;
@@ -79,22 +81,22 @@ module  ball_two ( input Reset, frame_clk,
 		
         else 
         begin 
-				if ( (Ball_Y_Pos + Ball_Size) >= Ball_Y_Max || (Ball_Y_Pos - Ball_Size) <= Ball_Y_Min )  // Ball is at the top/bottom edge, stop!
+				if ( (Ball_Y_Pos + Ball_Height) >= Ball_Y_Max || (Ball_Y_Pos - Ball_Height) <= Ball_Y_Min )  // Ball is at the top/bottom edge, stop!
 					Ball_Y_Motion <= 0;  // 2's complement.
 					  
-				if ( (Ball_X_Pos + Ball_Size) >= Ball_X_Max || (Ball_X_Pos - Ball_Size) <= Ball_X_Min)  // Ball is at the Right/left edge, BOUNCE!
+				if ( (Ball_X_Pos + Ball_Width) >= Ball_X_Max || (Ball_X_Pos - Ball_Width) <= Ball_X_Min)  // Ball is at the Right/left edge, BOUNCE!
 					Ball_X_Motion <= 0;  // 2's complement.
 				
 				//parallel check for keycode A or D
 				if(keycode[15:8] == 8'h04 || keycode[7:0] == 8'h04 || keycode[23:16] == 8'h04) //A
 				begin
-					if((Ball_X_Pos + Ball_X_Motion) > (Ball_X_Min + Ball_Size))
+					if((Ball_X_Pos + Ball_X_Motion) > (Ball_X_Min + Ball_Width))
 						Ball_X_Motion <= -3;
 				end
 				
 				else if(keycode[15:8] == 8'h07 || keycode[7:0] == 8'h07 || keycode[23:16] == 8'h07) //D
 				begin
-					if((Ball_X_Pos + Ball_X_Motion) < (Ball_X_Max - Ball_Size))
+					if((Ball_X_Pos + Ball_X_Motion) < (Ball_X_Max - Ball_Width))
 						Ball_X_Motion <= 3;
 				end
 				else
@@ -105,13 +107,13 @@ module  ball_two ( input Reset, frame_clk,
 				//parallel check for keycode s or w
 				if(keycode[15:8] == 8'h16 || keycode[7:0] == 8'h16 || keycode[23:16] == 8'h16) //S
 				begin
-					if((Ball_Y_Pos + Ball_Y_Motion) < (Ball_Y_Max - Ball_Size))
+					if((Ball_Y_Pos + Ball_Y_Motion) < (Ball_Y_Max - Ball_Height))
 						Ball_Y_Motion <= 3;
 				end
 				
 				else if(keycode[15:8] == 8'h1A || keycode[7:0] == 8'h1A || keycode[23:16] == 8'h1A) //W
 				begin
-					if((Ball_Y_Pos + Ball_Y_Motion) > (Ball_Y_Min + Ball_Size))
+					if((Ball_Y_Pos + Ball_Y_Motion) > (Ball_Y_Min + Ball_Height))
 						Ball_Y_Motion <= -3;
 				end
 				else
@@ -154,7 +156,7 @@ module  ball_two ( input Reset, frame_clk,
    
     assign BallY = Ball_Y_Pos;
    
-    assign BallS = Ball_Size;
+//    assign BallS = Ball_Size;
     
 
 endmodule

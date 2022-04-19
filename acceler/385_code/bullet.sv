@@ -30,7 +30,7 @@ module bullet(
 
     
 
-    always_ff @ (posedge frame_clk)
+    always_ff @ (posedge Reset or posedge frame_clk)
     begin
         if(Reset)
         begin
@@ -43,19 +43,19 @@ module bullet(
         else
         begin
 			
-				if(bullet_hit || bullet_y_pos < (bullet_Y_Min + (bullet_speed >> 2) + bullet_size ))
+				if( bullet_hit || bullet_y_pos < (bullet_Y_Min + (bullet_speed >> 2) + bullet_size ))
 				begin
-					bullet_active <= 1'b0;
 					bullet_x_pos <= bullet_X;
 					bullet_y_pos <= bullet_Y;
+					bullet_active <= 1'b0;
 					y_motion <= 10'd0;
 				end
 				
-				if(!bullet_active)
+				else if(!bullet_active)
 				begin	//if the space key is press
 					if(space_key[23:16] == 8'h2c || space_key[15:8] == 8'h2c || space_key[7:0] == 8'h2c)
 					begin	
-						if(bullet_Y > bullet_Y_Min)
+						if(bullet_Y > bullet_Y_Min) //bullet should not show if the bullet is flying
 						begin
 							bullet_active <= 1'b1;
 							y_motion <= -bullet_speed;

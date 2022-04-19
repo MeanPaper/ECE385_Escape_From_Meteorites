@@ -13,19 +13,59 @@
 //-------------------------------------------------------------------------
 
 
-module  color_mapper ( 	input	[9:0] 	BallX, BallY, DrawX, DrawY, Ball_size,
+module  color_mapper ( 	input	[9:0] 	BallX, BallY, DrawX, DrawY, BallWidth, BallHeight,
 								input 	[9:0]	Obj_X[4], Obj_Y[4], Obj_Size[4],
 								input 	Obj_act[4], //activation of the objects
-
+								input 	vs,
 								input 	[9:0]	bullet_x, bullet_y,	bullet_size,	//the postion of x and y as well as the size
 								input			bullet_activate,	  
 								input 		ball_activate,
 
-								input 			blank, pixel_clk,
+								input 		ram_clk, blank, pixel_clk,
                        	output logic [7:0]  Red, Green, Blue);
     
     logic ball_on;
 	 
+	 
+	parameter ADDR_WIDTH = 13;
+	parameter BACK_WIDTH = 16;
+   parameter DATA_WIDTH =  24;
+	parameter [0:ADDR_WIDTH-1] [DATA_WIDTH-1:0] ROM = {
+			24'hFF00FF,
+			24'h000000, 
+			24'hFFFFFF,
+			24'h313129, 
+			24'h5A5A52,
+			24'h848C73,
+			24'h840000, 
+			24'hFF0000,
+			24'h848400, 
+			24'hFFFF00,	//read this 0
+			24'hA5AD94, // 1
+			24'h0084FF, //read this 2
+			24'h0042BD	//read this 3
+
+   };
+
+	parameter [0:15] [DATA_WIDTH-1:0] Back_ROM = { 
+			24'h57D3FF, //0
+			24'h6AD3FF, //1
+			24'h366DB6, //2
+			24'h2F7ABD, //3
+			24'h67C4FF, //4
+			24'h7942B0, //5
+			24'h091F73, //6
+			24'hD397FF, //7
+			24'h1D0063, //8
+			24'h9158C7, //9
+			24'hAA85ED, //a
+			24'h2B1276, //b
+			24'h131570,
+			24'h48107F,
+			24'hE0BBFF,
+			24'h00186A};
+			
+	parameter [0:4] [DATA_WIDTH-1:0] asteroid_Rom = {24'hFF00FF, 24'h313129, 24'h5A5A52, 24'h848C73, 24'hA5AD94};
  /* Old Ball: Generated square box by checking if the current pixel is within a square of length
     2*Ball_Size, centered at (BallX, BallY).  Note that this requires unsigned comparisons.
 	 
@@ -43,28 +83,70 @@ module  color_mapper ( 	input	[9:0] 	BallX, BallY, DrawX, DrawY, Ball_size,
 	logic box_on[4];
 	logic bullet_on;
 	
-    int DistX, DistY, Size; 
+    int DistX, DistY; 
 //	 int box_X, box_Y, box_size;
 	 
 	 
 	assign DistX = DrawX - BallX;
-    assign DistY = DrawY - BallY;
-    assign Size = Ball_size;
+   assign DistY = DrawY - BallY;
 
 
 	int bulletX, bulletY, bulletS;
 	assign bulletX = DrawX - bullet_x;
 	assign bulletY = DrawY - bullet_y;
 	assign bulletS = bullet_size;
-
+	
+	
 	 
 //	assign box_X = Obj_X;
 //	assign box_Y = Obj_Y;
 //	assign box_size = Obj_S;
+	logic [18:0] read_address; //, back_addr;
+	logic [3:0]	data_Out;
+	//logic [23:0] rgb;
+	
+spriteROM 	spaceship(
+					.we(1'b0),
+					.read_address,
+					.Clk(ram_clk), //please use the 50MHz //small change
+					.data_Out
+							);
+							
+							
+	logic [3:0] back_data;
+	logic [18:0] index;
+	logic[9:0] back_col;
+backgroundROM	 background(	//this is the background of ram
+						.we(1'b0),
+						.read_address(index),
+						.Clk(ram_clk),
+						.data_Out(back_data)
+										);
+										
+	logic [18:0] asteroid_addr;
+	logic [18:0] one_asteroid[4]; //keep track of the pixel addr
+	logic [3:0]	asteroid_pixel;
+	
+asteroid_ROM	asteroid(
+						.we(1'b0),
+						.read_address(asteroid_addr),
+						.Clk(ram_clk), //please use the 50MHz //small change
+						.data_Out(asteroid_pixel)
+					);
+			
+//color_rom		RGB(
+//					.addr(data_Out),
+//					.data(rgb)
+//);	
 	  
+	  
+	  
+	 
+	 //logic[9:0] back_row;
+	
     always_comb
     begin:Ball_on_proc
-        if ( ( DistX*DistX + DistY*DistY) <= (Size * Size) ) 
+        if ((DistX >= -17) && (DistX <= 17) && (DistY >= -16) && (DistY <= 16)) 
             ball_on = 1'b1;
         else 
             ball_on = 1'b0;
@@ -86,9 +168,9 @@ module  color_mapper ( 	input	[9:0] 	BallX, BallY, DrawX, DrawY, Ball_size,
 			else
 				box_on[i] = 1'b0;
 		end
-		
-		
-		
+		//determine the back ground 
+		 back_col = DrawX % 160;
+		 index = DrawY * 160 + back_col;
     end 
 	  
 	 //if the loop doesn't work then delete the loops
@@ -98,25 +180,35 @@ module  color_mapper ( 	input	[9:0] 	BallX, BallY, DrawX, DrawY, Ball_size,
 	 //in future, we need ram to store the data to be drawn
 	always_ff @(posedge pixel_clk)
 	begin:RGB_Display
-		if(!blank)
-		begin
+		if(!blank) 			//blank and other draw signal should be in the same if else block
+		begin					//other check conidition should not change the structure of this if else block
 			Red <= 8'h0;
 			Blue <= 8'h0;
 			Green <= 8'h0;
+			//read_address <= 0;
 		end
 		else
 		begin  //do the background
-			Red <= 8'h00; 
-         	Green <= 8'h00;
-         	Blue <= 8'h7f- DrawX[9:3];
-				
-			for(int i = 0; i < 4; i++)
-			begin
+//				Red <= 8'h00; 
+//         	Green <= 8'h00;
+//         	Blue <= 8'h7f- DrawX[9:3];
+			Red <= Back_ROM[back_data][23:16];
+			Green <= Back_ROM[back_data][15:8];
+			Blue <= Back_ROM[back_data][7:0];
+			
+			//small change
+			for(int i = 0; i < 4; i++) 
+			begin				
 				if(box_on[i]) //this will only draw box if the box is active
 				begin
-					Red <= 8'hff;
-					Green <= 8'h00; 
-					Blue <= 8'h00;
+					asteroid_addr <= one_asteroid[i]; //get the current asteroid pixel addr info
+					one_asteroid[i] <= one_asteroid[i] + 1; //address increment
+					if(asteroid_pixel) //ignore the pink transparency
+					begin
+						Red <= asteroid_Rom[asteroid_pixel][23:16];
+						Green <= asteroid_Rom[asteroid_pixel][15:8]; 
+						Blue <= asteroid_Rom[asteroid_pixel][7:0];
+					end
 				end
 			end
 			
@@ -131,74 +223,31 @@ module  color_mapper ( 	input	[9:0] 	BallX, BallY, DrawX, DrawY, Ball_size,
 
 			if ((ball_on == 1'b1)) //do the ball
 			begin 
-				Red <= 8'hff;
-				Green <= 8'h55;
-				Blue <= 8'h00;
+				if(data_Out)
+				begin
+//					Red <= 8'hff;
+//					Green <= 8'hff;
+//					Blue <= 8'h00;
+					Red <= ROM[data_Out][23:16];//8'hff;
+					Green <= ROM[data_Out][15:8];//8'h55;
+					Blue <= ROM[data_Out][7:0];//8'h00;
+				end
+				read_address <= read_address + 1; //read from the rom
 			end
-			
-			
 			
        end
 		 
+		if(!vs) //vertical sync, this is for the plane
+		begin
+			read_address <= 0;
+			for(int i = 0; i < 4; i++)
+			begin
+				one_asteroid[i] <= 0; //each asteroid holds it only pixel addr
+			end
+			//back_addr <= 0;	//initial the back_ground addr
+		end
 	end
 
 	  
 	  
 endmodule
-
-		  
-//		  
-//		  if ((ball_on == 1'b1)) //do the ball
-//        begin 
-//            Red <= 8'hff;
-//            Green <= 8'h55;
-//            Blue <= 8'h00;
-//        end
-//		
-////		 else if (box_on == 1'b1) //do the square obstacle
-////		 begin
-//			 for(int i = 0; i < 4; i++)
-//			 begin
-//				if(box_on[i])
-//				begin
-//					Red <= 8'hff;
-//					Green <= 8'h00; 
-//					Blue <= 8'h00;
-//				end
-//			 end
-////		 end
-//		
-//		
-//		  else 
-//        begin //do the background
-//            Red <= 8'h00; 
-//            Green <= 8'h00;
-//            Blue <= 8'h7f- DrawX[9:3];
-//        end      
-//    end 
-    
-
-
-
-//       
-//    always_comb
-//    begin:RGB_Display
-//		  if(!blank)
-//		  begin
-//				Red = 8'h0;
-//				Blue = 8'h0;
-//				Green = 8'h0;
-//		  end
-//        else if ((ball_on == 1'b1)) 
-//        begin 
-//            Red = 8'hff;
-//            Green = 8'h55;
-//            Blue = 8'h00;
-//        end       
-//        else 
-//        begin 
-//            Red = 8'h00; 
-//            Green = 8'h00;
-//            Blue = 8'h7f; //- DrawX[9:3];
-//        end      
-//    end 
