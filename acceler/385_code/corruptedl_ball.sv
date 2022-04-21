@@ -146,7 +146,7 @@ module  ball_two ( input Reset, frame_clk,
 					//do not need to fix the speed
 					//Ball_Y_Pos <= Ball_Y_Pos;
 					//Ball_X_Pos <= Ball_X_Pos
-					Ball_Y_Pos <= Ball_Y_Center;
+					Ball_Y_Pos <= Ball_Y_bot;
 					Ball_X_Pos <= Ball_X_Center;
 				end
 		  end
