@@ -4,12 +4,6 @@
 //=======================================================
 //
 //module 385_acc(
-//
-//	//////////// CLOCK //////////
-//	input 		          		ADC_CLK_10,
-//	input 		          		MAX10_CLK1_50,
-//	input 		          		MAX10_CLK2_50,
-//
 //	//////////// SDRAM //////////
 //	output		    [12:0]		DRAM_ADDR,
 //	output		     [1:0]		DRAM_BA,
@@ -23,29 +17,11 @@
 //	output		          		DRAM_UDQM,
 //	output		          		DRAM_WE_N,
 //
-//	//////////// SEG7 //////////
-//	output		     [7:0]		HEX0,
-//	output		     [7:0]		HEX1,
-//	output		     [7:0]		HEX2,
-//	output		     [7:0]		HEX3,
-//	output		     [7:0]		HEX4,
-//	output		     [7:0]		HEX5,
-//
 //	//////////// KEY //////////
 //	input 		     [1:0]		KEY,
 //
-//	//////////// LED //////////
-//	output		     [9:0]		LEDR,
-//
 //	//////////// SW //////////
 //	input 		     [9:0]		SW,
-//
-//	//////////// VGA //////////
-//	output		     [3:0]		VGA_B,
-//	output		     [3:0]		VGA_G,
-//	output		          		VGA_HS,
-//	output		     [3:0]		VGA_R,
-//	output		          		VGA_VS,
 //
 //	//////////// Accelerometer //////////
 //	output		          		GSENSOR_CS_N,
@@ -59,12 +35,9 @@
 //);
 
 //===========================================================================
-// accel.v
-//
-// Template module to get the DE10-Lite's accelerator working very quickly.
-//
-// 2020/05/17  Written (BB)
-//
+//ece385 final project: spacefighter
+//author: Dongming Liu
+//date: 4/20/2022
 //===========================================================================
 
 module final385_top(
@@ -196,7 +169,7 @@ assign {Reset_h}=~ (KEY[0]);
 //	assign HEX5 = {1'b1, ~signs[1], 3'b111, ~hundreds[1], ~hundreds[1], 1'b1};
 //	assign HEX2 = {1'b1, ~signs[0], 3'b111, ~hundreds[0], ~hundreds[0], 1'b1};
 	
-	HexDriver hexs [5:0](.In0(keycode_temp), .Out0({HEX5[6:0], HEX4[6:0], HEX3[6:0], HEX2[6:0], HEX1[6:0], HEX0[6:0]}));
+	HexDriver hexs [5:0](.In0(24'h111111), .Out0({HEX5[6:0], HEX4[6:0], HEX3[6:0], HEX2[6:0], HEX1[6:0], HEX0[6:0]}));
 	
 	//=======================================
 
@@ -240,9 +213,9 @@ assign {Reset_h}=~ (KEY[0]);
 		);
 
 
-		assign LEDR = {bullet_hit,obstacle_activate[0], obstacle_activate[1],
-							obstacle_activate[2], obstacle_activate[3]};
-
+//		assign LEDR = {Ball_die,obstacle_activate[0], obstacle_activate[1],
+//							obstacle_activate[2], obstacle_activate[3]};
+		assign LEDR = {Ball_die};
 
 // 7-segment displays HEX0-3 show data_x in hexadecimal
 //HexDriver s0 (
@@ -280,11 +253,27 @@ assign {Reset_h}=~ (KEY[0]);
 	
 	);
 	
+	//all the game signals
+	logic start_screen, game_screen, game_over;
+	
+	//this is the game state machine
+	gameFSM	state_machine(
+					.Clk(MAX10_CLK1_50), 
+					.Reset(Reset_h), //reset the game and run the game: shouold be controlled by the button or keyboard
+					.player_die(Ball_die),
+					.keycode(keycode_temp),		//use to activate the game
+					.start_screen,
+					.game_screen,
+					.game_over
+					);
+	
+	
 	logic [9:0] Ball_W, Ball_H;
+	logic Ball_die;
 	
 	//ball module 
 	ball_two b( 	//input
-					.Reset(Reset_h), 
+					.Reset(start_screen || game_over), 
 					.frame_clk(VGA_VS),
 					//.data_x,
 					//.data_y,
@@ -299,8 +288,8 @@ assign {Reset_h}=~ (KEY[0]);
 					.BallX(ballxsig),
 					.BallY(ballysig), 
 					.Ball_W,
-					.Ball_H
-					//,Ball_die
+					.Ball_H,
+					.Ball_die
 	);
 	
 	
@@ -309,7 +298,7 @@ assign {Reset_h}=~ (KEY[0]);
 	
 	obstacle	obj(   
 					//input
-					.Reset(Reset_h), 
+					.Reset(start_screen || game_over), 
 					.frame_clk(VGA_VS),
 					.ball_ammo_x(bullet_X_out),
 					.ball_ammo_y(bullet_Y_out),
@@ -331,7 +320,7 @@ assign {Reset_h}=~ (KEY[0]);
                .bullet_X(ballxsig), //the bullet appears at the tip of the plane 
 					.bullet_Y(ballysig - Ball_H), //this is for the ball location - the ball_size
 					.bullet_hit,               //if bullet hit something then it disappear
-               .Reset(Reset_h),                    //reset the bullets
+               .Reset(start_screen || game_over),                    //reset the bullets
                .frame_clk(VGA_VS),                //clk to control the bullet
                .space_key(keycode_temp),          //space key is hit
 
@@ -346,7 +335,12 @@ assign {Reset_h}=~ (KEY[0]);
 	//color mapper module
 	color_mapper	color0(
 					.ram_clk(MAX10_CLK1_50),
-
+					
+					//come from the state machine, used for screen switching 
+					.start_screen,
+					.game_screen,
+					.game_over,
+					
 					//x position drawing and y position drawing
 					.DrawX(drawxsig), 
 					.DrawY(drawysig), 

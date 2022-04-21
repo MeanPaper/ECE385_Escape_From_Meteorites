@@ -1,4 +1,10 @@
 
+State Machine - |final385_top|gameFSM:state_machine|gameState
+Name gameState.START gameState.GAME_END gameState.IN_GAME 
+gameState.START 0 0 0 
+gameState.IN_GAME 1 0 1 
+gameState.GAME_END 1 1 0 
+
 State Machine - |final385_top|final_project_platform:u0|final_project_platform_sdram:sdram|m_next
 Name m_next.010000000 m_next.000010000 m_next.000001000 m_next.000000001 
 m_next.000000001 0 0 0 0 

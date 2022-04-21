@@ -20,7 +20,10 @@ module  color_mapper ( 	input	[9:0] 	BallX, BallY, DrawX, DrawY, BallWidth, Ball
 								input 	[9:0]	bullet_x, bullet_y,	bullet_size,	//the postion of x and y as well as the size
 								input			bullet_activate,	  
 								input 		ball_activate,
-
+								
+								//signal_from the state machine
+								input start_screen, game_screen, game_over,
+							
 								input 		ram_clk, blank, pixel_clk,
                        	output logic [7:0]  Red, Green, Blue);
     
@@ -141,7 +144,7 @@ asteroid_ROM	asteroid(
 	  
 	  
 	  
-	 
+	 //logic [7:0]  R, G, B;
 	 //logic[9:0] back_row;
 	
     always_comb
@@ -171,6 +174,28 @@ asteroid_ROM	asteroid(
 		//determine the back ground 
 		 back_col = DrawX % 160;
 		 index = DrawY * 160 + back_col;
+		 
+		 
+		 //this will deal will all the coloring fpr background
+//		 if(start_screen)
+//		 begin
+//			R = 8'hff; 
+//			G = 8'hff;
+//			B = 8'hff;
+//		 end
+//		 else if(game_screen)
+//		 begin
+//			R = Back_ROM[back_data][23:16];
+//			G = Back_ROM[back_data][15:8];
+//			B = Back_ROM[back_data][7:0];
+//		 end
+//		 else if(game_over)
+//		 begin
+//			R = 8'hff;
+//			G = 8'h00;
+//			B = 8'hff;
+//		 end
+		 
     end 
 	  
 	 //if the loop doesn't work then delete the loops
@@ -189,54 +214,75 @@ asteroid_ROM	asteroid(
 		end
 		else
 		begin  //do the background
+
 //				Red <= 8'h00; 
 //         	Green <= 8'h00;
 //         	Blue <= 8'h7f- DrawX[9:3];
-			Red <= Back_ROM[back_data][23:16];
-			Green <= Back_ROM[back_data][15:8];
-			Blue <= Back_ROM[back_data][7:0];
+
+		
+			if(start_screen)
+			begin
+				Red <= 8'hff; 
+				Green <= 8'hff;
+				Blue  <= 8'hff;
+			end
+			else if(game_over)
+			begin
+				Red <= 8'hff; 
+				Green <= 8'h00;
+				Blue  <= 8'hff;
+			end
 			
-			//small change
-			for(int i = 0; i < 4; i++) 
-			begin				
-				if(box_on[i]) //this will only draw box if the box is active
-				begin
-					asteroid_addr <= one_asteroid[i]; //get the current asteroid pixel addr info
-					one_asteroid[i] <= one_asteroid[i] + 1; //address increment
-					if(asteroid_pixel) //ignore the pink transparency
+			else if(game_screen)	//only do the drawing when the game is on.
+			begin		
+				Red <= Back_ROM[back_data][23:16];
+				Green <= Back_ROM[back_data][15:8];
+				Blue <= Back_ROM[back_data][7:0];
+				//small change
+				for(int i = 0; i < 4; i++) //deal with all the asteroid
+				begin				
+					if(box_on[i]) //this will only draw box if the box is active
 					begin
-						Red <= asteroid_Rom[asteroid_pixel][23:16];
-						Green <= asteroid_Rom[asteroid_pixel][15:8]; 
-						Blue <= asteroid_Rom[asteroid_pixel][7:0];
+						asteroid_addr <= one_asteroid[i]; //get the current asteroid pixel addr info
+						one_asteroid[i] <= one_asteroid[i] + 1; //address increment
+						if(asteroid_pixel) //ignore the pink transparency
+						begin
+							Red <= asteroid_Rom[asteroid_pixel][23:16];
+							Green <= asteroid_Rom[asteroid_pixel][15:8]; 
+							Blue <= asteroid_Rom[asteroid_pixel][7:0];
+						end
 					end
 				end
-			end
-			
-			if (bullet_on) //do the bullet
-			begin
+				
+				if (bullet_on) //do the bullet
 				begin
-					Red <= 8'hff;
-					Green <= 8'hff;
-					Blue <= 8'h00;
+					begin
+						Red <= 8'hff;
+						Green <= 8'hff;
+						Blue <= 8'h00;
+					end
 				end
-			end
 
-			if ((ball_on == 1'b1)) //do the ball
-			begin 
-				if(data_Out)
-				begin
-//					Red <= 8'hff;
-//					Green <= 8'hff;
-//					Blue <= 8'h00;
-					Red <= ROM[data_Out][23:16];//8'hff;
-					Green <= ROM[data_Out][15:8];//8'h55;
-					Blue <= ROM[data_Out][7:0];//8'h00;
+				if ((ball_on == 1'b1)) //do the ball
+				begin 
+					if(data_Out)
+					begin
+	//					Red <= 8'hff;
+	//					Green <= 8'hff;
+	//					Blue <= 8'h00;
+						Red <= ROM[data_Out][23:16];//8'hff;
+						Green <= ROM[data_Out][15:8];//8'h55;
+						Blue <= ROM[data_Out][7:0];//8'h00;
+					end
+					read_address <= read_address + 1; //read from the rom
 				end
-				read_address <= read_address + 1; //read from the rom
-			end
-			
-       end
-		 
+				
+			 end
+			 
+
+		end
+		
+		//leave the vertical sync outside of screen logics
 		if(!vs) //vertical sync, this is for the plane
 		begin
 			read_address <= 0;

@@ -26,10 +26,10 @@ module  ball_two ( input Reset, frame_clk,
 	 
     parameter [9:0] Ball_X_Center=320;  // Center position on the X axis
     parameter [9:0] Ball_Y_Center=240;  // Center position on the Y axis
-    parameter [9:0] Ball_X_Min=3;       // Leftmost point on the X axis
-    parameter [9:0] Ball_X_Max=636;     // Rightmost point on the X axis
-    parameter [9:0] Ball_Y_Min=3;       // Topmost point on the Y axis
-    parameter [9:0] Ball_Y_Max=476;     // Bottommost point on the Y axis
+    parameter [9:0] Ball_X_Min=6;       // Leftmost point on the X axis
+    parameter [9:0] Ball_X_Max=633;     // Rightmost point on the X axis
+    parameter [9:0] Ball_Y_Min=6;       // Topmost point on the Y axis
+    parameter [9:0] Ball_Y_Max=473;     // Bottommost point on the Y axis
     parameter [9:0] Ball_X_Step=1;      // Step size on the X axis
     parameter [9:0] Ball_Y_Step=1;      // Step size on the Y axis
 	 parameter [9:0] Ball_Y_bot = 450;
@@ -44,27 +44,10 @@ module  ball_two ( input Reset, frame_clk,
 	logic hit[4]; //the ball hit the block
 	
 	
+	
 	always_ff @ (posedge frame_clk)
 	begin
-		for(int i = 0; i<4; i++) //detect whether the ball hit any of the boxes
-		begin
-			if(enermy_alive[i])
-			begin
-				if(((BallX - Ball_Width) <= (enemy_x[i] + enemy_size[i]) )
-					&& ((BallY - Ball_Height) <= (enemy_y[i] + enemy_size[i])) 
-					&& (BallX + Ball_Width) > enemy_x[i] 
-					&& (BallY + Ball_Height) > enemy_y[i])
-				begin
-					hit[i] <= 1'b1;
-					Ball_die <= 1'b1;
-				end
-				else
-				begin
-					hit[i] <= 1'b0;
-					Ball_die <= 1'b0;
-				end
-			end
-		end
+
 	end
     
 	 
@@ -77,14 +60,15 @@ module  ball_two ( input Reset, frame_clk,
 				Ball_X_Motion <= 10'd0; //Ball_X_Step;
 				Ball_Y_Pos <= Ball_Y_bot; //initial position of the ball
 				Ball_X_Pos <= Ball_X_Center; //initial position of the ball
+				Ball_die <= 1'b0;
         end
 		
         else 
         begin 
-				if ( (Ball_Y_Pos + Ball_Height) >= Ball_Y_Max || (Ball_Y_Pos - Ball_Height) <= Ball_Y_Min )  // Ball is at the top/bottom edge, stop!
+				if ( (Ball_Y_Pos + Ball_Height) > Ball_Y_Max || (Ball_Y_Pos - Ball_Height) < Ball_Y_Min )  // Ball is at the top/bottom edge, stop!
 					Ball_Y_Motion <= 0;  // 2's complement.
 					  
-				if ( (Ball_X_Pos + Ball_Width) >= Ball_X_Max || (Ball_X_Pos - Ball_Width) <= Ball_X_Min)  // Ball is at the Right/left edge, BOUNCE!
+				if ( (Ball_X_Pos + Ball_Width) > Ball_X_Max || (Ball_X_Pos - Ball_Width) < Ball_X_Min)  // Ball is at the Right/left edge, BOUNCE!
 					Ball_X_Motion <= 0;  // 2's complement.
 				
 				//parallel check for keycode A or D
@@ -132,6 +116,24 @@ module  ball_two ( input Reset, frame_clk,
 				Ball_X_Pos <= (Ball_X_Pos + Ball_X_Motion);
 			
 		
+			for(int i = 0; i<4; i++) //detect whether the ball hit any of the boxes
+			begin
+				if(enermy_alive[i])
+				begin
+					if(((BallX - Ball_Width) <= (enemy_x[i] + enemy_size[i]) )
+						&& ((BallY - Ball_Height) <= (enemy_y[i] + enemy_size[i])) 
+						&& (BallX + Ball_Width) > enemy_x[i] 
+						&& (BallY + Ball_Height) > enemy_y[i])
+					begin
+						hit[i] <= 1'b1;
+						Ball_die <= 1'b1;
+					end
+					else
+					begin
+						hit[i] <= 1'b0;
+					end
+				end
+			end
 			
 		  for(int i = 0; i < 4; i++)
 		  begin

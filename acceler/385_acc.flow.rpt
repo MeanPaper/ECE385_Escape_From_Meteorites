@@ -1,5 +1,5 @@
 Flow report for 385_acc
-Tue Apr 19 16:37:57 2022
+Wed Apr 20 23:39:44 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,17 +40,17 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue Apr 19 16:37:57 2022       ;
+; Flow Status                        ; Successful - Wed Apr 20 23:39:44 2022       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; 385_acc                                     ;
 ; Top-level Entity Name              ; final385_top                                ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C7G                              ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 5,064 / 49,760 ( 10 % )                     ;
-;     Total combinational functions  ; 4,462 / 49,760 ( 9 % )                      ;
-;     Dedicated logic registers      ; 2,658 / 49,760 ( 5 % )                      ;
-; Total registers                    ; 2727                                        ;
+; Total logic elements               ; 4,922 / 49,760 ( 10 % )                     ;
+;     Total combinational functions  ; 4,325 / 49,760 ( 9 % )                      ;
+;     Dedicated logic registers      ; 2,659 / 49,760 ( 5 % )                      ;
+; Total registers                    ; 2728                                        ;
 ; Total pins                         ; 143 / 360 ( 40 % )                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 326,812 / 1,677,312 ( 19 % )                ;
@@ -66,7 +66,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/19/2022 16:35:42 ;
+; Start date & time ; 04/20/2022 23:37:40 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; 385_acc             ;
 +-------------------+---------------------+
@@ -77,7 +77,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+--------------------------------------------------------------------------+---------------+------------------------+----------------+
 ; Assignment Name                     ; Value                                                                    ; Default Value ; Entity Name            ; Section Id     ;
 +-------------------------------------+--------------------------------------------------------------------------+---------------+------------------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 91760235618.165040414131280                                              ; --            ; --                     ; --             ;
+; COMPILER_SIGNATURE_ID               ; 185263058363979.165051585927380                                          ; --            ; --                     ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Systemverilog Hdl                                                        ; --            ; --                     ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (SystemVerilog)                                          ; <None>        ; --                     ; --             ;
 ; ENABLE_SIGNALTAP                    ; On                                                                       ; --            ; --                     ; --             ;
@@ -109,12 +109,12 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:01:16     ; 1.0                     ; 5062 MB             ; 00:01:38                           ;
-; Fitter               ; 00:00:35     ; 1.9                     ; 6713 MB             ; 00:01:39                           ;
-; Assembler            ; 00:00:03     ; 1.0                     ; 4711 MB             ; 00:00:04                           ;
-; Timing Analyzer      ; 00:00:06     ; 3.4                     ; 5046 MB             ; 00:00:16                           ;
-; EDA Netlist Writer   ; 00:00:03     ; 1.0                     ; 4747 MB             ; 00:00:03                           ;
-; Total                ; 00:02:03     ; --                      ; --                  ; 00:03:40                           ;
+; Analysis & Synthesis ; 00:01:07     ; 1.0                     ; 5063 MB             ; 00:01:29                           ;
+; Fitter               ; 00:00:35     ; 1.9                     ; 6713 MB             ; 00:01:42                           ;
+; Assembler            ; 00:00:04     ; 1.0                     ; 4709 MB             ; 00:00:04                           ;
+; Timing Analyzer      ; 00:00:06     ; 3.7                     ; 5039 MB             ; 00:00:15                           ;
+; EDA Netlist Writer   ; 00:00:03     ; 1.0                     ; 4740 MB             ; 00:00:03                           ;
+; Total                ; 00:01:55     ; --                      ; --                  ; 00:03:33                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

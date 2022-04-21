@@ -1410,3 +1410,30 @@ Info: Building ../final_app_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../final_app_bsp/
 [BSP build complete]
 [final_app build complete]
+19:51:21 **** Incremental Build of configuration Nios II for project final_app ****
+make all 
+Info: Building ../final_app_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../final_app_bsp/
+[BSP build complete]
+[final_app build complete]
+19:51:24 **** Incremental Build of configuration Nios II for project final_app_bsp ****
+make all 
+[BSP build complete]
+19:52:29 **** Incremental Build of configuration Nios II for project final_app ****
+make all 
+Info: Building ../final_app_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../final_app_bsp/
+[BSP build complete]
+[final_app build complete]
+20:07:40 **** Incremental Build of configuration Nios II for project final_app ****
+make all 
+Info: Building ../final_app_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../final_app_bsp/
+[BSP build complete]
+[final_app build complete]
+22:00:07 **** Incremental Build of configuration Nios II for project final_app ****
+make all 
+Info: Building ../final_app_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../final_app_bsp/
+[BSP build complete]
+[final_app build complete]
