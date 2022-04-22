@@ -14,6 +14,7 @@
 
 
 module  color_mapper ( 	input	[9:0] 	BallX, BallY, DrawX, DrawY, BallWidth, BallHeight,
+						//input 	left_motion, right_motion, //use for right and left motion
 								input 	[9:0]	Obj_X[4], Obj_Y[4], Obj_Size[4],
 								input 	Obj_act[4], //activation of the objects
 								input 	vs,
@@ -33,6 +34,8 @@ module  color_mapper ( 	input	[9:0] 	BallX, BallY, DrawX, DrawY, BallWidth, Ball
 	parameter ADDR_WIDTH = 13;
 	parameter BACK_WIDTH = 16;
    parameter DATA_WIDTH =  24;
+   
+	//palette for the color of the spaceship
 	parameter [0:ADDR_WIDTH-1] [DATA_WIDTH-1:0] ROM = {
 			24'hFF00FF,
 			24'h000000, 
@@ -149,7 +152,7 @@ asteroid_ROM	asteroid(
 	
     always_comb
     begin:Ball_on_proc
-        if ((DistX >= -17) && (DistX <= 17) && (DistY >= -16) && (DistY <= 16)) 
+        if ((DistX >= -BallWidth) && (DistX <= BallWidth) && (DistY >= -BallHeight) && (DistY <= BallHeight)) 
             ball_on = 1'b1;
         else 
             ball_on = 1'b0;
@@ -286,6 +289,7 @@ asteroid_ROM	asteroid(
 		if(!vs) //vertical sync, this is for the plane
 		begin
 			read_address <= 0;
+			
 			for(int i = 0; i < 4; i++)
 			begin
 				one_asteroid[i] <= 0; //each asteroid holds it only pixel addr

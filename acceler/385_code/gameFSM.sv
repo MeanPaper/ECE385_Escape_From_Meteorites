@@ -9,7 +9,7 @@ module gameFSM(input Clk, Reset, //reset the game and run the game: shouold be c
 //these are the game states 
 
 //probably need more state for everything
-enum logic [2:0] {START, IN_GAME, GAME_END, HOLD} gameState, next_state;
+enum logic [3:0] {START, IN_GAME, GAME_END, HOLD, HOLD2} gameState, next_state;
 
 always_ff @ (posedge Clk)
 begin
@@ -53,6 +53,12 @@ begin
 		HOLD:begin
 			next_state = HOLD;
 			if(keycode==0)
+				next_state = HOLD2;
+		end
+		
+		HOLD2:begin
+			next_state = HOLD2;
+			if(keycode)
 				next_state = START;
 		end
 	 endcase 	 
@@ -71,6 +77,7 @@ begin
 			end
 		GAME_END,
 		HOLD:
+		HOLD2:
 			begin
 				game_over = 1'b1;
 			end

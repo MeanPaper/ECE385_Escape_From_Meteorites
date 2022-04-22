@@ -10,7 +10,14 @@ def rgb_to_hex(num):
     return int(h[0:4], 16), int(('0x' + h[4:6]), 16), int(('0x' + h[6:8]), 16)
 filename = input("What's the image name? ")
 new_w, new_h = map(int, input("What's the new height x width? Like 28 28. ").split(' '))
-palette_hex = ['0xFF00FF','0x313129','0x5A5A52', '0x848C73', '0xA5AD94']
+
+
+#this is the palette for the asteroid
+#palette_hex = ['0xFF00FF','0x313129','0x5A5A52', '0x848C73', '0xA5AD94']  
+
+#this is the palette for the spaceship and its animations
+palette_hex = ['0xFF00FF','0x000000','0xFFFFFF', '0x313129', '0x5A5A52', '0x848C73', '0x840000' , '0xFF0000', '0x848400', '0xFFFF00', '0xA5AD94', '0x0084FF', '0x0042BD']    
+
 palette_rgb = [hex_to_rgb(color) for color in palette_hex]
 pixel_tree = KDTree(palette_rgb)
 im = Image.open("../sprite_originals/" + filename+ ".png") #Can be many different formats.
