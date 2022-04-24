@@ -1,0 +1,66 @@
+ case (keycode[15:0])
+					16'h0400 : begin
+								if((Ball_X_Pos + Ball_X_Motion) > (Ball_X_Min + Ball_Size))
+									begin
+										Ball_X_Motion <= -2;//A
+										//Ball_Y_Motion<= 0;
+									end
+								else
+									begin
+										Ball_X_Motion <= 0;//if the ball is out of bounds
+										//Ball_Y_Motion<= 0; //the ball will never move
+									end
+									
+							  end
+					        
+					16'h0700 : begin
+								if((Ball_X_Pos + Ball_X_Motion) < (Ball_X_Max - Ball_Size))
+									begin
+										Ball_X_Motion <= 2;//D
+										//Ball_Y_Motion <= 0;
+									end
+								else
+									begin
+										Ball_X_Motion <= 0;//if the ball is out of bounds
+										//Ball_Y_Motion<= 0; //the ball will never move
+									end
+							  end
+
+							  
+					16'h1600 : begin
+								if((Ball_Y_Pos + Ball_Y_Motion) < (Ball_Y_Max - Ball_Size))
+									begin
+										Ball_Y_Motion <= 2;//S
+										//Ball_X_Motion <= 0;
+									end
+								else
+									begin
+										//Ball_X_Motion <= 0;//if the ball is out of bounds
+										Ball_Y_Motion<= 0; //the ball will never move
+									end
+							 end
+							  
+					16'h1A00 : begin
+								if((Ball_Y_Pos + Ball_Y_Motion) > (Ball_Y_Min + Ball_Size))
+									begin
+										Ball_Y_Motion <= -2;//W
+										//Ball_X_Motion <= 0;
+									end
+								else
+									begin
+										//Ball_X_Motion <= 0;//if the ball is out of bounds
+										Ball_Y_Motion<= 0; //the ball will never move
+									end
+							 end	  
+							 
+							 
+					//16'h041A: begin
+					
+					
+					
+					
+					default: begin
+									Ball_X_Motion <= 0;//if the ball is out of bounds
+									Ball_Y_Motion<= 0; //the ball will never move;
+							   end
+			   endcase

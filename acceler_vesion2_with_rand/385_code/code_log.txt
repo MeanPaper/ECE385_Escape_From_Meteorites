@@ -1,0 +1,4 @@
+4/15
+try to establish interaction between the objects
+bullet hit object, object and bullet are deactivate
+
