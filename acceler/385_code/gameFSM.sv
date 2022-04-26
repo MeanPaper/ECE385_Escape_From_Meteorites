@@ -76,7 +76,7 @@ begin
 				game_screen = 1'b1;
 			end
 		GAME_END,
-		HOLD:
+		HOLD,
 		HOLD2:
 			begin
 				game_over = 1'b1;

@@ -13,10 +13,13 @@
 //-------------------------------------------------------------------------
 
 
-module  color_mapper ( 	input	[9:0] 	BallX, BallY, DrawX, DrawY, BallWidth, BallHeight,
-						//input 	left_motion, right_motion, //use for right and left motion
-								input 	[9:0]	Obj_X[4], Obj_Y[4], Obj_Size[4],
-								input 	Obj_act[4], //activation of the objects
+module  color_mapper 
+							#(parameter obj_num = 4)
+							
+							( 	input	[9:0] 	BallX, BallY, DrawX, DrawY, BallWidth, BallHeight,
+								input 	left_motion, right_motion, //use for right and left motion
+								input 	[9:0]	Obj_X[obj_num], Obj_Y[obj_num], Obj_Size[obj_num],
+								input 	Obj_act[obj_num], //activation of the objects
 								input 	vs,
 								input 	[9:0]	bullet_x, bullet_y,	bullet_size,	//the postion of x and y as well as the size
 								input			bullet_activate,	  
@@ -86,7 +89,7 @@ module  color_mapper ( 	input	[9:0] 	BallX, BallY, DrawX, DrawY, BallWidth, Ball
 	  we have to first cast them from logic to int (signed by default) before they are multiplied). */
 	  
 	  
-	logic box_on[4];
+	logic box_on[obj_num];
 	logic bullet_on;
 	
     int DistX, DistY; 
@@ -129,8 +132,10 @@ backgroundROM	 background(	//this is the background of ram
 						.data_Out(back_data)
 										);
 										
+										
+//asteroid rom										
 	logic [18:0] asteroid_addr;
-	logic [18:0] one_asteroid[4]; //keep track of the pixel addr
+	logic [18:0] one_asteroid[obj_num]; //keep track of the pixel addr
 	logic [3:0]	asteroid_pixel;
 	
 asteroid_ROM	asteroid(
@@ -152,7 +157,7 @@ asteroid_ROM	asteroid(
 	
     always_comb
     begin:Ball_on_proc
-        if ((DistX >= -BallWidth) && (DistX <= BallWidth) && (DistY >= -BallHeight) && (DistY <= BallHeight)) 
+        if ((DistX >= -17) && (DistX <= 17) && (DistY >= -16) && (DistY <= 16)) 
             ball_on = 1'b1;
         else 
             ball_on = 1'b0;
@@ -162,7 +167,7 @@ asteroid_ROM	asteroid(
 		else
 			bullet_on = 1'b0;
 
-		for(int i = 0; i < 4; i++)
+		for(int i = 0; i < obj_num; i++)
 		begin
 			if (Obj_act[i] 	//only draw the box if the object is active 
 				&& DrawX >= Obj_X[i] 
@@ -242,18 +247,24 @@ asteroid_ROM	asteroid(
 				Green <= Back_ROM[back_data][15:8];
 				Blue <= Back_ROM[back_data][7:0];
 				//small change
-				for(int i = 0; i < 4; i++) //deal with all the asteroid
+				for(int i = 0; i < obj_num; i++) //deal with all the asteroid
 				begin				
 					if(box_on[i]) //this will only draw box if the box is active
 					begin
+//						Red <= 8'hff;
+//						Green <= 8'h00;
+//						Blue <= 8'h00;
+						
 						asteroid_addr <= one_asteroid[i]; //get the current asteroid pixel addr info
-						one_asteroid[i] <= one_asteroid[i] + 1; //address increment
 						if(asteroid_pixel) //ignore the pink transparency
 						begin
 							Red <= asteroid_Rom[asteroid_pixel][23:16];
 							Green <= asteroid_Rom[asteroid_pixel][15:8]; 
 							Blue <= asteroid_Rom[asteroid_pixel][7:0];
 						end
+						one_asteroid[i] <= one_asteroid[i] + 1; //address increment
+						
+						
 					end
 				end
 				
@@ -288,14 +299,21 @@ asteroid_ROM	asteroid(
 		//leave the vertical sync outside of screen logics
 		if(!vs) //vertical sync, this is for the plane
 		begin
-			read_address <= 0;
+			if(left_motion)
+						read_address <= 1155;
+			else if(right_motion)
+						read_address <= 2310;
+
 			
-			for(int i = 0; i < 4; i++)
+			
+			for(int i = 0; i < obj_num; i++)
 			begin
 				one_asteroid[i] <= 0; //each asteroid holds it only pixel addr
 			end
 			//back_addr <= 0;	//initial the back_ground addr
+			read_address <= 0;
 		end
+		
 	end
 
 	  

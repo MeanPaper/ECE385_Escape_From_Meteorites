@@ -1,10 +1,12 @@
-module obstacle(input Reset, frame_clk,
+module obstacle
+				#(parameter object_num = 4)
+				(input Reset, frame_clk,
 				input [9:0] ball_ammo_x, ball_ammo_y, ball_ammo_size,
 				input [9:0]	set_postion_x, set_position_y,
 				output bullet_hit,				
-				output [9:0] object_Size[4], //object size
-				output [9:0] object_X[4], object_Y[4], //object location
-				output obstacle_activate[4]		  //the object is on, this is important
+				output [9:0] object_Size[object_num], //object size
+				output [9:0] object_X[object_num], object_Y[object_num], //object location
+				output obstacle_activate[object_num]		  //the object is on, this is important
 													  //if the object hit the bottom, then
 													  //it will be deactivated
 				);	
@@ -17,14 +19,15 @@ module obstacle(input Reset, frame_clk,
     parameter [9:0] Obj_X_Step=1;      // Step size on the X axis
     parameter [9:0] Obj_Y_Step=1;      // Step size on the Y axis
 	 parameter int speed = 2;
-	 parameter int object_num = 4;
+	 //parameter int object_num = 4;
 	 
-	 logic [9:0] obj_x_pos[4], obj_y_pos[4];
+	 logic [9:0] obj_x_pos[object_num], obj_y_pos[object_num];
+	 logic [4:0] obj_speed[object_num];
 	 logic [9:0] x_motion, y_motion;
 	 //logic obj_act[4];
 	
-	 logic [3:0] all_die;
-	 assign all_die = {obstacle_activate[3],obstacle_activate[2],obstacle_activate[1],obstacle_activate[0]};
+	 //logic [3:0] all_die;
+	 //assign all_die = {obstacle_activate[3],obstacle_activate[2],obstacle_activate[1],obstacle_activate[0]};
 	 //default position, use for testing
 	 always_comb
 	 begin
@@ -33,6 +36,7 @@ module obstacle(input Reset, frame_clk,
 			object_Size[i] = 30;
 			object_X[i] = obj_x_pos[i];
 			object_Y[i] = obj_y_pos[i];
+			obj_speed[i] = speed;			
 			//obstacle_activate[i] = obj_act[i];
 		end
 	 end
@@ -51,7 +55,7 @@ module obstacle(input Reset, frame_clk,
 				obj_y_pos[i] <= i<<3;
 				//obj_act[i] <= 1'b1; //initialize all the enemy
 				obstacle_activate[i] <= 1'b1;
-
+				
 			end
 		end
 		
@@ -76,45 +80,28 @@ module obstacle(input Reset, frame_clk,
 					end
 			end		
 				
-//			for(int i = 0; i < object_num; i++)
-//			begin
-//					//bullet_hit <= 1'b0;
-//				obstacle_activate[i] <= 1'b1;
-//				obj_y_pos[i] <= i<<3;
-//			end
 		
 			for(int i = 0; i < object_num; i++)
 			begin
-			
-//				if(ball_ammo_y < obj_y_pos[i])
-//				begin
-//					bullet_hit <= 1'b0;
-//					//obstacle_activate[i] <= 1'b1;
-//					//obj_y_pos[i] <= i<<3;
-//				end
 				
 				if(obstacle_activate[i]) //obj_act
-//				begin
-//					//small changes changes
-//					if(obj_y_pos[i] > (Obj_Y_Max - object_Size[i]- speed))
-//					begin
-//						obj_x_pos[i] <= 9'd30 + (i*9'd50);
-//						obj_y_pos[i] <= i<<3;
-//						//obstacle_activate[i] <= 1'b0;
-//					end 
-//					else 
+				begin
+					obj_y_pos[i] <=  obj_y_pos[i] + obj_speed[i];
+					if(obj_x_pos[i] > 606)
 					begin
-						obj_y_pos[i] <=  obj_y_pos[i] + speed;
+						obj_x_pos[i] <= set_postion_x; //640
 					end
-					
+				end
 				else
 				//this part is for reactivate the asteroid
 				begin
-					obj_x_pos[i] <= 9'd30 + (i*9'd50); //640
-					obj_y_pos[i] <= 480 + i<<3;
+					if(obj_y_pos[i] > 481)
+						obj_x_pos[i] = set_postion_x;
+					
+					obj_x_pos[i] <= set_postion_x; //640
+					obj_y_pos[i] <= 0;
 					obstacle_activate[i] <= 1'b1;
 				end
-//				end	
 			end
 			
 		end

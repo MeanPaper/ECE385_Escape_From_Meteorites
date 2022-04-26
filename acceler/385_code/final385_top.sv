@@ -215,7 +215,7 @@ assign {Reset_h}=~ (KEY[0]);
 
 //		assign LEDR = {Ball_die,obstacle_activate[0], obstacle_activate[1],
 //							obstacle_activate[2], obstacle_activate[3]};
-		assign LEDR = {Ball_die};
+		assign LEDR = {left_move, right_move ,Ball_die};
 
 // 7-segment displays HEX0-3 show data_x in hexadecimal
 //HexDriver s0 (
@@ -268,11 +268,17 @@ assign {Reset_h}=~ (KEY[0]);
 					);
 	
 	
+	parameter num_obstacle = 8;
+	
+	
 	logic [9:0] Ball_W, Ball_H;
 	logic Ball_die;
+	logic left_move, right_move;
 	
 	//ball module 
-	ball_two b( 	//input
+	ball_two #(.obj_num(num_obstacle)) player //takes in a parameter called num_obstacle
+					
+					( 	//input
 					.Reset(start_screen || game_over), 
 					.frame_clk(VGA_VS),
 					//.data_x,
@@ -289,21 +295,46 @@ assign {Reset_h}=~ (KEY[0]);
 					.BallY(ballysig), 
 					.Ball_W,
 					.Ball_H,
+					.left_move,
+					.right_move,
 					.Ball_die
 	);
 	
 	
-	logic [9:0] object_Size[4], object_X[4], object_Y[4];
-	logic obstacle_activate[4];
+	logic [9:0] object_Size[num_obstacle], object_X[num_obstacle], object_Y[num_obstacle];
+	logic obstacle_activate[num_obstacle];
+	logic [9:0] set_x_pos;
+	logic [2:0] x_speed, y_speed;
+	logic sign;
+//	random_generater rd(	.Clk(MAX10_CLK1_50), 
+//								.Reset(Reset_h),		
+//								.new_obj_x(set_x_pos),	//new position of the objects
+//								);
+								
+//	LFSR_v1	rand_gen(
+//					.Clk(MAX10_CLK1_50), 
+//					.Reset(Reset_h),
+//					.random_position(v)
+//				);
+
+counter_rand    rd (	.Clk(MAX10_CLK1_50), 
+							.Reset(Reset_h),
+							.new_pos(set_x_pos),
+							.x_speed,
+							.y_speed,
+							.sign
+						  );
 	
-	obstacle	obj(   
+	obstacle	#(.object_num(num_obstacle)) //takes in a parameter called num_obstacle
+				obj
+				(   
 					//input
 					.Reset(start_screen || game_over), 
 					.frame_clk(VGA_VS),
 					.ball_ammo_x(bullet_X_out),
 					.ball_ammo_y(bullet_Y_out),
 					.ball_ammo_size(bullet_size),
-					
+					.set_postion_x(set_x_pos),
 					//output
 					.bullet_hit,   // bullet hit the object
 					.object_Size, //object size
@@ -318,7 +349,7 @@ assign {Reset_h}=~ (KEY[0]);
 	bullet	ammo(  	
 					//input
                .bullet_X(ballxsig), //the bullet appears at the tip of the plane 
-					.bullet_Y(ballysig - Ball_H), //this is for the ball location - the ball_size
+					.bullet_Y(ballysig), //this is for the ball location - the ball_size
 					.bullet_hit,               //if bullet hit something then it disappear
                .Reset(start_screen || game_over),                    //reset the bullets
                .frame_clk(VGA_VS),                //clk to control the bullet
@@ -333,13 +364,17 @@ assign {Reset_h}=~ (KEY[0]);
             	);
 					
 	//color mapper module
-	color_mapper	color0(
+	color_mapper #(.obj_num(num_obstacle))
+	
+					color0(
 					.ram_clk(MAX10_CLK1_50),
 					
 					//come from the state machine, used for screen switching 
 					.start_screen,
 					.game_screen,
 					.game_over,
+					.left_motion(left_move),
+					.right_motion(right_move),
 					
 					//x position drawing and y position drawing
 					.DrawX(drawxsig), 

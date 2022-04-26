@@ -16,11 +16,14 @@ module  spriteROM
 );
 
 // mem has width of 3 bits and a total of 400 addresses
-logic [3:0] mem [0:1154];
+logic [3:0] mem [0:3464];
 
 initial
 begin
-	 $readmemh("sprite_bytes/spaceship.txt", mem);
+	//$readmemh("sprite_bytes/spaceship_motion.txt", mem);
+	 $readmemh("sprite_bytes/spaceship.txt", mem, 19'd0, 19'd1154);
+	 $readmemh("sprite_bytes/spaceshipLeft.txt", mem, 19'd1155, 19'd2309); //left motion start at 1155
+	 $readmemh("sprite_bytes/spaceshipRight.txt", mem, 19'd2310, 19'd3464); //right motion start at 2112
 end
 
 
@@ -59,5 +62,11 @@ always_ff @ (posedge Clk) begin
 	data_Out<= mem[read_address];
 end
 
+endmodule
+
+module lelt_motion_rom();
+endmodule
+
+module right_motion_rom();
 endmodule
 
