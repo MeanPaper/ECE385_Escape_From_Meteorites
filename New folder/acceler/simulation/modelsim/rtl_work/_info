@@ -1,0 +1,224 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/ldm18/Desktop/ece385_final_project/acceler/simulation/modelsim
+vball
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1649788064
+!i10b 1
+!s100 A`[5VG6Zz:n9QQNIaE^n83
+I:[3L?d@O;XdlEL[WARo0l1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 ball_sv_unit
+S1
+R0
+w1649784250
+8C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/ball.sv
+FC:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/ball.sv
+Z4 L0 16
+Z5 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z6 !s108 1649788064.000000
+!s107 C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/ball.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code|C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/ball.sv|
+!i113 1
+Z7 o-sv -work work
+Z8 !s92 -sv -work work +incdir+C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code
+Z9 tCvgOpt 0
+vcolor_mapper
+R1
+R2
+!i10b 1
+!s100 B?VYC?e@G>40`XOeoW:AT1
+IY<mA9NbOHjhIJ?4dYnc7Z1
+R3
+!s105 Color_Mapper_sv_unit
+S1
+R0
+w1649781043
+8C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/Color_Mapper.sv
+FC:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/Color_Mapper.sv
+R4
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/Color_Mapper.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code|C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/Color_Mapper.sv|
+!i113 1
+R7
+R8
+R9
+vfinal385_top
+R1
+R2
+!i10b 1
+!s100 F?@E2fL=lE<]=oVIBX>XX3
+IJSb^ZIO2<nZLUQ4`44hO<0
+R3
+!s105 final385_top_sv_unit
+S1
+R0
+w1649786070
+8C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/final385_top.sv
+FC:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/final385_top.sv
+L0 70
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/final385_top.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code|C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/final385_top.sv|
+!i113 1
+R7
+R8
+R9
+vHexDriver
+R1
+R2
+!i10b 1
+!s100 hKBo4zbCRmY3[Ac9JZP;<0
+I`oIjFa=VCJ3zPCiDjLN8g2
+R3
+!s105 HexDriver_sv_unit
+S1
+R0
+Z10 w1647362820
+8C:/Users/ldm18/Desktop/ece385_final_project/acceler/HexDriver.sv
+FC:/Users/ldm18/Desktop/ece385_final_project/acceler/HexDriver.sv
+L0 1
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/ldm18/Desktop/ece385_final_project/acceler/HexDriver.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/ece385_final_project/acceler|C:/Users/ldm18/Desktop/ece385_final_project/acceler/HexDriver.sv|
+!i113 1
+R7
+!s92 -sv -work work +incdir+C:/Users/ldm18/Desktop/ece385_final_project/acceler
+R9
+n@hex@driver
+vip
+Z11 !s110 1649788062
+!i10b 1
+!s100 NHnED;44TdLeo;7D]ck[D3
+IV28P>ILD`EnYUjY@QgPl@1
+R3
+R0
+w1649569187
+8C:/Users/ldm18/Desktop/ece385_final_project/acceler/ip.v
+FC:/Users/ldm18/Desktop/ece385_final_project/acceler/ip.v
+L0 39
+R5
+r1
+!s85 0
+31
+Z12 !s108 1649788062.000000
+!s107 C:/Users/ldm18/Desktop/ece385_final_project/acceler/ip.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ldm18/Desktop/ece385_final_project/acceler|C:/Users/ldm18/Desktop/ece385_final_project/acceler/ip.v|
+!i113 1
+Z13 o-vlog01compat -work work
+Z14 !s92 -vlog01compat -work work +incdir+C:/Users/ldm18/Desktop/ece385_final_project/acceler
+R9
+vip_altpll
+R11
+!i10b 1
+!s100 WgE;]fYlMRB2NO0O`O=ch0
+IQDb^JoP59cTb6lahQ`0ba0
+R3
+R0
+w1649569502
+8C:/Users/ldm18/Desktop/ece385_final_project/acceler/db/ip_altpll.v
+FC:/Users/ldm18/Desktop/ece385_final_project/acceler/db/ip_altpll.v
+L0 30
+R5
+r1
+!s85 0
+31
+R12
+!s107 C:/Users/ldm18/Desktop/ece385_final_project/acceler/db/ip_altpll.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ldm18/Desktop/ece385_final_project/acceler/db|C:/Users/ldm18/Desktop/ece385_final_project/acceler/db/ip_altpll.v|
+!i113 1
+R13
+!s92 -vlog01compat -work work +incdir+C:/Users/ldm18/Desktop/ece385_final_project/acceler/db
+R9
+vspi_control
+R11
+!i10b 1
+!s100 ]6==PPJ:[TSJoiXF_ln451
+ITC_ei;EQ=Si6S7zlZFABz3
+R3
+R0
+w1649568627
+8C:/Users/ldm18/Desktop/ece385_final_project/acceler/spi_control.v
+FC:/Users/ldm18/Desktop/ece385_final_project/acceler/spi_control.v
+L0 1
+R5
+r1
+!s85 0
+31
+R12
+!s107 C:/Users/ldm18/Desktop/ece385_final_project/acceler/spi_control.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ldm18/Desktop/ece385_final_project/acceler|C:/Users/ldm18/Desktop/ece385_final_project/acceler/spi_control.v|
+!i113 1
+R13
+R14
+R9
+vspi_serdes
+R11
+!i10b 1
+!s100 lA;040j]dJdRDEM=lUz_d2
+I]a8<cJ0?31R@bdSoLcV`d1
+R3
+R0
+w1649568670
+8C:/Users/ldm18/Desktop/ece385_final_project/acceler/spi_serdes.v
+FC:/Users/ldm18/Desktop/ece385_final_project/acceler/spi_serdes.v
+L0 1
+R5
+r1
+!s85 0
+31
+R12
+!s107 C:/Users/ldm18/Desktop/ece385_final_project/acceler/spi_serdes.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/ldm18/Desktop/ece385_final_project/acceler|C:/Users/ldm18/Desktop/ece385_final_project/acceler/spi_serdes.v|
+!i113 1
+R13
+R14
+R9
+vvga_controller
+R1
+R2
+!i10b 1
+!s100 PJJOcFccdZOKRcczIX[X?3
+Ic<WZhSe]CMX>UAJ@K=2b70
+R3
+!s105 VGA_controller_sv_unit
+S1
+R0
+R10
+8C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/VGA_controller.sv
+FC:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/VGA_controller.sv
+L0 25
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/VGA_controller.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code|C:/Users/ldm18/Desktop/ece385_final_project/acceler/385_code/VGA_controller.sv|
+!i113 1
+R7
+R8
+R9
