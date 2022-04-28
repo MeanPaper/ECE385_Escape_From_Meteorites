@@ -4,6 +4,8 @@
 //Revised October 2020 - Zuofu Cheng
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include "system.h"
 #include "altera_avalon_spi.h"
 #include "altera_avalon_spi_regs.h"
@@ -145,12 +147,29 @@ int main() {
 	MAX3421E_init();
 	printf("initializing USB...\n");
 	USB_init();
+
+	int seed = 4;
+	//RANDOM_NUMBER_BASE
+	//volatile unsigned int * random_num = (unsigned int *) 0x170;
 	while (1) {
+
 		printf(".");
 		MAX3421E_Task();
 		//usleep(1000);
 		USB_Task();
-		//usleep (500000);
+
+		if(seed > 1000){
+			seed = 1;
+		}
+		else{
+			++seed;
+		}
+		srand(seed);
+		unsigned int temp = rand() >> 16; //<< 15 | srand(seed);
+		printf("%d\n", temp);
+		IOWR_ALTERA_AVALON_PIO_DATA(0x170, temp);
+
+
 		if (GetUsbTaskState() == USB_STATE_RUNNING) {
 			if (!runningdebugflag) {
 				runningdebugflag = 1;

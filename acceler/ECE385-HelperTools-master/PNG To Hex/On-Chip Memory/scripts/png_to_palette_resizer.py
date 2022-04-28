@@ -15,8 +15,11 @@ new_w, new_h = map(int, input("What's the new height x width? Like 28 28. ").spl
 #this is the palette for the asteroid
 #palette_hex = ['0xFF00FF','0x313129','0x5A5A52', '0x848C73', '0xA5AD94']  
 
+#this is the palette for the text
+palette_hex = ['0x000000','0xF8F8F8','0x780000','0xB00000','0xF03000','0xF89018','0xF86800','0xF8D030']
+
 #this is the palette for the spaceship and its animations
-palette_hex = ['0xFF00FF','0x000000','0xFFFFFF', '0x313129', '0x5A5A52', '0x848C73', '0x840000' , '0xFF0000', '0x848400', '0xFFFF00', '0xA5AD94', '0x0084FF', '0x0042BD']    
+#palette_hex = ['0xFF00FF','0x000000','0xFFFFFF', '0x313129', '0x5A5A52', '0x848C73', '0x840000' , '0xFF0000', '0x848400', '0xFFFF00', '0xA5AD94', '0x0084FF', '0x0042BD']    
 
 palette_rgb = [hex_to_rgb(color) for color in palette_hex]
 pixel_tree = KDTree(palette_rgb)

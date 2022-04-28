@@ -23,7 +23,8 @@ module final_project_platform (
 	switch_export,
 	usb_gpx_export,
 	usb_irq_export,
-	usb_rst_export);	
+	usb_rst_export,
+	random_num_export);	
 
 	input		clk_clk;
 	output	[15:0]	hex_digits_export;
@@ -49,4 +50,5 @@ module final_project_platform (
 	input		usb_gpx_export;
 	input		usb_irq_export;
 	output		usb_rst_export;
+	output	[31:0]	random_num_export;
 endmodule

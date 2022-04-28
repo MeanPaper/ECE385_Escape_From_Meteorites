@@ -10,6 +10,15 @@ module gameFSM(input Clk, Reset, //reset the game and run the game: shouold be c
 
 //probably need more state for everything
 enum logic [3:0] {START, IN_GAME, GAME_END, HOLD, HOLD2} gameState, next_state;
+//game state
+
+/*
+	START: the start of the game
+	IN_GAME: player playing the game
+	GAME_END: game_over
+	HOLD: a state prevent user keep holding a key to repeat the restart
+	HOLD2: force the player to hit the key twice to restart the game
+*/
 
 always_ff @ (posedge Clk)
 begin

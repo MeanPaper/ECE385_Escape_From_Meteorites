@@ -145,15 +145,6 @@ asteroid_ROM	asteroid(
 						.data_Out(asteroid_pixel)
 					);
 			
-//color_rom		RGB(
-//					.addr(data_Out),
-//					.data(rgb)
-//);	
-	  
-	  
-	  
-	 //logic [7:0]  R, G, B;
-	 //logic[9:0] back_row;
 	
     always_comb
     begin:Ball_on_proc
@@ -233,12 +224,36 @@ asteroid_ROM	asteroid(
 				Red <= 8'hff; 
 				Green <= 8'hff;
 				Blue  <= 8'hff;
+				
+				//use the background
+				
+				/*
+				if(text_flash)
+				begin
+					text_address <= text_address + 1;
+					Red <= text_color[text_data][23:16];
+					Green <= text_color[text_data][15:8];
+					Blue <= text_color[text_data][7:0];
+				end
+				*/
+				
 			end
 			else if(game_over)
 			begin
 				Red <= 8'hff; 
 				Green <= 8'h00;
 				Blue  <= 8'hff;
+				
+				//use the background
+				/*
+				if(text_flash)
+				begin
+					text_address <= text_address + 1;
+					Red <= text_color[text_data][23:16];
+					Green <= text_color[text_data][15:8];
+					Blue <= text_color[text_data][7:0];
+				end
+				*/
 			end
 			
 			else if(game_screen)	//only do the drawing when the game is on.
@@ -299,11 +314,12 @@ asteroid_ROM	asteroid(
 		//leave the vertical sync outside of screen logics
 		if(!vs) //vertical sync, this is for the plane
 		begin
+		
+			read_address <= 0;
 			if(left_motion)
 						read_address <= 1155;
 			else if(right_motion)
 						read_address <= 2310;
-
 			
 			
 			for(int i = 0; i < obj_num; i++)
@@ -311,11 +327,14 @@ asteroid_ROM	asteroid(
 				one_asteroid[i] <= 0; //each asteroid holds it only pixel addr
 			end
 			//back_addr <= 0;	//initial the back_ground addr
-			read_address <= 0;
+			
+			//text_flash <= ~text_flash;
+			//text_address <= 0;
 		end
 		
 	end
 
-	  
+	logic text_flash;
+	
 	  
 endmodule

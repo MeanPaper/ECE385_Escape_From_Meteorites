@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(10M50DAF484) Path("C:/Users/ldm18/Desktop/New folder/acceler/") File("385_acc.sof") MfrSpec(OpMask(1));
+		Device PartName(10M50DAF484) Path("C:/Users/ldm18/Desktop/ece385_final_project/acceler/") File("385_acc.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

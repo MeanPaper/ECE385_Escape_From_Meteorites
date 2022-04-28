@@ -64,9 +64,26 @@ end
 
 endmodule
 
-module lelt_motion_rom();
-endmodule
 
-module right_motion_rom();
+//include all the text in the game
+module text_rom(
+		input Clk,
+		input [18:0] read_address,
+		output logic [2:0] data_Out
+		);
+		
+		logic [2:0] mem [1];
+		
+		initial
+		begin
+		end
+		
+		
+		always_ff @ (posedge Clk)
+		begin
+			data_Out <= mem[read_address];
+		end
+		
+		
+		
 endmodule
-

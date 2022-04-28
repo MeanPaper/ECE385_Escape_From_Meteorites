@@ -20,15 +20,12 @@ module bullet(
     logic [9:0] bullet_x_pos, bullet_y_pos, y_motion;
 	 //logic [9:0] x_motion; x is never used 
     
-	 
     always_comb
     begin
         bullet_X_out = bullet_x_pos;
         bullet_Y_out = bullet_y_pos;
         bullet_size  = bullet_S;
     end
-
-    
 
     always_ff @ (posedge Reset or posedge frame_clk)
     begin
@@ -71,8 +68,6 @@ module bullet(
 
 					//if the bullet hit something
 					//or the bullet is out of bounds
-
-
 					bullet_y_pos <= bullet_y_pos + y_motion;
 					
 				end

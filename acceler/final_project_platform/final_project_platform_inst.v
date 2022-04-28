@@ -22,6 +22,7 @@
 		.switch_export                  (<connected-to-switch_export>),                  //                  switch.export
 		.usb_gpx_export                 (<connected-to-usb_gpx_export>),                 //                 usb_gpx.export
 		.usb_irq_export                 (<connected-to-usb_irq_export>),                 //                 usb_irq.export
-		.usb_rst_export                 (<connected-to-usb_rst_export>)                  //                 usb_rst.export
+		.usb_rst_export                 (<connected-to-usb_rst_export>),                 //                 usb_rst.export
+		.random_num_export              (<connected-to-random_num_export>)               //              random_num.export
 	);
 

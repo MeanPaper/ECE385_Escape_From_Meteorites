@@ -23,7 +23,8 @@
 			switch_export                  : in    std_logic_vector(9 downto 0)  := (others => 'X'); -- export
 			usb_gpx_export                 : in    std_logic                     := 'X';             -- export
 			usb_irq_export                 : in    std_logic                     := 'X';             -- export
-			usb_rst_export                 : out   std_logic                                         -- export
+			usb_rst_export                 : out   std_logic;                                        -- export
+			random_num_export              : out   std_logic_vector(31 downto 0)                     -- export
 		);
 	end component final_project_platform;
 
@@ -52,6 +53,7 @@
 			switch_export                  => CONNECTED_TO_switch_export,                  --                  switch.export
 			usb_gpx_export                 => CONNECTED_TO_usb_gpx_export,                 --                 usb_gpx.export
 			usb_irq_export                 => CONNECTED_TO_usb_irq_export,                 --                 usb_irq.export
-			usb_rst_export                 => CONNECTED_TO_usb_rst_export                  --                 usb_rst.export
+			usb_rst_export                 => CONNECTED_TO_usb_rst_export,                 --                 usb_rst.export
+			random_num_export              => CONNECTED_TO_random_num_export               --              random_num.export
 		);
 
