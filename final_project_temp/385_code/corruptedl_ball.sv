@@ -12,11 +12,8 @@
 //    UIUC ECE Department                                                --
 //-------------------------------------------------------------------------
 
-//Modified by Dongming Liu
-//so that the spaceship can behave correctly
-//
-//this is fixed the newest version
-//updated version
+
+//this is the module for spaceship
 module  ball_two
 					#(parameter obj_num = 4)
 					( input Reset, frame_clk,
@@ -33,8 +30,8 @@ module  ball_two
     parameter [9:0] Ball_X_Center=320;  // Center position on the X axis
     parameter [9:0] Ball_Y_Center=240;  // Center position on the Y axis
     parameter [9:0] Ball_X_Min= 9 ;       // Leftmost point on the X axis
-    parameter [9:0] Ball_X_Max=630;     // Rightmost point on the X axis
-    parameter [9:0] Ball_Y_Min=6;       // Topmost point on the Y axis
+    parameter [9:0] Ball_X_Max= 630;     // Rightmost point on the X axis
+    parameter [9:0] Ball_Y_Min= 32;       // Topmost point on the Y axis
     parameter [9:0] Ball_Y_Max=473;     // Bottommost point on the Y axis
     parameter [9:0] Ball_X_Step=1;      // Step size on the X axis
     parameter [9:0] Ball_Y_Step=1;      // Step size on the Y axis
@@ -173,9 +170,6 @@ module  ball_two
 					Ball_X_Motion <= 10'd0; //Ball_X_Step;
 					
 					//to make the ball stop at fix position
-					//do not need to fix the speed
-					//Ball_Y_Pos <= Ball_Y_Pos;
-					//Ball_X_Pos <= Ball_X_Pos
 					Ball_Y_Pos <= Ball_Y_bot;
 					Ball_X_Pos <= Ball_X_Center;
 				end
@@ -189,6 +183,9 @@ module  ball_two
     assign BallY = Ball_Y_Pos;
    
 //    assign BallS = Ball_Size;
-    
+//do not need to fix the speed
+//Ball_Y_Pos <= Ball_Y_Pos;
+//Ball_X_Pos <= Ball_X_Pos
+
 
 endmodule

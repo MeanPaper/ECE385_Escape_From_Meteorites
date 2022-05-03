@@ -1,14 +1,17 @@
 module obstacle
 				#(parameter object_num = 4)
-				(input Reset, frame_clk,
+				(input frame_clk,
+				input keycode,
+				input game_over, start_screen,
 				input [9:0] ball_ammo_x, ball_ammo_y, ball_ammo_size,
-				input [9:0]	set_position_x, set_position_x_2, set_position_x_3,
+				input [9:0]	set_position_x, 
+				//set_position_x_2, set_position_x_3,
 				input [4:0] x_speed, y_speed,	//
 				input sign,
 				output bullet_hit,				
 				output [9:0] object_Size[object_num], //object size
 				output [9:0] object_X[object_num], object_Y[object_num], //object location
-				output obstacle_activate[object_num],		  //the object is on, this is important
+				output obstacle_activate[object_num],		  //the object is on
 				output [23:0] score
 													  //if the object hit the bottom, then
 													  //it will be deactivated
@@ -45,18 +48,19 @@ module obstacle
 		end
 	 end
 	 
+	 logic Reset;
+	 assign Reset = game_over || start_screen;
 	 
 	 
 	 always_ff @(posedge Reset or posedge frame_clk)
 	 begin
+	 
+
 		if(Reset)	//the reset signal is currently related to the switch
 		begin		//it need to be modified so that it is being reset due to the state
-			score <= 0;
 			for(int i = 0; i < object_num; i++)
 			begin
-				obj_x_pos[i] <= 9'd20 + i*(9'd40);
-				
-				
+				obj_x_pos[i] <= 9'd10 + i*(9'd35);
 //				if(i > (object_num >> 1))
 //				begin
 //					obj_y_pos[i] <= 30*i - 30*(object_num - i);
@@ -65,12 +69,16 @@ module obstacle
 				//begin
 				obj_y_pos[i] <= 20*i;
 				//end
-				
 				obj_y_speed[i] <= 2;			
 				obj_x_speed[i] <= 0;
 				
 				//obj_act[i] <= 1'b1; //initialize all the enemy
 				obstacle_activate[i] <= 1'b1;
+				
+				if(start_screen || (game_over && keycode))
+				begin
+					score <= 0;
+				end
 				
 			end
 		end
@@ -90,7 +98,7 @@ module obstacle
 					begin
 						bullet_hit <= 1'b1;
 						obstacle_activate[i] <= 1'b0;
-						score <= score + 1;
+						score <= score + 1;		
 					end
 			end		
 				
@@ -118,30 +126,6 @@ module obstacle
 							obj_x_speed[i] <= -x_speed[0];
 						else
 							obj_x_speed[i] <= x_speed[0];
-							
-//						if(sign)
-
-						//begin
-//							if(set_position_x > 300) 
-//							begin
-//								obj_x_speed[i] <= 0 - x_speed;
-//							end
-//							else
-//							begin
-//								obj_x_speed[i] <= 0 + x_speed;
-//							end
-						//end
-						//else
-						//begin
-//							if(obj_x_pos[i] > 450)
-//							begin
-//								obj_x_speed[i] <= 0 - x_speed;
-//							end
-//							else
-//							begin
-//								obj_x_speed[i] <= 0 + x_speed;
-//							end
-//						end
 					end
 
 					//if active object pass the y limit
@@ -159,36 +143,6 @@ module obstacle
 							obj_x_speed[i] <= -x_speed[0];
 						else
 							obj_x_speed[i] <= x_speed[0];
-//						if(sign)
-//						begin
-//							if(obj_x_pos[i] > 300) 
-//							begin
-//								obj_x_speed[i] <= 0 - x_speed;
-//							end
-//							else
-//							begin
-//								obj_x_speed[i] <= 0 + x_speed;
-//							end
-//						end
-//						else
-//						begin
-//							if(obj_x_pos[i] > 450)
-//							begin
-//								obj_x_speed[i] <= 0 - x_speed;
-//							end
-//							else
-//							begin
-//								obj_x_speed[i] <= 0 + x_speed;
-//							end
-//						end
-//							if(set_position_x > 300) 
-//							begin
-//								obj_x_speed[i] <= 0 - x_speed;
-//							end
-//							else
-//							begin
-//								obj_x_speed[i] <= 0 + x_speed;
-//							end
 							
 					end
 	
@@ -216,7 +170,17 @@ module obstacle
 						else
 							obj_x_speed[i] <= x_speed[0];
 							
-						
+				end
+			end
+			
+		end
+		
+
+	 end
+
+
+endmodule
+
 //						if(set_position_x > 300) 
 //						begin
 //							obj_x_speed[i] <= 0 - x_speed;
@@ -254,16 +218,35 @@ module obstacle
 //								obj_x_speed[i] <= 0 + x_speed;
 //							end
 //						end
-						
-				end
-			end
-			
-		end
-		
 
-	 end
-
-
-endmodule
-
+//						if(sign)
+//						begin
+//							if(obj_x_pos[i] > 300) 
+//							begin
+//								obj_x_speed[i] <= 0 - x_speed;
+//							end
+//							else
+//							begin
+//								obj_x_speed[i] <= 0 + x_speed;
+//							end
+//						end
+//						else
+//						begin
+//							if(obj_x_pos[i] > 450)
+//							begin
+//								obj_x_speed[i] <= 0 - x_speed;
+//							end
+//							else
+//							begin
+//								obj_x_speed[i] <= 0 + x_speed;
+//							end
+//						end
+//							if(set_position_x > 300) 
+//							begin
+//								obj_x_speed[i] <= 0 - x_speed;
+//							end
+//							else
+//							begin
+//								obj_x_speed[i] <= 0 + x_speed;
+//							end
 

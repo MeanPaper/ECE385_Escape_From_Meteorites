@@ -1,18 +1,17 @@
 module bullet(  
+					input game_over, start_screen,
                 input [9:0] bullet_X, bullet_Y, //this is for the ball location - the ball_size
                 input bullet_hit,               //if bullet hit something then it disappear
-                
                 input Reset,                    //reset the bullets
                 input frame_clk,                //clk to control the bullet
 
                 input [24:0] space_key,          //space key is hit
 
                 output bullet_active,           //the bullet is still active
-                output [9:0] bullet_X_out, bullet_Y_out, bullet_size
-
+                output [9:0] bullet_X_out, bullet_Y_out, bullet_size//,
             );
     parameter [9:0] bullet_X_Min=3;       // Leftmost point on the X axis
-    parameter [9:0] bullet_Y_Min= 15;       // Topmost point on the Y axis
+    parameter [9:0] bullet_Y_Min= 30;       // Topmost point on the Y axis
     parameter [9:0] bullet_S = 3;      // bullet size
     parameter [9:0] bullet_speed = 8;
 
@@ -36,11 +35,11 @@ module bullet(
             //x_motion <= 10'd0;
 				bullet_active <= 1'b0;
             y_motion <= 10'd0;
+				
         end
         else
         begin
-			
-				if( bullet_hit || bullet_y_pos < (bullet_Y_Min + (bullet_speed >> 2) + bullet_size ))
+				if( bullet_hit || bullet_y_pos < (bullet_Y_Min + bullet_speed[3:2] + bullet_size ))
 				begin
 					bullet_x_pos <= bullet_X;
 					bullet_y_pos <= bullet_Y;

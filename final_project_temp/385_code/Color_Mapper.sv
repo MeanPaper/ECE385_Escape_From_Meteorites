@@ -14,13 +14,18 @@
 
 
 module  color_mapper 
-							#(parameter obj_num = 4)
+							#(parameter obj_num = 4, parameter score_num = 3)
 							
 							( 	input	[9:0] 	BallX, BallY, DrawX, DrawY, BallWidth, BallHeight,
+								
+								input [3:0]  	score_display[score_num], //this for displaying the score
+								
 								input 	left_motion, right_motion, //use for right and left motion
 								input 	[9:0]	Obj_X[obj_num], Obj_Y[obj_num], Obj_Size[obj_num],
 								input 	Obj_act[obj_num], //activation of the objects
-								input 	vs,
+								
+								//horizontal sync is used to reset something
+								input 	vs, Reset, hs,
 								input 	[9:0]	bullet_x, bullet_y,	bullet_size,	//the postion of x and y as well as the size
 								input			bullet_activate,	  
 								input 		ball_activate,
@@ -42,7 +47,9 @@ module  color_mapper
 	parameter text_height = 21;
 	parameter start_text_x = 320;
 	parameter start_text_y = 240;
-	//
+	parameter decimal_col_count = 13; //col count must be less then 14 because it goes from 0 to 13
+	parameter rows = 23; //row count must be less then 23 it goes from 0 to 22
+
    
 	//palette for the color of the spaceship
 	parameter [0:ADDR_WIDTH-1] [DATA_WIDTH-1:0] ROM = {
@@ -79,8 +86,10 @@ module  color_mapper
 			24'h48107F,
 			24'hE0BBFF,
 			24'h00186A};
-			
-	parameter [0:7] [DATA_WIDTH-1:0] text_color = {24'h000000, 24'hF8F8F8, 24'h780000, 24'hB00000, 24'hF03000, 24'hF89018, 24'hF86800, 24'hF8D030};
+	
+	//the text color is used by all the in game text
+	parameter [0:7] [DATA_WIDTH-1:0] text_color = {24'h000000, 24'hF8F8F8, 24'h780000, 24'hB00000, 24'hF03000, 24'hF89018, 24'hF86800, 24'hF0D030};
+	
 	parameter [0:4] [DATA_WIDTH-1:0] asteroid_Rom = {24'hFF00FF, 24'h313129, 24'h5A5A52, 24'h848C73, 24'hA5AD94};
  /* Old Ball: Generated square box by checking if the current pixel is within a square of length
     2*Ball_Size, centered at (BallX, BallY).  Note that this requires unsigned comparisons.
@@ -149,7 +158,9 @@ asteroid_ROM	asteroid(
 						.Clk(ram_clk), //please use the 50MHz //small change
 						.data_Out(asteroid_pixel)
 					);
-// text rom start here
+
+					
+// Start text rom start here
 	logic [18:0] text_addr;
 	logic [3:0] text_pixel;
 text_Rom 	screenText(
@@ -159,14 +170,70 @@ text_Rom 	screenText(
 					.data_Out(text_pixel)
 							);
 	
-	
+//game over text ROM
+	logic [18:0] game_over_addr;
+	logic [3:0] over_pixel;
+text_Rom_2	gameOverText(
+					.we(1'b0),
+					.read_address(game_over_addr),
+					.Clk(ram_clk), 
+					.data_Out(over_pixel)
+							);
+							
+//this provide the digit data of the score
+//digit data
+
+logic [18:0] digit_addr;
+logic [3:0] digit_pixel;			
+decimal_digit_rom	digit_rom (
+					.read_address(digit_addr),
+					.we(1'b0), 
+					.Clk(ram_clk),
+					.data_Out(digit_pixel)
+					);
+
 	 logic start_text_on;
+	 logic game_over_on;
+	
+	 logic [9:0] scroll;
+	
+	 logic score_on;
+	 logic score_center_on;
+	 
+	 logic [6:0] score_length;
+	 assign score_length = (score_num * 14); //only support to 6 digit score
+	 logic [9:0] score_center_diff;
+	 assign score_center_diff = 320 - (score_length >> 1);
+	 //logic [4:0] row_count; //the row count is 22 but there are 23 row
+	 logic [3:0] col_count;
+	 logic [2:0] digit_count;
+	
+	
 	
     always_comb
     begin:Ball_on_proc
 	 
-	 
-       if(DrawX >= 106 && DrawX <= 535 && DrawY >= 240 && DrawY <= 261) //draw the text
+		 //determine the game score text
+		 if(score_center_diff < DrawX && DrawX <= score_center_diff + score_length && 158 < DrawY && DrawY <= 180 )
+		 begin
+			score_center_on = 1'b1;
+		 end
+		 else
+		 begin
+			score_center_on = 1'b0;
+		 end
+		
+		 if(4 < DrawX && DrawX <= 4 + score_length && 4 < DrawY && DrawY <= 26 )
+		 begin
+			score_on = 1'b1;
+		 end
+		 else
+		 begin
+			score_on = 1'b0;
+		 end
+		 
+		 //game start text
+		 if(DrawX >= 106 && DrawX <=534 && DrawY >= 240 && DrawY <= 261) //draw the text
 		 begin
 			start_text_on = 1'b1;
 		 end
@@ -174,19 +241,30 @@ text_Rom 	screenText(
 		 begin
 			start_text_on = 1'b0;
 		 end
+
+		 //game over text
+		 if(DrawX >= 225 && DrawX <= 415 && DrawY >= 100 && DrawY <= 121)
+		 begin
+			game_over_on = 1'b1;
+		 end
+		 else
+		 begin
+			game_over_on = 1'b0;
+		 end
 		 
-		 
-		 
+		 //draw the spaceship
 		 if ((DistX >= -17) && (DistX <= 17) && (DistY >= -16) && (DistY <= 16)) 
             ball_on = 1'b1;
         else 
             ball_on = 1'b0;
-
+		
+		//draw the bullet of the spaceship
 		if ( ( bulletX * bulletX + bulletY * bulletY) <= (bulletS*bulletS) && bullet_activate)
 			bullet_on = 1'b1;
 		else
 			bullet_on = 1'b0;
 
+		//for box on
 		for(int i = 0; i < obj_num; i++)
 		begin
 			if (Obj_act[i] 	//only draw the box if the object is active 
@@ -203,6 +281,11 @@ text_Rom 	screenText(
 		 back_col = DrawX % 160;
 		 index = DrawY * 160 + back_col;
 		 
+		 //scrolling logic
+//		 case(game_screen)
+//			1'b0: index = DrawY * 160 + back_col;
+//			1'b1: index = (DrawY - scroll) * 160 + back_col;
+//		 endcase
 		 
 		 
 		 //this will deal will all the coloring fpr background
@@ -226,14 +309,39 @@ text_Rom 	screenText(
 //		 end
 		 
     end 
+	 
+	logic [18:0] score_digit_addr[score_num]; //keep track of the addr of the digit
 	  
 	 //if the loop doesn't work then delete the loops
-	  
+	logic [5:0] text_flash;
+	always_ff @ (posedge vs or posedge Reset)
+	begin
+		if(Reset)
+		begin
+			text_flash <= 0;
+			
+			//enable scrolling
+			//scroll <= 0;
+		end
+		else
+		begin
+			text_flash <= text_flash + 1;
+			
+			
+//			if(scroll != 480)//enable scrolling
+//				scroll <= scroll + 1;
+//			else
+//				scroll <= 0;
+//				
+		end
+		
+	end
 	
 	 //handling color drawing, but this is only one color
 	 //in future, we need ram to store the data to be drawn
 	always_ff @(posedge pixel_clk)
 	begin:RGB_Display
+
 		if(!blank) 			//blank and other draw signal should be in the same if else block
 		begin					//other check conidition should not change the structure of this if else block
 			Red <= 8'h0;
@@ -256,29 +364,23 @@ text_Rom 	screenText(
 				Blue <= Back_ROM[back_data][7:0];
 				
 				//use the background
-				
-				if(start_text_on)
+				if(text_flash > 20)
 				begin
-					if(text_pixel)
+					if(start_text_on)
 					begin
-//						Red <= 8'h0;
-//						Blue <= 8'h0;
-//						Green <= 8'h0;
-						//do text here
-						Red <= text_color[text_pixel][23:16];
-						Green <= text_color[text_pixel][15:8];
-						Blue <= text_color[text_pixel][7:0];
+						if(text_pixel)
+						begin
+	//						Red <= 8'h0;
+	//						Blue <= 8'h0;
+	//						Green <= 8'h0;
+							//do text here
+							Red <= text_color[text_pixel][23:16];
+							Green <= text_color[text_pixel][15:8];
+							Blue <= text_color[text_pixel][7:0];
+						end
+						text_addr <= text_addr + 1;
 					end
 				end
-				/*
-				if(text_flash)
-				begin
-					text_address <= text_address + 1;
-					Red <= text_color[text_data][23:16];
-					Green <= text_color[text_data][15:8];
-					Blue <= text_color[text_data][7:0];
-				end
-				*/
 				
 			end
 			else if(game_over)
@@ -287,16 +389,65 @@ text_Rom 	screenText(
 				Green <= Back_ROM[back_data][15:8];
 				Blue <= Back_ROM[back_data][7:0];
 				
-				//use the background
-				/*
-				if(text_flash)
+				if(game_over_on)
 				begin
-					text_address <= text_address + 1;
-					Red <= text_color[text_data][23:16];
-					Green <= text_color[text_data][15:8];
-					Blue <= text_color[text_data][7:0];
+					if(over_pixel)
+					begin
+						Red <= text_color[over_pixel][23:16];
+						Green <= text_color[over_pixel][15:8];
+						Blue <= text_color[over_pixel][7:0];
+					end
+					game_over_addr <= game_over_addr + 1;
 				end
-				*/
+				
+				
+				//the score should display at the center
+				if(score_center_on)
+				begin
+					digit_addr <= score_digit_addr[digit_count]; //direct the data to the memory
+					
+					if(digit_pixel)
+					begin
+
+						Red <= text_color[digit_pixel][23:16];
+						Blue <= text_color[digit_pixel][15:8];
+						Green <= text_color[digit_pixel][7:0];
+//						Red <= 8'hff;
+//						Blue <= 8'hff;
+//						Green <= 8'hff;
+					end
+					score_digit_addr[digit_count] <= score_digit_addr[digit_count] + 1; //walk through the address
+					
+					if(col_count >= 13)
+					begin
+						col_count <= 0;
+						digit_count <= digit_count + 1;
+					end
+					else
+					begin
+						col_count <= col_count + 1;
+					end
+				end
+				
+				//dealing with text flashing
+				if(text_flash > 20)
+				begin
+					if(start_text_on)
+					begin
+						if(text_pixel)
+						begin
+	//						Red <= 8'h0;
+	//						Blue <= 8'h0;
+	//						Green <= 8'h0;
+							//do text here
+							Red <= text_color[text_pixel][23:16];
+							Green <= text_color[text_pixel][15:8];
+							Blue <= text_color[text_pixel][7:0];
+						end
+						text_addr <= text_addr + 1;
+					end
+				end
+				
 			end
 			
 			else if(game_screen)	//only do the drawing when the game is on.
@@ -314,13 +465,13 @@ text_Rom 	screenText(
 //						Blue <= 8'h00;
 						
 						asteroid_addr <= one_asteroid[i]; //get the current asteroid pixel addr info
+						one_asteroid[i] <= one_asteroid[i] + 1; //address increment
 						if(asteroid_pixel) //ignore the pink transparency
 						begin
 							Red <= asteroid_Rom[asteroid_pixel][23:16];
 							Green <= asteroid_Rom[asteroid_pixel][15:8]; 
 							Blue <= asteroid_Rom[asteroid_pixel][7:0];
 						end
-						one_asteroid[i] <= one_asteroid[i] + 1; //address increment
 						
 						
 					end
@@ -348,17 +499,105 @@ text_Rom 	screenText(
 					end
 					read_address <= read_address + 1; //read from the rom
 				end
-				
-			 end
-			 
-
+//				if(score_on)
+//				begin
+//					Red <= 8'hff;//8'hff;
+//					Green <= 8'hff;//8'h55;
+//					Blue <= 8'hff;//8'h00;
+//				end
+				if(score_on) //if the score is displaying
+				begin
+					digit_addr <= score_digit_addr[digit_count]; //direct the data to the memory
+					
+					if(digit_pixel)
+					begin
+						Red <= text_color[digit_pixel][23:16];
+						Blue <= text_color[digit_pixel][15:8];
+						Green <= text_color[digit_pixel][7:0];
+//						Red <= 8'hff;
+//						Blue <= 8'hff;
+//						Green <= 8'hff;
+					end
+					score_digit_addr[digit_count] <= score_digit_addr[digit_count] + 1; //walk through the address
+					
+					if(col_count >= 13)
+					begin
+						col_count <= 0;
+						digit_count <= digit_count + 1;
+					end
+					else
+					begin
+						col_count <= col_count + 1;
+					end
+					//do color later or color first
+				end
+			end			
+		end
+		
+		if(!hs)
+		begin
+			digit_count <= 0;
+			col_count <= 0;
 		end
 		
 		//leave the vertical sync outside of screen logics
 		if(!vs) //vertical sync, this is for the plane
 		begin
-			text_addr <= 0;
+			game_over_addr <= 0;
 			read_address <= 0;
+			text_addr <= 0;
+			//row_count <= 0; //row count will clear after each frame
+			 
+			//assign the coresponding digit addr to the score digit addr
+			for(int i = 0; i < score_num; i++)
+			begin
+				//score_digit_addr[i] <= 322 * score_display[i];
+				case(score_display[i])
+					4'h0: 
+						begin
+							score_digit_addr[i] <= 0;
+						end
+					4'h1:
+						begin
+							score_digit_addr[i] <= 322;
+						end
+					4'h2: 
+						begin
+							score_digit_addr[i] <= 644 ;
+						end
+					4'h3: 
+						begin 
+							score_digit_addr[i] <= 966 ;
+						end
+					4'h4:
+						begin
+							score_digit_addr[i] <= 1288;
+						end
+					4'h5: 
+						begin
+							score_digit_addr[i] <= 1610;
+						end
+					4'h6:
+						begin
+							score_digit_addr[i] <= 1932;
+						end
+					4'h7:
+						begin
+							score_digit_addr[i] <= 2254;
+						end
+					4'h8: 
+						begin
+							score_digit_addr[i] <= 2576;
+						end
+					4'h9:
+						begin
+							score_digit_addr[i] <= 2898;
+						end
+				endcase
+			end
+			
+			
+			
 			if(left_motion)
 						read_address <= 1155;
 			else if(right_motion)
@@ -371,12 +610,10 @@ text_Rom 	screenText(
 			end
 			//back_addr <= 0;	//initial the back_ground addr
 			
-			//text_flash <= ~text_flash;
+
 		end
 		
 	end
 
-	logic text_flash;
-	
 	  
 endmodule
