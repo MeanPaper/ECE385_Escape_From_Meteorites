@@ -444,7 +444,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE 385_code/VGA_controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE 385_code/obstacle.sv
 set_global_assignment -name SYSTEMVERILOG_FILE 385_code/gameFSM.sv
 set_global_assignment -name SYSTEMVERILOG_FILE 385_code/final385_top.sv
-set_global_assignment -name SYSTEMVERILOG_FILE 385_code/counter_rand.sv
 set_global_assignment -name SYSTEMVERILOG_FILE 385_code/corruptedl_ball.sv
 set_global_assignment -name SYSTEMVERILOG_FILE 385_code/Color_Mapper.sv
 set_global_assignment -name SYSTEMVERILOG_FILE 385_code/bullet.sv
