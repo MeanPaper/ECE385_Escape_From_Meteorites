@@ -2,6 +2,8 @@
 
 This is an ECE385 Repo. It contains all labs of this course and my final project.
 
+[Final Project](#Final-Project)
+
 ## Final Project
 
 My final project for this course is **Escape From Meteorites**. It is a space shooting game. The Player's goal is to hit as many meteorites as he/she can while avoiding hitting other meteorites. This project is inspired by a retro game, **Raiden**. 
