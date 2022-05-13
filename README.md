@@ -1,8 +1,6 @@
 # ECE385_Repo
 
-This is an ECE385 Repo. It contains all labs of this course and my final project.
-
-[Final Project](#Final-Project)
+This is an ECE385 Repo.
 
 ## Final Project
 
