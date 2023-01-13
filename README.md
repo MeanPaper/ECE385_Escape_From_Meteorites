@@ -45,3 +45,6 @@ After all the installations, here are the following steps:
 6. Connect the FPGA via USB and flash the compiled code to the FPGA via **Programmer** which can be found under **Tools** tab
 7. Go to **Tools->Nios II Software Build Tools for Eclipse** and enter the path to `workspace` (see Folder Description)
 8. Under **Run** tab, click on **Run Configuration->Run**
+
+### Notes:
+Please only use this repo as a reference. 
